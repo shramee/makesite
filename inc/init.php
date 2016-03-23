@@ -12,3 +12,7 @@ require dirname( __FILE__ ) . '/functions/init.php';
 
 /** Customizer additions. */
 require dirname( __FILE__ ) . '/customizer.php';
+
+/** Structure functions and hooks. */
+require dirname( __FILE__ ) . '/structure/init.php';
+

@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package MakeSite
+ * @package makesite
  */
 
 get_header(); ?>
