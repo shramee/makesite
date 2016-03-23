@@ -8,21 +8,21 @@
  *
  * @package makesite
  */
-
 ?>
-
 	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'makesite' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'makesite' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'makesite' ), 'makesite', '<a href="http://wpdevelopment.me" rel="designer">WPDevelopment</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+	<?php
+	/**
+	 * Makesite render footer
+	 * @hook action makesite_footer
+	 * @hooked makesite_ft_open       - 10
+	 * @hooked makesite_ft_skiplinks  - 20
+	 * @hooked makesite_ft_info       - 30
+	 * @hooked makesite_ft_navigation - 40
+	 * @hooked makesite_ft_close      - 50
+	 * @hooked wp_footer              - 70
+	 */
+	do_action( 'makesite_footer' );
+	?>
 </div><!-- #page -->
-
-<?php wp_footer(); ?>
-
 </body>
 </html>
