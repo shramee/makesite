@@ -1,0 +1,53 @@
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	text-align: center;
+	@include center-block;
+}
+
+.col-full {
+	max-width: $site-width;
+	margin: 0 $gutter;
+}
+
+.col-full:before {
+	content: '';
+	display: block;
+}
+
+.col-full:after,
+.clear:after {
+	@include clearfix;
+}
+
+@media only screen and (max-width: $s-breakup) {
+	.s-hide, .mobile-hide {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: $s-breakup) and (max-width: $m-breakup) {
+	.m-hide, .mobile-hide {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: $m-breakup) {
+	.l-hide, .desktop-hide {
+		display: none;
+	}
+	.col-full {
+		margin: auto;
+	}
+}

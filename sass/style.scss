@@ -23,61 +23,55 @@
 /*
 TABLE OF CONTENTS:
 	# Normalize
-	# Typography
-	# Elements
-	# Forms
-	# Navigation
-		## Links
-		## Menus
 	# Accessibility
-	# Alignments
-	# Clearings
-	# Widgets
+	# Elements
+	# Grid
+	# Forms
+	# Typography
+	# Header
 	# Content
 	    ## Posts and pages
 		## Asides
 		## Comments
+	# Widgets
+	# Header
+	# Alignments
+	# Layouts
+	# Desktop
 	# Infinite scroll
 	# Media
 		## Captions
 		## Galleries
 */
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
+
+// Variables and Mixins
+@import "abstract/variables";
+@import "abstract/mixins";
 
 /* # Normalize */
-@import "normalize";
-
-/* # Typography */
-@import "typography/typography";
-
-/* # Elements */
-@import "elements/elements";
-
-/* # Forms */
-@import "forms/forms";
-
-/* # Navigation */
-@import "navigation/navigation";
+@import "vendor/normalize";
 
 /* # Accessibility */
-@import "modules/accessibility";
+@import "base/accessibility";
 
-/* # Alignments */
-@import "modules/alignments";
+/* # Elements */
+@import "base/elements";
 
-/* # Clearings */
-@import "modules/clearings";
+/* # Grid */
+@import "base/grid";
 
-/* # Widgets */
-@import "site/secondary/widgets";
+/* # Helper Classes */
+@import "base/helper";
 
-/* # Content */
-@import "site/site";
+/* # Typography */
+@import "base/typography";
+
+// Site styles
+@import "layout/site";
 
 /* # Infinite scroll */
-@import "modules/infinite-scroll";
+@import "components/infinite-scroll";
 
 /* # Media */
-@import "media/media";
+@import "components/media";
 

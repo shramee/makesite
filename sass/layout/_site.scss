@@ -1,0 +1,19 @@
+/* # Header */
+@import "header/header";
+
+/* # Content */
+@import "primary/primary";
+
+/* # Widgets */
+@import "secondary/widget-areas";
+
+/* # Footer */
+@import "footer/footer";
+
+/* # Desktop */
+@media only screen and (min-width: $s-breakup) {
+	@import "desktop";
+
+	/* # Layouts */
+	@import "layouts/layouts";
+}
