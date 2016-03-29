@@ -23,9 +23,15 @@ if ( ! function_exists( 'makesite_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary', 'makesite' ),
-		) );
+		register_nav_menus(
+			apply_filters(
+				'makesite_nav_menus',
+				array(
+					'primary-desktop' => esc_html__( 'Primary Desktop', 'makesite' ),
+					'primary-mobile'  => esc_html__( 'Primary Mobile', 'makesite' ),
+				)
+			)
+		);
 
 		//Switch default core markup for search form, comment form, and comments to HTML5.
 		add_theme_support( 'html5', array(
@@ -88,10 +94,11 @@ if ( ! function_exists( 'makesite_scripts' ) ) :
 	 * @action wp_enqueue_scripts
 	 */
 	function makesite_scripts() {
+
 		wp_enqueue_style( 'makesite-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'makesite-fa', get_stylesheet_directory_uri() . '/css/font-awesome.css' );
 
 		wp_enqueue_script( 'makesite-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
 		wp_enqueue_script( 'makesite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

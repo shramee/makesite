@@ -6,8 +6,7 @@ function makesite() {
 	?>
 	<?php get_header(); ?>
 
-	<div id="content" class="site-content">
-
+	<div id="content" class="site-content col-full">
 		<?php
 		/**
 		 * Makesite render content
@@ -17,10 +16,9 @@ function makesite() {
 		 * @hooked makesite_ct_close
 		 */
 		do_action( 'makesite_content' );
+		get_sidebar()
 		?>
-		<?php get_sidebar() ?>
 	</div><!-- #content -->
 	<?php get_footer(); ?>
-
 	<?php
 }

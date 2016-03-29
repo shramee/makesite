@@ -8,9 +8,7 @@
  *
  * @package makesite
  */
-?>
-	</div><!-- #content -->
-	<?php
+
 	/**
 	 * Makesite render footer
 	 * @hook action makesite_footer
@@ -24,5 +22,8 @@
 	do_action( 'makesite_footer' );
 	?>
 </div><!-- #page -->
+<?php
+wp_footer();
+?>
 </body>
 </html>

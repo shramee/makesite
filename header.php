@@ -19,6 +19,13 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php
+	/**
+	 * Makesite right after opening body tag
+	 * @hook action makesite_header
+	 */
+	do_action( 'makesite_before_site' );
+?>
 <div id="page" class="site">
 	<?php
 	/**
@@ -32,4 +39,3 @@
 	 */
 	do_action( 'makesite_header' );
 	?>
-	<div id="content" class="site-content">

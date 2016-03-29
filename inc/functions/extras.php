@@ -27,3 +27,14 @@ function makesite_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'makesite_body_classes' );
+
+/**
+ * Minify HTML
+ * @param string $html HTML to minify
+ * @return string Minified HTML
+ * @since 1.0.0
+ */
+function ms_minify_html( $html ) {
+	$html = str_replace( array( "\n", "\t", ), '', $html );
+	return $html;
+}

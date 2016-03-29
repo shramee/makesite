@@ -18,6 +18,7 @@ if ( ! function_exists( 'makesite_ft_open' ) ) :
 	function makesite_ft_open() {
 		?>
 		<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="col-full">
 		<?php
 	}
 endif;
@@ -80,6 +81,7 @@ if ( ! function_exists( 'makesite_ft_close' ) ) :
 	 */
 	function makesite_ft_close() {
 		?>
+		</div><!-- .col-full -->
 		</footer><!-- #colophon -->
 		<?php
 	}

@@ -13,6 +13,7 @@ add_action( 'makesite_header', 'makesite_hd_skiplinks',  20 );
 add_action( 'makesite_header', 'makesite_hd_branding',   30 );
 add_action( 'makesite_header', 'makesite_hd_navigation', 40 );
 add_action( 'makesite_header', 'makesite_hd_close',      97 );
+add_filter( 'wp_nav_menu', 'ms_minify_html',        7 );
 
 //Sidebar functions
 include dirname( __FILE__ ) . '/sidebar.php';
@@ -37,4 +38,3 @@ add_action( 'makesite_footer', 'makesite_ft_navigation', 20 );
 add_action( 'makesite_footer', 'makesite_ft_skiplinks',  30 );
 add_action( 'makesite_footer', 'makesite_ft_info',       40 );
 add_action( 'makesite_footer', 'makesite_ft_close',      97 );
-add_action( 'makesite_footer', 'wp_footer',              99 );
