@@ -692,7 +692,10 @@ select {
 
 .col-full {
   max-width: 1000px;
-  margin: 0 1em;
+  padding: 0 1em;
+}
+.col-full .col-full {
+  padding: 0;
 }
 
 .col-full:before {
@@ -724,6 +727,7 @@ select {
 
   .col-full {
     margin: auto;
+    padding: 0;
   }
 }
 /* # Typography */
@@ -1020,6 +1024,48 @@ big {
   position: relative;
 }
 
+/* # Slide ins */
+.slide-in {
+  width: 259px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+}
+
+.slide-in .col-full {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.admin-bar .slide-in {
+  top: 32px;
+}
+
+.right-slide-in {
+  left: auto;
+  right: 0;
+}
+
+a.slide-in-toggle {
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.right-slide-in .slide-in-toggle {
+  left: auto;
+  right: 100%;
+}
+
+.slide-in-toggle .fa {
+  font-size: 25px;
+  padding: 0.25em;
+}
+
 /* # Desktop */
 @media only screen and (min-width: 700px) and (min-width: 1060px) {
   /* ## Header */
@@ -1052,6 +1098,7 @@ big {
     -webkit-flex: 1 1 auto;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
+    min-width: 300px;
   }
 }
 /* # Infinite scroll */

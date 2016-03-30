@@ -82,6 +82,8 @@ if ( ! function_exists( 'makesite_widgets_init' ) ) :
 			array(
 				'sidebar-1' => esc_html__( 'Secondary Sidebar', 'makesite' ),
 				'sidebar-2' => esc_html__( 'Tertiary Sidebar', 'makesite' ),
+				'left-slide' => esc_html__( 'Slide in left', 'makesite' ),
+				'right-slide' => esc_html__( 'Slide in right', 'makesite' ),
 			)
 		);
 

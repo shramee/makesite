@@ -18,7 +18,10 @@
 
 .col-full {
 	max-width: $site-width;
-	margin: 0 1em;
+	padding: 0 1em;
+	.col-full {
+		padding: 0;
+	}
 }
 
 .col-full:before {
@@ -49,5 +52,6 @@
 	}
 	.col-full {
 		margin: auto;
+		padding: 0;
 	}
 }

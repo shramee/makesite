@@ -79,53 +79,27 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 		$fw_cntnr = $fw_cntnr_close = '';
 
 		if ( $full_width = apply_filters( 'makesite_hd_full_width_navigation', true ) ) {
-			$fw_cntnr       = '<div class="col-full">';
-			$fw_cntnr_close = '</div><!-- .col-full -->';
-		}
-
-		if ( has_nav_menu( 'primary-desktop' ) ) :
-			ms_do_action(
-				'header_navs',
-				"$fw_cntnr_close<nav id=\"site-navigation\" class=\"main-navigation\" role=\"navigation\">",
-				"</nav><!-- #site-navigation -->$fw_cntnr",
-				array( $full_width )
-			);
-		endif; //wp_nav_menu primary-desktop
-	}
-endif;
-
-if ( ! function_exists( 'makesite_hd_navs' ) ) :
-	/**
-	 * Outputs navigation menu in header
-	 * @action makesite_header
-	 * @since 1.0.0
-	 */
-	function makesite_hd_navs( $full_width = true ) {
-		$fw_ct = $fw_ct_close = '';
-
-		if ( $full_width ) {
 			$fw_ct       = '<div class="col-full">';
 			$fw_ct_close = '</div><!-- .col-full -->';
 		}
 
-		if ( has_nav_menu( 'primary-desktop' ) ) :
-			ms_do_action(
-				'header_desktop_nav',
-				"<div class='desktop-menu s-hide'>$fw_ct",
-				"$fw_ct_close</div><!-- .desktop-menu -->"
-			);
-		endif; //wp_nav_menu primary-desktop
+		echo "$fw_ct_close<nav id='site-navigation' class='main-navigation' role='navigation'>";
 
-		if ( has_nav_menu( 'primary-mobile' ) ) :
-			ms_do_action(
-				'header_mobile_nav',
-				"$fw_ct<div class='mobile-menu m-hide l-hide'>",
-				"</div><!-- .desktop-menu -->$fw_ct_close"
-			);
-		endif; //wp_nav_menu primary-mobile
+		ms_do_action(
+			'header_desktop_nav',
+			"<div class='desktop-menu s-hide'>$fw_ct",
+			"$fw_ct_close</div><!-- .desktop-menu -->"
+		);
+
+		ms_do_action(
+			'header_mobile_nav',
+			"$fw_ct<div class='mobile-menu m-hide l-hide'>",
+			"</div><!-- .desktop-menu -->$fw_ct_close"
+		);
+
+		echo "</nav><!-- #site-navigation -->$fw_ct";
 	}
 endif;
-
 
 if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 	/**
