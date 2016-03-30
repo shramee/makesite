@@ -9,20 +9,6 @@
  * @package makesite
  */
 
-if ( ! function_exists( 'makesite_hd_open' ) ) :
-	/**
-	 * Opens the header container
-	 * @action makesite_header
-	 * @since 1.0.0
-	 */
-	function makesite_hd_open() {
-		?>
-		<header id="masthead" class="site-header" role="banner">
-		<div class="col-full">
-		<?php
-	}
-endif;
-
 if ( ! function_exists( 'makesite_hd_skiplinks' ) ) :
 	/**
 	 * Outputs skip links in header
@@ -90,80 +76,88 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_hd_navigation() {
-	$full_width = apply_filters( 'makesite_hd_full_width_navigation', true );
-		if ( $full_width ) {
-			?>
-			</div><!-- .col-full -->
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php makesite_hd_nav_menus( $full_width ) ?>
-			</nav><!-- #site-navigation -->
-			<div class="col-full">
-		<?php
-		} else {
-		?>
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php makesite_hd_nav_menus( $full_width ) ?>
-			</nav><!-- #site-navigation -->
-			<?php
+		$fw_cntnr = $fw_cntnr_close = '';
+
+		if ( $full_width = apply_filters( 'makesite_hd_full_width_navigation', true ) ) {
+			$fw_cntnr       = '<div class="col-full">';
+			$fw_cntnr_close = '</div><!-- .col-full -->';
 		}
+
+		if ( has_nav_menu( 'primary-desktop' ) ) :
+			ms_do_action(
+				'header_navs',
+				"$fw_cntnr_close<nav id=\"site-navigation\" class=\"main-navigation\" role=\"navigation\">",
+				"</nav><!-- #site-navigation -->$fw_cntnr",
+				array( $full_width )
+			);
+		endif; //wp_nav_menu primary-desktop
 	}
 endif;
 
-if ( ! function_exists( 'makesite_hd_nav_menus' ) ) :
+if ( ! function_exists( 'makesite_hd_navs' ) ) :
 	/**
 	 * Outputs navigation menu in header
 	 * @action makesite_header
 	 * @since 1.0.0
 	 */
-	function makesite_hd_nav_menus( $full_width = true ) {
+	function makesite_hd_navs( $full_width = true ) {
+		$fw_ct = $fw_ct_close = '';
+
+		if ( $full_width ) {
+			$fw_ct       = '<div class="col-full">';
+			$fw_ct_close = '</div><!-- .col-full -->';
+		}
+
 		if ( has_nav_menu( 'primary-desktop' ) ) :
-			?>
-			<div class="desktop-menu s-hide">
-				<?php
-				if ( $full_width ) { ?>
-					<div class="col-full">
-						<?php wp_nav_menu( array( 'theme_location' => 'primary-desktop', 'menu_id' => 'desktop-menu' ) ); ?>
-					</div><!-- .col-full -->
-					<?php
-				} else {
-					wp_nav_menu( array( 'theme_location' => 'primary-desktop', 'menu_id' => 'desktop-menu' ) );
-				}
-				?>
-			</div>
-			<?php
+			ms_do_action(
+				'header_desktop_nav',
+				"<div class='desktop-menu s-hide'>$fw_ct",
+				"$fw_ct_close</div><!-- .desktop-menu -->"
+			);
 		endif; //wp_nav_menu primary-desktop
+
 		if ( has_nav_menu( 'primary-mobile' ) ) :
-			if ( $full_width ) {
-				?>
-				<div class="col-full">
-					<div class="mobile-menu m-hide l-hide">
-						<div class="menu-toggle"><i class="fa fa-bars"></i>Menu</div>
-						<?php wp_nav_menu( array( 'theme_location' => 'primary-mobile', 'menu_id' => 'mobile-menu' ) ); ?>
-					</div>
-				</div><!-- .col-full -->
-				<?php
-			} else {
-				?>
-				<div class="mobile-menu m-hide l-hide">
-					<div class="menu-toggle"><i class="fa fa-bars"></i>Menu</div>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary-mobile', 'menu_id' => 'mobile-menu' ) ); ?>
-				</div>
-				<?php
-			}
+			ms_do_action(
+				'header_mobile_nav',
+				"$fw_ct<div class='mobile-menu m-hide l-hide'>",
+				"</div><!-- .desktop-menu -->$fw_ct_close"
+			);
 		endif; //wp_nav_menu primary-mobile
 	}
 endif;
 
-if ( ! function_exists( 'makesite_hd_close' ) ) :
+
+if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 	/**
-	 * Close the header container
+	 * Outputs skip links in header
 	 * @action makesite_header
 	 * @since 1.0.0
 	 */
-	function makesite_hd_close() {
+	function makesite_desktop_nav() {
+		wp_nav_menu( array( 'theme_location' => 'primary-desktop', 'menu_id' => 'desktop-menu' ) );
+	}
+endif;
+
+if ( ! function_exists( 'makesite_mobile_nav_btn' ) ) :
+	/**
+	 * Outputs skip links in header
+	 * @action makesite_header
+	 * @since 1.0.0
+	 */
+	function makesite_mobile_nav_btn() {
 		?>
-			</div><!-- .col-full -->
-		</header><!-- #masthead -->
+		<a class="menu-toggle"><i class="fa fa-bars"></i>Menu</a>
 		<?php
+	}
+endif;
+
+if ( ! function_exists( 'makesite_mobile_nav' ) ) :
+	/**
+	 * Outputs skip links in header
+	 * @action makesite_header
+	 * @since 1.0.0
+	 */
+	function makesite_mobile_nav() {
+		wp_nav_menu( array( 'theme_location' => 'primary-mobile', 'menu_id' => 'mobile-menu' ) );
 	}
 endif;

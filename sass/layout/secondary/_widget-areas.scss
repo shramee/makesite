@@ -1,9 +1,0 @@
-.widget-area .widget {
-	padding: $padding;
-	background: $clr-bg-content;
-	margin-bottom: $gutter;
-	/* Make sure select elements fit in widgets. */
-	select {
-		max-width: 100%;
-	}
-}

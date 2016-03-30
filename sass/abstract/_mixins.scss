@@ -1,6 +1,6 @@
 // Rem output with px fallback
 @mixin font-size($sizeValue: 1) {
-	font-size: ($sizeValue * 16) * 1px;
+	font-size: ($sizeValue * 12) * 1px;
 	font-size: $sizeValue * 1rem;
 }
 
@@ -18,9 +18,11 @@
 	clear: both;
 }
 
-// Clearfix
-@mixin position-absolute(  ) {
-	content: "";
-	display: block;
-	clear: both;
+// Position absolute
+@mixin position-absolute( $t : 0, $r : 0, $b : 0, $l : 0 ) {
+	position: absolute;
+	top: $t;
+	right: $r;
+	bottom: $b;
+	left: $l;
 }

@@ -22,7 +22,7 @@
 <?php
 	/**
 	 * Makesite right after opening body tag
-	 * @hook action makesite_header
+	 * @hook action makesite_before_site
 	 */
 	do_action( 'makesite_before_site' );
 ?>
@@ -31,11 +31,14 @@
 	/**
 	 * Makesite render header
 	 * @hook action makesite_header
-	 * @hooked makesite_hd_open
 	 * @hooked makesite_hd_skiplinks
 	 * @hooked makesite_hd_branding
 	 * @hooked makesite_hd_navigation
 	 * @hooked makesite_hd_close
 	 */
-	do_action( 'makesite_header' );
+	ms_do_action(
+		'header',
+		'<header id="masthead" class="site-header" role="banner"><div class="col-full">',
+		'</div><!-- .col-full --></header><!-- #masthead -->'
+	);
 	?>

@@ -9,20 +9,6 @@
  * @package makesite
  */
 
-if ( ! function_exists( 'makesite_ft_open' ) ) :
-	/**
-	 * Opens the footer container
-	 * @action makesite_footer
-	 * @since 1.0.0
-	 */
-	function makesite_ft_open() {
-		?>
-		<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="col-full">
-		<?php
-	}
-endif;
-
 if ( ! function_exists( 'makesite_ft_navigation' ) ) :
 	/**
 	 * Outputs navigation menu in footer
@@ -69,20 +55,6 @@ if ( ! function_exists( 'makesite_ft_info' ) ) :
 			&copy; <?php bloginfo( 'name' ); ?>
 			<?php echo $designer ?>
 		</div><!-- .site-info -->
-		<?php
-	}
-endif;
-
-if ( ! function_exists( 'makesite_ft_close' ) ) :
-	/**
-	 * Close the footer container
-	 * @action makesite_footer
-	 * @since 1.0.0
-	 */
-	function makesite_ft_close() {
-		?>
-		</div><!-- .col-full -->
-		</footer><!-- #colophon -->
 		<?php
 	}
 endif;

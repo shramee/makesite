@@ -76,6 +76,35 @@ if ( ! function_exists( 'makesite_widgets_init' ) ) :
 	 * @action widgets_init
 	 */
 	function makesite_widgets_init() {
+
+		$sidebars = apply_filters(
+			'makesite_widget_areas',
+			array(
+				'sidebar-1' => esc_html__( 'Secondary Sidebar', 'makesite' ),
+				'sidebar-2' => esc_html__( 'Tertiary Sidebar', 'makesite' ),
+			)
+		);
+
+		foreach ( $sidebars as $id => $sb ) {
+
+			if ( is_string( $sb ) ) {
+				$name = $sb;
+				$sb = array();
+				$sb['name'] = $name;
+				$sb['id'] = $id;
+			}
+
+			$sb = wp_parse_args( $sb, array(
+				'description'   => '',
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+			register_sidebar( $sb );
+
+		}
+
 		register_sidebar( array(
 			'name'          => esc_html__( 'Sidebar', 'makesite' ),
 			'id'            => 'sidebar-1',

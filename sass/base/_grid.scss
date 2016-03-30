@@ -14,9 +14,9 @@
 .grid > * { width: 100%; margin-bottom: 2%; }
 .grid.s-2 > * { width: 49%; margin-bottom: 2%; }
 .grid.s-3 > * { width: 32%; margin-bottom: 2%; }
-.grid.s-4 > * { width: 23.5%; margin-bottom: 2%; }
-.grid.s-5 > * { width: 18.4%; margin-bottom: 2%; }
-.grid.s-6 > * { width: 15%; margin-bottom: 2%; }
+.grid.s-4 > * { width: 25%;}
+.grid.s-5 > * { width: 20%;}
+.grid.s-6 > * { width: 16.666%;}
 .s1  { width:  8.33333% }
 .s2  { width: 16.66666% }
 .s3  { width: 24.99999% }
@@ -34,9 +34,9 @@
 	.grid > *, .grid.m-3 > * { width: 32%; margin-bottom: 2%; }
 	.grid.m-4 > * { width: 23.5%; margin-bottom: 2%; }
 	.grid.m-5 > * { width: 18.4%; margin-bottom: 2%; }
-	.grid.m-6 > * { width: 15%; margin-bottom: 2%; }
-	.grid.m-7 > * { width: 12.57%; margin-bottom: 2%; }
-	.grid.m-8 > * { width: 11.117%; margin-bottom: 1.58% }
+	.grid.m-6 > * { width: 16.666%; }
+	.grid.m-7 > * { width: 14.285%; }
+	.grid.m-8 > * { width: 12.5%; }
 	.grid.m-10 > * { width: 9.999%; }
 	.grid.m-12 > * { width: 8.333%; }
 	.m1  { width:  8.33333% }
@@ -59,7 +59,7 @@
 	.grid > *, .grid.l-4 > * { width: 23.5%; margin-bottom: 2%; }
 	.grid.l-5 > * { width: 18.4%; margin-bottom: 2%; }
 	.grid.l-6 > * { width: 15%; margin-bottom: 2%; }
-	.grid.l-7 > * { width: 12.57%; margin-bottom: 2%; }
+	.grid.l-7 > * { width: 14.285%; }
 	.grid.l-8 > * { width: 12.499%; }
 	.grid.l-10 > * { width: 9.999%; }
 	.grid.l-12 > * { width: 8.333%; }

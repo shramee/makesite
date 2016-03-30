@@ -8,33 +8,32 @@ include dirname( __FILE__ ) . '/framework.php';
 //Header functions
 include dirname( __FILE__ ) . '/header.php';
 //Header hooks
-add_action( 'makesite_header', 'makesite_hd_open',        7 );
-add_action( 'makesite_header', 'makesite_hd_skiplinks',  20 );
-add_action( 'makesite_header', 'makesite_hd_branding',   30 );
-add_action( 'makesite_header', 'makesite_hd_navigation', 40 );
-add_action( 'makesite_header', 'makesite_hd_close',      97 );
+ms_hook( 'header', 'makesite_hd_skiplinks',  20 );
+ms_hook( 'header', 'makesite_hd_branding',   30 );
+ms_hook( 'header', 'makesite_hd_navigation', 40 );
+
+ms_hook( 'header_navs', 'makesite_hd_navs',  25 );
+
+ms_hook( 'header_desktop_nav', 'makesite_desktop_nav',     25 );
+ms_hook( 'header_mobile_nav',  'makesite_mobile_nav_btn',  20 );
+ms_hook( 'header_mobile_nav',  'makesite_mobile_nav',      25 );
+
 add_filter( 'wp_nav_menu', 'ms_minify_html',        7 );
 
 //Sidebar functions
 include dirname( __FILE__ ) . '/sidebar.php';
 //Sidebar hooks
-add_action( 'makesite_sidebar', 'makesite_sb_open',     7 );
-add_action( 'makesite_sidebar', 'makesite_sb_widgets', 25 );
-add_action( 'makesite_sidebar', 'makesite_sb_close',   97 );
+ms_hook( 'sidebar',  'makesite_sb_widgets', 25 );
+ms_hook( 'sidebar2', 'makesite_sb2_widgets', 25 );
 
 //Content functions
 include dirname( __FILE__ ) . '/content.php';
 //Content hooks
-add_action( 'makesite_content', 'makesite_ct_open',     7 );
-add_action( 'makesite_content', 'makesite_ct_loop', 25 );
-add_action( 'makesite_content', 'makesite_ct_close',   97 );
+ms_hook( 'content', 'makesite_ct_loop', 25 );
 
 //Footer functions
 include dirname( __FILE__ ) . '/footer.php';
 //Footer hooks
-add_action( 'makesite_footer', 'get_sidebar',             0 );
-add_action( 'makesite_footer', 'makesite_ft_open',        7 );
-add_action( 'makesite_footer', 'makesite_ft_navigation', 20 );
-add_action( 'makesite_footer', 'makesite_ft_skiplinks',  30 );
-add_action( 'makesite_footer', 'makesite_ft_info',       40 );
-add_action( 'makesite_footer', 'makesite_ft_close',      97 );
+ms_hook( 'footer', 'makesite_ft_navigation', 20 );
+ms_hook( 'footer', 'makesite_ft_skiplinks',  30 );
+ms_hook( 'footer', 'makesite_ft_info',       40 );

@@ -235,7 +235,7 @@ td, th {
   clip: auto !important;
   color: #21759b;
   display: block;
-  font-size: 14px;
+  font-size: 10.5px;
   font-size: 0.875rem;
   font-weight: bold;
   height: auto;
@@ -267,7 +267,7 @@ html {
 }
 
 body {
-  background: #eee;
+  background: #fff;
   /* Fallback for when there is no custom background color defined. */
 }
 
@@ -302,15 +302,17 @@ a:hover, a:active {
 }
 
 ul, ol {
-  margin: 0 0 1.5em 3em;
+  margin: 0;
+  padding: 0.5em;
+  list-style-position: inside;
 }
 
 ul {
-  list-style: disc;
+  list-style-type: disc;
 }
 
 ol {
-  list-style: decimal;
+  list-style-type: decimal;
 }
 
 li > ul,
@@ -349,7 +351,7 @@ input[type="submit"] {
   background: #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
+  font-size: 9px;
   font-size: 0.75rem;
   line-height: 1;
   padding: .6em 1em .4em;
@@ -425,18 +427,15 @@ select {
 }
 
 .grid.s-4 > * {
-  width: 23.5%;
-  margin-bottom: 2%;
+  width: 25%;
 }
 
 .grid.s-5 > * {
-  width: 18.4%;
-  margin-bottom: 2%;
+  width: 20%;
 }
 
 .grid.s-6 > * {
-  width: 15%;
-  margin-bottom: 2%;
+  width: 16.666%;
 }
 
 .s1 {
@@ -505,18 +504,15 @@ select {
   }
 
   .grid.m-6 > * {
-    width: 15%;
-    margin-bottom: 2%;
+    width: 16.666%;
   }
 
   .grid.m-7 > * {
-    width: 12.57%;
-    margin-bottom: 2%;
+    width: 14.285%;
   }
 
   .grid.m-8 > * {
-    width: 11.117%;
-    margin-bottom: 1.58%;
+    width: 12.5%;
   }
 
   .grid.m-10 > * {
@@ -602,8 +598,7 @@ select {
   }
 
   .grid.l-7 > * {
-    width: 12.57%;
-    margin-bottom: 2%;
+    width: 14.285%;
   }
 
   .grid.l-8 > * {
@@ -697,7 +692,7 @@ select {
 
 .col-full {
   max-width: 1000px;
-  margin: 0 2rem;
+  margin: 0 1em;
 }
 
 .col-full:before {
@@ -732,6 +727,11 @@ select {
   }
 }
 /* # Typography */
+html {
+  font-size: 14px;
+  font-size: 0.875em;
+}
+
 body,
 button,
 input,
@@ -739,7 +739,7 @@ select,
 textarea {
   color: #404040;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -768,7 +768,7 @@ address {
 pre {
   background: #ffe;
   font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 15px;
+  font-size: 11.25px;
   font-size: 0.9375rem;
   line-height: 1.6;
   margin-bottom: 1.6em;
@@ -779,7 +779,7 @@ pre {
 
 code, kbd, tt, var {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  font-size: 15px;
+  font-size: 11.25px;
   font-size: 0.9375rem;
 }
 
@@ -800,9 +800,8 @@ big {
 /* # Header */
 .site-header {
   position: relative;
-  padding: 1rem 0 0;
-  margin-bottom: 2rem;
-  background: #f9f9f9;
+  padding: 1.24rem 0 0;
+  margin-bottom: 2.5rem;
 }
 
 .site-branding {
@@ -810,14 +809,14 @@ big {
 }
 
 .site-title {
-  margin: 0.25em 0;
+  margin: 0.25em 0 0;
 }
 .site-title a {
   text-decoration: none;
 }
 
 .site-description {
-  margin: 0 0 0.25em;
+  margin: 0 0 1.6em;
 }
 
 /* ## Menus */
@@ -826,6 +825,7 @@ big {
   display: block;
   text-align: left;
   width: 100%;
+  background: #333;
 }
 .main-navigation .menu > li, .main-navigation .menu > ul > li {
   -webkit-flex: 0 1 auto;
@@ -835,7 +835,7 @@ big {
 .main-navigation ul {
   list-style: none;
   margin: 0;
-  padding-left: 0;
+  padding: 0;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -851,7 +851,7 @@ big {
 }
 .main-navigation ul ul {
   min-width: 200px;
-  margin: 0 1rem;
+  margin: 0 1.24rem;
 }
 .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
   left: 100%;
@@ -860,14 +860,12 @@ big {
   position: relative;
 }
 .main-navigation a {
-  padding: 0.5rem;
+  padding: 0.62rem 1.24rem;
   display: block;
   text-decoration: none;
+  color: #fff;
 }
 
-.desktop-menu {
-  background: #ccc;
-}
 .desktop-menu ul {
   background: inherit;
   -webkit-flex-direction: row;
@@ -896,8 +894,12 @@ big {
   display: none;
 }
 .desktop-menu ul ul:before {
+  content: '';
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
 }
 .desktop-menu ul ul ul {
@@ -909,10 +911,14 @@ big {
   display: block;
 }
 
+.mobile-menu {
+  padding: 1em;
+}
 .mobile-menu .menu {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s;
+  padding: 0;
 }
 .mobile-menu.menu-toggled .menu {
   overflow: auto;
@@ -921,21 +927,22 @@ big {
 .mobile-menu.menu-toggled .menu-toggle .fa:before {
   content: "\f00d";
 }
-.mobile-menu .menu-toggle .fa {
-  margin-right: 1em;
-}
 .mobile-menu .menu-toggle {
   text-align: center;
-  cursor: pointer;
-  padding: 1em;
+  display: block;
+  padding: 0;
+  font-size: 18px;
+}
+.mobile-menu .menu-toggle .fa {
+  margin: 0 0.5em 1px 0;
+  font-size: 25px;
+  vertical-align: middle;
 }
 
 /* # Content */
 /* ## Posts and pages */
-.site-main {
-  padding: 1rem;
-  margin-bottom: 2rem;
-  background: #f9f9f9;
+.content-area {
+  margin-bottom: 2.5rem;
 }
 
 .site-main > .col-full {
@@ -984,19 +991,32 @@ big {
 
 /* # Widgets */
 .widget-area .widget {
-  padding: 1rem;
-  background: #f9f9f9;
-  margin-bottom: 2rem;
+  padding: 1.24rem;
   /* Make sure select elements fit in widgets. */
 }
 .widget-area .widget select {
   max-width: 100%;
 }
 
+.widget-area {
+  -webkit-flex: 0 0 30%;
+      -ms-flex: 0 0 30%;
+          flex: 0 0 30%;
+  margin-bottom: 2.5rem;
+}
+
+.widget-area-2 {
+  -webkit-flex: 0 0 20%;
+      -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+  -webkit-order: -1;
+      -ms-flex-order: -1;
+          order: -1;
+}
+
 /* # Footer */
 .site-footer {
-  padding: 1rem;
-  background: #f9f9f9;
+  padding: 1.24rem;
   position: relative;
 }
 
@@ -1032,13 +1052,6 @@ big {
     -webkit-flex: 1 1 auto;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
-  }
-
-  .widget-area {
-    padding-left: 2rem;
-    -webkit-flex: 0 0 250px;
-        -ms-flex: 0 0 250px;
-            flex: 0 0 250px;
   }
 }
 /* # Infinite scroll */

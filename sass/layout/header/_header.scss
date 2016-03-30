@@ -2,7 +2,6 @@
 	position: relative;
 	padding: $padding 0 0;
 	margin-bottom: $gutter;
-	background: $clr-bg-content;
 }
 
 .site-branding {
@@ -10,14 +9,14 @@
 }
 
 .site-title {
-	margin: 0.25em 0;
+	margin: 0.25em 0 0;
 	a {
 		text-decoration: none;
 	}
 }
 
 .site-description {
-	margin: 0 0 0.25em;
+	margin: 0 0 1.6em;
 }
 
 /* ## Menus */
@@ -26,6 +25,7 @@
 	display: block;
 	text-align: left;
 	width: 100%;
+	background: $clr-bg-menu;
 
 	.menu > li, .menu > ul > li {
 		flex: 0 1 auto;
@@ -33,7 +33,7 @@
 	ul {
 		list-style: none;
 		margin: 0;
-		padding-left: 0;
+		padding: 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -59,9 +59,10 @@
 	}
 
 	a {
-		padding: $padding/2;
+		padding: $padding/2 $padding;
 		display: block;
 		text-decoration: none;
+		color: $clr-link-menu;
 	}
 
 	.current_page_item > a,
@@ -72,7 +73,6 @@
 }
 
 .desktop-menu {
-	background: #ccc;
 	ul {
 		background: inherit;
 		flex-direction: row;
@@ -91,10 +91,9 @@
 			z-index: 99999;
 			display: none;
 			&:before {
-				position: absolute;
-				top: 0;
-				left: 0;
-
+				content: '';
+				background: rgba(0,0,0,0.7);
+				@include position-absolute();
 			}
 			ul {
 				left: 100%;
@@ -110,10 +109,12 @@
 }
 
 .mobile-menu {
+	padding: 1em;
 	.menu {
 		overflow: hidden;
 		max-height: 0;
 		transition: max-height 0.5s;
+		padding: 0;
 	}
 
 	&.menu-toggled .menu {
@@ -125,13 +126,15 @@
 		content: "\f00d";
 	}
 
-	.menu-toggle .fa {
-		margin-right: 1em;
-	}
-
 	.menu-toggle {
 		text-align: center;
-		cursor: pointer;
-		padding: 1em;
+		display: block;
+		padding:0;
+		font-size: 18px;
+		.fa {
+			margin: 0 0.5em 1px 0;
+			font-size: 25px;
+			vertical-align: middle;
+		}
 	}
 }

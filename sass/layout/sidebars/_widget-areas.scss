@@ -1,0 +1,17 @@
+.widget-area .widget {
+	padding: $padding;
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+}
+
+.widget-area {
+	flex: 0 0 $sidebar-width-1;
+	margin-bottom: $gutter;
+}
+
+.widget-area-2 {
+	flex: 0 0 $sidebar-width-2;
+	order: -1;
+}

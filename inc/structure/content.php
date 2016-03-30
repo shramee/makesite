@@ -8,21 +8,6 @@
  *
  * @package makesite
  */
-
-if ( ! function_exists( 'makesite_ct_open' ) ) :
-	/**
-	 * Opens the content container
-	 * @action makesite_content
-	 * @since 1.0.0
-	 */
-	function makesite_ct_open() {
-		?>
-		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
-		<?php
-	}
-endif;
-
 if ( ! function_exists( 'makesite_ct_loop' ) ) :
 	/**
 	 * Outputs loop in content
@@ -60,19 +45,5 @@ if ( ! function_exists( 'makesite_ct_loop' ) ) :
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-	}
-endif;
-
-if ( ! function_exists( 'makesite_ct_close' ) ) :
-	/**
-	 * Close the content container
-	 * @action makesite_content
-	 * @since 1.0.0
-	 */
-	function makesite_ct_close() {
-		?>
-			</main><!-- #main -->
-		</div><!-- #primary -->
-		<?php
 	}
 endif;
