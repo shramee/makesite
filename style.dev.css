@@ -286,13 +286,12 @@ hr {
 }
 
 a {
-  color: #00ccff;
-}
-a:visited {
-  color: #00ccff;
+  color: #07c;
+  text-decoration: none;
 }
 a:hover, a:focus, a:active {
-  color: #00aaff;
+  color: #09e;
+  text-decoration: underline;
 }
 a:focus {
   outline: thin dotted;
@@ -703,6 +702,15 @@ select {
   display: block;
 }
 
+.overlay {
+  position: absolute;
+  top: -999em;
+  right: -99em;
+  bottom: -999em;
+  left: -99em;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .col-full:after,
 .clear:after {
   content: "";
@@ -994,11 +1002,12 @@ big {
 }
 
 /* # Widgets */
-.widget-area .widget {
+.widget {
+  margin: 0 0 2.5em;
   padding: 1.24rem;
   /* Make sure select elements fit in widgets. */
 }
-.widget-area .widget select {
+.widget select {
   max-width: 100%;
 }
 
@@ -1030,22 +1039,25 @@ big {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -259px;
   z-index: 999;
   background: #fff;
 }
 
-.slide-in .col-full {
-  max-height: 100%;
-  overflow-y: auto;
-}
-
-.admin-bar .slide-in {
-  top: 32px;
+.slide-in, .overlay, .slide-in-toggle {
+  transition: all 0.43s;
 }
 
 .right-slide-in {
   left: auto;
+  right: -259px;
+}
+
+.left-slide-in.toggled {
+  left: 0;
+}
+
+.right-slide-in.toggled {
   right: 0;
 }
 
@@ -1056,6 +1068,10 @@ a.slide-in-toggle {
   left: 100%;
 }
 
+.toggled .slide-in-toggle {
+  opacity: 0;
+}
+
 .right-slide-in .slide-in-toggle {
   left: auto;
   right: 100%;
@@ -1064,6 +1080,35 @@ a.slide-in-toggle {
 .slide-in-toggle .fa {
   font-size: 25px;
   padding: 0.25em;
+}
+
+.slide-in .overlay {
+  display: none;
+  opacity: 0;
+}
+
+.left-slide-in .overlay {
+  left: 100%;
+}
+
+.right-slide-in .overlay {
+  right: 100%;
+}
+
+.slide-in.toggled .overlay {
+  display: block;
+  opacity: 1;
+}
+
+.slide-in .col-full {
+  max-height: 100%;
+  margin: 0;
+  padding: 0 0 2.5em;
+  overflow-y: auto;
+}
+
+.admin-bar .slide-in {
+  top: 32px;
 }
 
 /* # Desktop */

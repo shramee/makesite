@@ -3,22 +3,25 @@
 	position: fixed;
 	top: 0;
 	bottom: 0;
-	left: 0;
+	left: -259px;
 	z-index: 999;
 	background: $clr-bg-body;
 }
 
-.slide-in .col-full {
-	max-height: 100%;
-	overflow-y: auto;
-}
-
-.admin-bar .slide-in {
-	top: 32px;
+.slide-in, .overlay, .slide-in-toggle {
+	transition: all 0.43s;
 }
 
 .right-slide-in {
 	left: auto;
+	right: -259px;
+}
+
+.left-slide-in.toggled {
+	left: 0;
+}
+
+.right-slide-in.toggled {
 	right: 0;
 }
 
@@ -29,6 +32,10 @@ a.slide-in-toggle {
 	left: 100%;
 }
 
+.toggled .slide-in-toggle {
+	opacity: 0;
+}
+
 .right-slide-in .slide-in-toggle {
 	left: auto;
 	right: 100%;
@@ -37,4 +44,32 @@ a.slide-in-toggle {
 .slide-in-toggle .fa {
 	font-size: 25px;
 	padding: 0.25em;
+}
+.slide-in .overlay {
+	display: none;
+	opacity: 0;
+}
+
+.left-slide-in .overlay {
+	left: 100%;
+}
+
+.right-slide-in .overlay {
+	right: 100%;
+}
+
+.slide-in.toggled .overlay {
+	display: block;
+	opacity: 1;
+}
+
+.slide-in .col-full {
+	max-height: 100%;
+	margin: 0;
+	padding: 0 0 2.5em;
+	overflow-y: auto;
+}
+
+.admin-bar .slide-in {
+	top: 32px;
 }

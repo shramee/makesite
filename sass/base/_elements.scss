@@ -30,14 +30,12 @@ hr {
 
 a {
 	color: $clr-link;
-
-	&:visited {
-		color: $clr-link-visited;
-	}
+	text-decoration: none;
 	&:hover,
 	&:focus,
 	&:active {
 		color: $clr-link-hover;
+		text-decoration: underline;
 	}
 	&:focus {
 		outline: thin dotted;

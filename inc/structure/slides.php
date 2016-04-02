@@ -75,10 +75,13 @@ if ( ! function_exists( 'makesite_lsi_widgets' ) ) :
 		if ( $slide_in_active ) {
 			echo apply_filters(
 				'left_slide_in_toggle',
-				'<a class="slide-in-toggle" href="javascript:0">' .
+				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in" href="javascript:0">' .
 				'<i class="fa fa-chevron-right"></i>' .
 				'<span class="screen-reader-text">Open left slide</span></a>'
 			);
+			?>
+			<div class="overlay" data-toggle-class data-toggle-target=".slide-in"></div>
+			<?php
 			dynamic_sidebar( "left-slide" );
 		}
 	}
@@ -96,10 +99,13 @@ if ( ! function_exists( 'makesite_rsi_widgets' ) ) :
 		if ( $slide_in_active ) {
 			echo apply_filters(
 				'right_slide_in_toggle',
-				'<a class="slide-in-toggle" href="javascript:0">' .
+				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in" href="javascript:0">' .
 				'<i class="fa fa-chevron-left"></i>' .
 				'<span class="screen-reader-text">Open right slide</span></a>'
 			);
+			?>
+			<div class="overlay" data-toggle-class data-toggle-target=".slide-in"></div>
+			<?php
 			dynamic_sidebar( "right-slide" );
 		}
 	}

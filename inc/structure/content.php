@@ -16,6 +16,8 @@ if ( ! function_exists( 'makesite_ct_loop' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_ct_loop() {
+		$queried = get_class( get_queried_object() );
+		echo "<h1>$queried</h1>";
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">

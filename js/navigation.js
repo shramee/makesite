@@ -8,4 +8,12 @@
 	$( '.menu-toggle' ).click( function () {
 		$( this ).parent().toggleClass( 'menu-toggled' );
 	} );
+	$( '[data-toggle-class]' ).click( function () {
+		var $t = $( this ),
+			target = $t.data( 'toggle-target' ), // Selector for target
+			$target = target ? $t.closest( target ) : $t.parent(), // jQuery object for target
+			htmlClass = $t.data( 'toggle-class' );
+		htmlClass = htmlClass ? htmlClass : 'toggled';
+		$target.toggleClass( htmlClass );
+	} );
 } )( jQuery );

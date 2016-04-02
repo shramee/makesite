@@ -29,6 +29,11 @@
 	display: block;
 }
 
+.overlay {
+	@include position-absolute(-999em,-99em,-999em,-99em);
+	background: rgba(0,0,0,0.5);
+}
+
 .col-full:after,
 .clear:after {
 	@include clearfix;
