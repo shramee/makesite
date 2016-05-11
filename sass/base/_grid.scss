@@ -78,3 +78,21 @@
 	.l11 { width: 91.66666% }
 	.l12 { width: 99.99999% }
 }
+
+@media only screen and (max-width: $s-breakup) {
+	.s-hide{
+		display:none;
+	}
+}
+
+@media only screen and (min-width: $s-breakup) and (max-width: $m-breakup) {
+	.m-hide{
+		display:none;
+	}
+}
+
+@media only screen and (min-width: $m-breakup) {
+	.l-hide{
+		display:none;
+	}
+}

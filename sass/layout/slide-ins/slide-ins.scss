@@ -30,10 +30,8 @@ a.slide-in-toggle {
 	position: absolute;
 	top: 0;
 	left: 100%;
-}
-
-.toggled .slide-in-toggle {
-	opacity: 0;
+	text-shadow: 1px 1px 2px rgba(255,255,255,0.25), -1px 1px 2px rgba(255,255,255,0.25), -1px -1px 2px rgba(255,255,255,0.25), 1px -1px 2px rgba(255,255,255,0.25);
+	z-index: 1;
 }
 
 .right-slide-in .slide-in-toggle {
@@ -45,6 +43,20 @@ a.slide-in-toggle {
 	font-size: 25px;
 	padding: 0.25em;
 }
+
+.toggled .slide-in-toggle .fa:before {
+	content: '\f053';
+}
+
+.right-slide-in.toggled .slide-in-toggle .fa:before {
+	content: '\f054';
+}
+
+.toggled .slide-in-toggle {
+	color: #fff;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.25), -1px 1px 2px rgba(0,0,0,0.25), -1px -1px 2px rgba(0,0,0,0.25), 1px -1px 2px rgba(0,0,0,0.25);
+}
+
 .slide-in .overlay {
 	display: none;
 	opacity: 0;

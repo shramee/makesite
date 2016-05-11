@@ -8,11 +8,11 @@
  */
 
 /** Theme functions init */
-require dirname( __FILE__ ) . '/functions/init.php';
+require_once dirname( __FILE__ ) . '/functions/init.php';
 
 /** Customizer additions. */
-require dirname( __FILE__ ) . '/customizer.php';
+require_once dirname( __FILE__ ) . '/customizer/customizer.php';
 
 /** Structure functions and hooks. */
-require dirname( __FILE__ ) . '/structure/init.php';
+require_once dirname( __FILE__ ) . '/structure/init.php';
 

@@ -1,7 +1,6 @@
 .site-header {
 	position: relative;
 	padding: $padding 0 0;
-	margin-bottom: $gutter;
 }
 
 .site-branding {
@@ -59,7 +58,7 @@
 	}
 
 	a {
-		padding: $padding/2 $padding;
+		padding: $padding;
 		display: block;
 		text-decoration: none;
 		color: $clr-link-menu;
@@ -118,8 +117,7 @@
 	}
 
 	&.menu-toggled .menu {
-		overflow: auto;
-		max-height: 480px;
+		max-height: 1600px;
 	}
 
 	&.menu-toggled .menu-toggle .fa:before {

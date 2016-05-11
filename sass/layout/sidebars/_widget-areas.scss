@@ -1,5 +1,5 @@
 .widget {
-	margin: 0 0 2.5em;
+	margin: 0 0 $gutter;
 	padding: $padding;
 	/* Make sure select elements fit in widgets. */
 	select {
@@ -9,7 +9,6 @@
 
 .widget-area {
 	flex: 0 0 $sidebar-width-1;
-	margin-bottom: $gutter;
 }
 
 .widget-area-2 {

@@ -1,12 +1,15 @@
+# Logs
 *.log
-.htaccess
 
 # Sass
 .sass-cache
 
 # Grunt
 /node_modules/
-/makesite/
 
 # Codekit
 config.codekit
+
+# .* files
+.*
+*/.*

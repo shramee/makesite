@@ -5,29 +5,46 @@
 
 /**
  * Renders a theme template
+ * @param string $content Creates content hook like content_{$content}
  */
-function makesite() {
+function makesite( $content = '' ) {
+	define( 'MS_CONTENT', $content );
 	?>
-	<?php get_header(); ?>
+
+	<?php get_header( MS_CONTENT ); ?>
 
 	<div id="content" class="site-content col-full">
-		<?php
-		/**
-		 * Makesite render content
-		 * @hook action makesite_content
-		 * @hooked makesite_ct_open
-		 * @hooked makesite_ct_loop
-		 * @hooked makesite_ct_close
-		 */
-		ms_do_action(
-			'content',
-			'<div id="primary" class="content-area"><main id="main" class="site-main" role="main">',
-			'</main><!-- #main --></div><!-- #primary -->'
-		);
-		get_sidebar()
-		?>
+
+		<?php makesite_content(); ?>
+
+		<?php get_sidebar( MS_CONTENT ); ?>
+
 	</div><!-- #content -->
-	<?php get_footer(); ?>
+
+	<?php get_footer( MS_CONTENT ); ?>
+	<?php
+}
+
+/**
+ * Renders a theme template
+ */
+function makesite_content() {
+	$hook = MS_CONTENT ? 'content_' . MS_CONTENT : 'content';
+	?>
+	<div id="primary" class="content-area">
+			<?php
+			/**
+			 * Makesite render content
+			 * @hook action makesite_content
+			 * @uses makesite_ct_init()
+			 */
+			ms_do_action(
+				$hook,
+				'<main id="main" class="site-main" role="main">',
+				'</main><!-- #main -->'
+				);
+			?>
+	</div><!-- #primary -->
 	<?php
 }
 
@@ -40,15 +57,15 @@ function makesite() {
  * @since 1.0.0
  */
 function ms_do_action( $tag, $before = '', $after = '', $args = array() ) {
-	$tag  = 'makesite_' . $tag;
+	$tag  = "makesite_$tag";
 
 	if ( ! has_filter( $tag ) ) {
 		return;
 	}
 
-	echo $before;
+	echo apply_filters( "makesite_{$tag}_before", $before );
 	do_action_ref_array( $tag, $args );
-	echo $after;
+	echo apply_filters( "makesite_{$tag}_after", $after );
 }
 
 /**

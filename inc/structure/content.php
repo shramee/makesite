@@ -1,51 +1,98 @@
 <?php
-/**
- * Footer functions
- * @action makesite_content
- * @since 1.0.0
- *
- * @developer wpdevelopment.me <shramee@wpdvelopment.me>
- *
- * @package makesite
- */
-if ( ! function_exists( 'makesite_ct_loop' ) ) :
+
+if ( ! function_exists( 'makesite_ct_page' ) ) :
 	/**
-	 * Outputs loop in content
-	 * @action makesite_content
-	 * @todo make it search call get_template_part for getting loop specific to the queried object
+	 * Outputs content for page
+	 * @action makesite_content_page
 	 * @since 1.0.0
 	 */
-	function makesite_ct_loop() {
-		$queried = get_class( get_queried_object() );
-		echo "<h1>$queried</h1>";
-		if ( have_posts() ) : ?>
+	function makesite_ct_page() {
+		while ( have_posts() ) : the_post();
+			global $post;
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+			include get_query_template(
+				'makesite_content_page',
+				array(
+					"content/page-{$post->post_name}.php",
+					"content/page-{$post->ID}.php",
+					"content/page.php",
+				)
+			);
+		endwhile;
+	}
+endif;
+
+if ( ! function_exists( 'makesite_ct_single' ) ) :
+	/**
+	 * Outputs content for single
+	 * @action makesite_content_single
+	 * @since 1.0.0
+	 */
+	function makesite_ct_single() {
+		while ( have_posts() ) : the_post();
+			global $post;
+			include get_query_template(
+				'makesite_content_single',
+				array(
+					"content/single-{$post->post_name}.php",
+					"content/single-{$post->ID}.php",
+					"content/single-{$post->post_type}.php",
+					"content/single.php",
+				)
+			);
+		endwhile;
+	}
+endif;
+
+if ( ! function_exists( 'makesite_ct' ) ) :
+	/**
+	 * Outputs content for single
+	 * @action makesite_content_single
+	 * @since 1.0.0
+	 */
+	function makesite_ct() {
+
+		if ( have_posts() ) : ?>
 
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
-
+				global $post;
+				include get_query_template(
+					'makesite_content_archive',
+					array(
+						"content/archive-{$post->post_type}.php",
+						"content/archive.php",
+					)
+				);
 			endwhile;
 
-			the_posts_navigation();
+			makesite_pagination();
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part( 'content/none' );
 
 		endif;
+	}
+endif;
+
+if ( ! function_exists( 'makesite_ct_archive' ) ) :
+	/**
+	 * Outputs content for archive
+	 * @action makesite_content_archive
+	 * @since 1.0.0
+	 */
+	function makesite_ct_archive() {
+		?>
+		<header class="page-header">
+			<?php
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
+			the_archive_description( '<div class="taxonomy-description">', '</div>' );
+			?>
+		</header><!-- .page-header -->
+
+		<?php makesite_ct();
+
 	}
 endif;

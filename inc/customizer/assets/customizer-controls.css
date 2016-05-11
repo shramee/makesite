@@ -1,0 +1,31 @@
+/**
+ * Created by shramee on 19/10/15.
+ */
+.button-control label,
+.wpd-custom-control[class*="img"] label {
+	display: inline-block;
+}
+
+.button-control img {
+	display: block;
+	padding: 2px;
+	margin: 0 5px 5px 0;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+}
+
+.button-control input:checked + img,
+.button-control input:checked + .button {
+	background: #00a0d2;
+	border-color: #0073aa;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+	color: #fff;
+	text-decoration: none;
+}
+
+.wp-core-ui .customize-control-title .on-off.button {
+	width: 43px;
+	text-align: center;
+	float: right;
+}

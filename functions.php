@@ -10,4 +10,4 @@
 /**
  * Implement the Custom Header feature.
  */
-require dirname( __FILE__ ) . '/inc/init.php';
+require_once dirname( __FILE__ ) . '/inc/init.php';

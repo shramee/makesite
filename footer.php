@@ -10,6 +10,13 @@
  */
 
 		/**
+		 * Executes before footer
+		 * @hook action makesite_before_site
+		 */
+		do_action( 'makesite_before_footer' );
+
+
+		/**
 		 * Makesite render footer
 		 * @hook action makesite_footer
 		 * @hooked makesite_ft_open       - 10

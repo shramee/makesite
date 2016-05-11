@@ -1,5 +1,5 @@
 /* ## Posts and pages */
-.content-area {
+.content-area article {
 	margin-bottom: $gutter;
 }
 
@@ -31,6 +31,45 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+/* ## Pagination */
+ul.page-numbers {
+	display: block;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	li {
+		display: inline;
+		span, a {
+			text-decoration: none;
+			display: inline-block;
+			padding: 8px 16px;
+			background-color: #eee;
+			color: #000;
+		}
+		a {
+			&:hover, &:focus {
+				background-color: #ccc
+			}
+			&.prev {
+				float: left;
+			}
+			&.next {
+				float: right;
+			}
+		}
+		span.current {
+			color: #fff;
+			background-color: #777;
+		}
+	}
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
 /* ## Asides */
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

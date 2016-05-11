@@ -19,14 +19,14 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php
+<div id="page" class="site">
+	<?php
 	/**
-	 * Makesite right after opening body tag
+	 * Executes before header
 	 * @hook action makesite_before_site
 	 */
-	do_action( 'makesite_before_site' );
-?>
-<div id="page" class="site">
+	do_action( 'makesite_before_header' );
+	?>
 	<?php
 	/**
 	 * Makesite render header
@@ -41,4 +41,10 @@
 		'<header id="masthead" class="site-header" role="banner"><div class="col-full">',
 		'</div><!-- .col-full --></header><!-- #masthead -->'
 	);
-	?>
+
+	/**
+	 * Executes after header
+	 * @hook action makesite_after_header
+	 * @hooked makesite_hd_close
+	 */
+	do_action( 'makesite_after_header' );

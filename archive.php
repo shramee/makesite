@@ -7,4 +7,4 @@
  * @package makesite
  */
 
-makesite();
+makesite( 'archive' );
