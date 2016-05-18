@@ -4,6 +4,7 @@
 .button-control label,
 .wpd-custom-control[class*="img"] label {
 	display: inline-block;
+	margin-right: 7px;
 }
 
 .button-control img {

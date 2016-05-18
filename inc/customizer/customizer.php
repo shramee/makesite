@@ -5,6 +5,8 @@
  * @package makesite
  */
 
+require_once 'class-customizer-manager.php';
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
@@ -25,12 +27,12 @@ add_action( 'customize_register', 'makesite_customize_register' );
  */
 function makesite_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'makesite_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'makesite_header_style',
+		'default-image'      => '',
+		'default-text-color' => '000000',
+		'width'              => 1000,
+		'height'             => 250,
+		'flex-height'        => true,
+		'wp-head-callback'   => 'makesite_header_style',
 	) ) );
 }
 add_action( 'after_setup_theme', 'makesite_custom_header_setup' );
@@ -87,3 +89,80 @@ function makesite_customize_preview_js() {
 	wp_enqueue_script( 'makesite_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'makesite_customize_preview_js' );
+
+new WPD_Customizer_Manager( array(
+	'fields' => array(
+		array(
+			'id' => 'test-control-1',
+			'type' => 'alpha-color',
+			'label' => 'Test alpha color',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+		array(
+			'id' => 'test-control-2',
+			'type' => 'on-off',
+			'label' => 'Test on off',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+		array(
+			'id' => 'test-control-3',
+			'type' => 'checkboxes',
+			'label' => 'Test checkboxes',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+		array(
+			'id' => 'test-control-4',
+			'type' => 'img-checkboxes',
+			'label' => 'Test img checkboxes',
+			'choices' => array(
+				1 => get_template_directory_uri() . '/img/home-animation/img1.jpg',
+				2 => get_template_directory_uri() . '/img/home-animation/img2.jpg'
+			),
+		),
+		array(
+			'id' => 'test-control-5',
+			'type' => 'img-radio',
+			'label' => 'Test img radio',
+			'choices' => array(
+				1 => get_template_directory_uri() . '/img/home-animation/img1.jpg',
+				2 => get_template_directory_uri() . '/img/home-animation/img2.jpg'
+			),
+		),
+		array(
+			'id' => 'test-control-6',
+			'type' => 'button-checkboxes',
+			'label' => 'Test button checkboxes',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+		array(
+			'id' => 'test-control-7',
+			'type' => 'button-radio',
+			'label' => 'Test button radio',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+		array(
+			'id' => 'test-control-8',
+			'type' => 'multi-select',
+			'label' => 'Test multi select',
+			'choices' => array(
+				1 => 'One',
+				2 => 'Two'
+			),
+		),
+	)
+) );

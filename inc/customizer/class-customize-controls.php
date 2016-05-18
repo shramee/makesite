@@ -23,7 +23,9 @@ class WPD_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * Render the multi select control
+	 *
 	 * @param string $attr
+	 *
 	 * @since  1.0.0
 	 * @access public
 	 */
@@ -52,8 +54,10 @@ class WPD_Customize_Control extends WP_Customize_Control {
 		$format = '%s';
 		if ( false !== strpos( $this->type, 'img-' ) ) {
 			$format = '<img src="%s">';
-		} else {
+		} else if ( false !== strpos( $this->type, 'button' ) ) {
 			$format = '<div class="button">%s</div> ';
+		} else {
+			$format = '%s ';
 		}
 
 		return $format;
@@ -61,7 +65,9 @@ class WPD_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * Returns the input for radio and checkboxes
+	 *
 	 * @param string $value the value for this input
+	 *
 	 * @access public
 	 * @return string HTML for the input
 	 * @since  1.0.0
@@ -80,7 +86,38 @@ class WPD_Customize_Control extends WP_Customize_Control {
 			$multi_values = ! is_array( $this->value() ) ? explode( '|', $this->value() ) : $this->value();
 			$attrs .= 'type="checkbox" ' . checked( true, in_array( $value, $multi_values ), false );
 		}
+
 		return "<input $attrs>";
+	}
+
+	/**
+	 * Displays the control title.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	private function render_title() {
+		if ( ! empty( $this->label ) ) {
+			?>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<?php
+		}
+	}
+
+	/**
+	 * Displays the control description.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	private function render_desc() {
+		if ( ! empty( $this->description ) ) {
+			?>
+			<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<?php
+		}
 	}
 
 	/**
@@ -92,62 +129,86 @@ class WPD_Customize_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		if ( 'on-off' != $this->type && empty( $this->choices ) && 'alpha-color' != $this->type ) { return; }
-
-		if ( !empty( $this->label ) ) { ?>
-			<span class="customize-control-title">
-				<?php
-				if ( 'on-off' == $this->type ) {
-					?>
-					<input class="on-off" type="hidden" <?php $this->link() ?> value="<?php
-					echo $this->value() ? 'On' : '';
-					?>">
-					<div class="on-off button<?php
-					echo 'On' == $this->value() ? 'button-primary' : '';
-					?>" title="<?php
-					echo 'On' == $this->value() ? 'Enabled' : 'Disabled';
-					?>"><?php
-						echo $this->value() ? 'On' : 'Off';
-						?></div>
-					<?php
-				}
-				echo esc_html( $this->label );
-				?>
-			</span>
-			<?php
-		}
-
-		if ( !empty( $this->description ) ) {
+		if ( 'on-off' == $this->type ) {
+			$this->render_on_off();
+		} else {
+			$this->render_title();
+			$this->render_desc();
 			?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<div class="<?php echo 'wpd-custom-control button-control wpd-' . $this->type; ?>">
+				<?php $this->render_control() ?>
+			</div>
 			<?php
 		}
-		if ( 'on-off' == $this->type ) { return; }
+	}
+
+
+	/**
+	 * Displays on off control.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function render_on_off() {
+		$value = $class = '';
+		$title = 'Disabled';
+		$label = 'Off';
+		if ( 'On' == $this->value() ) {
+			$value = 'On';
+			$class = 'button-primary';
+			$title = 'Enabled';
+			$label = 'On';
+		}
 		?>
-		<div class="<?php echo 'wpd-custom-control button-control wpd-' . $this->type; ?>">
-			<?php
-			switch( $this->type ) {
-				case 'checkboxes':
-				case 'img-checkboxes':
-				case 'button-checkboxes':
-				$this->render_select( 'style="display:none" multiple="multiple"' );
-				case 'img-radio':
-				case 'button-radio':
-					$format = $this->get_format();
-					foreach ( $this->choices as $value => $label ) {
-						echo '<label>' . $this->get_input( $value ) . sprintf( $format, $label ) . '</label>';
-					}
-					break;
-				case 'multi-select':
-					$this->render_select( 'multiple="multiple"' );
-					break;
-				case 'alpha-color':
-				?>
-					<input class='color-picker-hex' data-alpha='true' type='text' value='<?php echo esc_attr( $this->value() ); ?>' <?php $this->link(); ?> />
-				<?php
-			}
-			?>
-		</div>
+		<span class="customize-control-title">
+			<input class="on-off" type="hidden" <?php $this->link() ?> value="<?php echo $value ?>">
+			<div class="on-off button <?php echo $class ?>" title="<?php echo $title ?>">
+				<?php echo $label ?>
+			</div>
+			<?php echo esc_html( $this->label ); ?>
+		</span>
 		<?php
+		$this->render_desc();
+	}
+
+	/**
+	 * Displays control field.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function render_control() {
+
+		if ( 'alpha-color' === $this->type ) {
+			?>
+			<input class='color-picker-hex' data-alpha='true' type='text'
+			       value='<?php echo esc_attr( $this->value() ); ?>' <?php $this->link(); ?> />
+			<?php
+		} elseif ( ! empty( $this->choices ) ) {
+			$this->render_multi_choice_control();
+		}
+	}
+
+	/**
+	 * Displays control field with multiple choices.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function render_multi_choice_control() {
+		if ( 'multi-select' === $this->type ) {
+			$this->render_select( 'multiple="multiple"' );
+			return;
+		}
+		if ( false !== strpos( $this->type, 'checkboxes' ) ) {
+			$this->render_select( 'style="display:none" multiple="multiple"' );
+		}
+		$format = $this->get_format();
+		foreach ( $this->choices as $value => $label ) {
+			echo '<label>' . $this->get_input( $value ) . sprintf( $format, $label ) . '</label>';
+		}
 	}
 }

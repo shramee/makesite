@@ -46,24 +46,10 @@ if ( ! function_exists( 'makesite_entry_footer' ) ) :
 	function makesite_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'makesite' ) );
-			if ( $categories_list && makesite_categorized_blog() ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'makesite' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'makesite' ) );
-			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'makesite' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-			}
+			makesite_post_entry_footer();
 		}
 
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'makesite' ), esc_html__( '1 Comment', 'makesite' ), esc_html__( '% Comments', 'makesite' ) );
-			echo '</span>';
-		}
+		makesite_post_comments_count();
 
 		edit_post_link(
 			sprintf(
@@ -77,19 +63,37 @@ if ( ! function_exists( 'makesite_entry_footer' ) ) :
 	}
 endif;
 
-/**
- * Flush out the transients used in makesite_categorized_blog.
- */
-function makesite_category_transient_flusher() {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-	// Like, beat it. Dig?
-	delete_transient( 'makesite_categories' );
-}
+if ( ! function_exists( 'makesite_post_entry_footer' ) ) :
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function makesite_post_entry_footer() {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'makesite' ) );
+		if ( $categories_list ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'makesite' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
 
-add_action( 'edit_category', 'makesite_category_transient_flusher' );
-add_action( 'save_post', 'makesite_category_transient_flusher' );
+		/* translators: used between list items, there is a space after the comma */
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'makesite' ) );
+		if ( $tags_list ) {
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'makesite' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+		}
+	}
+endif;
+
+if ( ! function_exists( 'makesite_post_comments_count' ) ) :
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function makesite_post_comments_count() {
+		if ( ! is_single() && comments_open() ) {
+			echo '<span class="comments-link">';
+			comments_popup_link( esc_html__( 'Leave a comment', 'makesite' ), esc_html__( '1 Comment', 'makesite' ), esc_html__( '% Comments', 'makesite' ) );
+			echo '</span>';
+		}
+	}
+endif;
 
 if ( ! function_exists( 'makesite_pagination' ) ) :
 	function makesite_pagination() {

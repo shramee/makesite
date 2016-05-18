@@ -10,13 +10,10 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php the_post_thumbnail( 'medium' ) ?>
 	<header class="entry-header">
 		<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
+		the_title( '<h1 class="entry-title">', '</h1>' );
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
@@ -44,4 +41,10 @@
 	<footer class="entry-footer">
 		<?php makesite_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	<?php
+	// If comments are open or we have at least one comment, load up the comment template.
+	if ( comments_open() ) :
+		comments_template();
+	endif;
+	?>
 </article><!-- #post-## -->

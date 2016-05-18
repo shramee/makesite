@@ -1,4 +1,6 @@
 .dnl-anm-screen{background-color: #333;position: relative;overflow: hidden;height:610px;}
+.dnl-anm-screen {background: url( ../img/home-animation/star-bg.jpg );}
+.dnl-anm-screen:before {content: ''; background: url(../img/home-animation/city.png ) center bottom repeat-x; position: absolute; left: 0; right: 0; bottom: 0; height: 300px;}
 .dnl-anm-screen, .dnl-anm-screen * {-webkit-box-sizing: content-box;-moz-box-sizing: content-box; box-sizing: content-box;max-width:none;}
 .dnl-anm-wrap{height: 100%;width: 70%;position: absolute;top: 0;left: 0; right: 0; margin: auto;}
 .dnl-anm-iwrap{height: 0;width: 100%;padding-right:100%;position: absolute;top: 34%;left: 0;}
@@ -8,8 +10,6 @@
 .scroll-down.line {width: 520%}
 .line-reference, .line1{width: 110.337791896%;}
 .line.push-up{ -ms-transform: rotate(50deg); -o-transform: rotate(50deg); -moz-transform: rotate(50deg); -webkit-transform: rotate(50deg); transform: rotate(50deg);}
-
-/*.line2.push-up{ -ms-transform: rotate(25deg); -o-transform: rotate(25deg); -moz-transform: rotate(25deg); -webkit-transform: rotate(25deg); transform: rotate(25deg);}*/
 
 .line.push-down{ -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -moz-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg);}
 

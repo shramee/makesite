@@ -26,7 +26,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 		/** @var array Section fields */
 		protected $fields = array();
 
-		/** @var mixed Callback to add control */
+		/** @var callable Callback to add control */
 		protected $add_control_callback;
 
 		/** @var WP_Customize_Manager Customize manager */
@@ -74,12 +74,25 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				}
 			}
 
+			//Register the panels, sections, controls and settings
+			add_action( 'customize_register', array( $this, 'init' ), $priority );
+
+			//Control scripts
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
+		}
+
+		public function init( WP_Customize_Manager $manager ) {
+
 			if ( ! is_callable( $this->add_control_callback ) ) {
 				$this->add_control_callback = array( $this, 'add_control', );
 			}
 
 			if ( empty( $this->id ) ) {
 				$this->id = wpd_make_id( $this->title );
+			}
+
+			if ( ! class_exists( 'WPD_Customize_Control' ) ) {
+				include_once 'class-customize-controls.php';
 			}
 
 			$this->controls_classes = wp_parse_args( $this->controls_classes, array(
@@ -96,11 +109,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				'multi-select'		=> 'WPD_Customize_Control',
 			) );
 
-			//Register the panels, sections, controls and settings
-			add_action( 'customize_register', array( $this, 'customizer_register' ), $priority );
-
-			//Control scripts
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
+			$this->customizer_register( $manager );
 		}
 
 		/**
@@ -190,9 +199,9 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 		}
 
 		function controls_scripts() {
-			wp_enqueue_script( 'wpd-alpha-color-picker-js', WPD_DIR_URL . '/inc/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
-			wp_enqueue_style( 'wpd-customizer-controls-css', WPD_DIR_URL . '/inc/assets/customizer-controls.css' );
-			wp_enqueue_script( 'wpd-customizer-controls-js', WPD_DIR_URL . '/inc/assets/customizer-controls.js', array( 'jquery' ) );
+			wp_enqueue_script( 'wpd-alpha-color-picker-js', get_template_directory_uri() . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+			wp_enqueue_style( 'wpd-customizer-controls-css', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.css' );
+			wp_enqueue_script( 'wpd-customizer-controls-js', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.js', array( 'jquery' ) );
 		}
 
 		/**

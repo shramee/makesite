@@ -7,16 +7,11 @@
  * @package makesite
  */
 
-$sidebar_active_1 = is_active_sidebar( 'sidebar-1' );
-
-/**
- * Hide or show the sidebar
- * @hook filter makesite_show_sidebar
- */
-$show_sidebar = apply_filters( 'makesite_show_sidebar', $sidebar_active_1 );
+/** @var Makesite Instance */
+global $makesite;
 
 // If show sidebar is falsy, return
-if ( $show_sidebar ) {
+if ( $makesite->show_sb1 ) {
 
 	/**
 	 * Makesite render sidebar
@@ -30,21 +25,13 @@ if ( $show_sidebar ) {
 		'sidebar',
 		'<aside id="sidebars" class="widget-area widget-area-1" role="complementary">',
 		'</aside><!-- #sidebars -->',
-		array( $sidebar_active_1 )
+		array( $makesite->sb1 )
 	);
 
 }
 
-$sidebar_active_2 = is_active_sidebar( 'sidebar-2' );
-
-/**
- * Hide or show the sidebar
- * @hook filter makesite_show_sidebar
- */
-$show_sidebar = apply_filters( 'makesite_show_sidebar', $sidebar_active_2 );
-
 // If show sidebar is falsy, return
-if ( $show_sidebar ) {
+if ( $makesite->show_sb2 ) {
 
 	/**
 	 * Makesite render sidebar
@@ -58,7 +45,7 @@ if ( $show_sidebar ) {
 		'sidebar2',
 		'<aside id="tertiary" class="widget-area widget-area-2" role="complementary">',
 		'</aside><!-- #tertiary -->',
-		array( $sidebar_active_2 )
+		array( $makesite->sb2 )
 	);
 
 }

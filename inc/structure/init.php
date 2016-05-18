@@ -23,7 +23,7 @@ ms_hook( 'header_desktop_nav', 'makesite_desktop_nav',     25 );
 ms_hook( 'header_mobile_nav',  'makesite_mobile_nav_btn',  20 );
 ms_hook( 'header_mobile_nav',  'makesite_mobile_nav',      25 );
 
-add_filter( 'wp_nav_menu', 'ms_minify_html',        7 );
+add_filter( 'wp_nav_menu', 'ms_minify',        7 );
 
 //Sidebar functions
 include dirname( __FILE__ ) . '/sidebars.php';
