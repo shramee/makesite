@@ -104,8 +104,8 @@ if ( ! function_exists( 'makesite_pagination' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'makesite_home_animation' ) ) :
-	function makesite_home_animation() {
+if ( ! function_exists( 'makesite_home_animation_data' ) ) :
+	function makesite_home_animation_data() {
 		$data = array(
 			array(
 				'img' => get_template_directory_uri() . '/img/home-animation/img1.jpg',
@@ -136,43 +136,70 @@ if ( ! function_exists( 'makesite_home_animation' ) ) :
 			'class'	=> 'scroll-down',
 		);
 
+		return $data;
+	}
+endif;
+
+if ( ! function_exists( 'makesite_home_animation' ) ) :
+	function makesite_home_animation() {
+		$data = makesite_home_animation_data();
 		?>
 		<div class="dnl-anm-screen bg-down">
 			<div class='dnl-anm-wrap'>
 				<?php
 				$data = array_reverse( $data );
 				$html = '';
+				$total = count( $data );
 				foreach ( $data as $id => $point ) {
-					$id	= count( $data ) - $id;
-					$point = array_merge(
-						array(
-							'img'  => '',
-							'head' => '',
-							'desc' => '',
-							'class' => '',
-						),
-						$point
-					);
-					if ( empty( $point['content'] ) ) {
-						if ( $point['img'] ) {
-							$point['content'] = "<img src='$point[img]'>";
-						} else {
-							continue;
-						}
-					}
-					$innerhtml = $html;
-					$html	  = "<div class='$point[class] line line$id'>";
-					$html .= "<div class='point_wrap point_wrap$id' >";
-					$html .= "<div class='point point$id'>$point[content]</div>";
-					$html .= "$point[head]$point[desc]" ? "<div class='info'><h4>$point[head]</h4><p>$point[desc]</p></div></div>" : '';
-					$html .= $innerhtml;
-					$html .= '</div>';
+					$html = makesite_home_animation_slide( $id, $point, $html, $total );
 				}
 
-				echo "<div class='dnl-anm-iwrap'> $html<div class='line-reference' style='visibility: hidden;'></div> </div>";
+				echo <<<HOME_ANIMATION
+<div class='dnl-anm-iwrap'>
+	$html
+	<div class='line-reference' style='visibility: hidden;'></div>
+</div>
+HOME_ANIMATION;
 				?>
 			</div>
 		</div>
 		<?php
+	}
+endif;
+
+if ( ! function_exists( 'makesite_home_animation_slide' ) ) :
+	function makesite_home_animation_slide( $id, $point, $html, $total ) {
+		$id    = $total - $id;
+		$point = array_merge(
+			array(
+				'img'   => '',
+				'head'  => '',
+				'desc'  => '',
+				'class' => '',
+			),
+			$point
+		);
+		if ( empty( $point['content'] ) ) {
+			if ( $point['img'] ) {
+				$point['content'] = "<img src='$point[img]'>";
+			} else {
+				return $html;
+			}
+		}
+		$innerhtml = $html;
+		$html  = <<<POINT
+<div class='$point[class] line line$id'>
+	<div class='point_wrap point_wrap$id' >
+		<div class='point point$id'>$point[content]</div>
+		<div class='info'>
+			<h4>$point[head]</h4>
+			<p>$point[desc]</p>
+		</div>
+	</div>
+	$innerhtml
+</div>
+POINT;
+
+		return $html;
 	}
 endif;
