@@ -52,7 +52,7 @@ jQuery( function ( $ ) {
 	api.controlConstructor['button-checkboxes'] = api.ms_multi_checkbox;
 	api.controlConstructor['on-off'] = api.ms_on_off;
 
-	api.wpd_alpha_color_control = api.Control.extend({
+	api.ms_alpha_color_control = api.Control.extend({
 		ready: function() {
 			var control = this,
 				picker = this.container.find('.color-picker-hex');
@@ -73,5 +73,5 @@ jQuery( function ( $ ) {
 		}
 	});
 
-	api.controlConstructor['alpha-color'] = api.wpd_alpha_color_control;
+	api.controlConstructor['alpha-color'] = api.ms_alpha_color_control;
 } );

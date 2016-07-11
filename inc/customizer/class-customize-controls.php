@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0.0
  * @access public
  */
-class WPD_Customize_Control extends WP_Customize_Control {
+class MS_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.

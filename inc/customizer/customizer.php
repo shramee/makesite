@@ -89,7 +89,7 @@ function makesite_customize_preview_js() {
 }
 add_action( 'customize_preview_init', 'makesite_customize_preview_js' );
 
-new WPD_Customizer_Manager( array(
+new MS_Customizer_Manager( array(
 	'title' => 'Customization key',
 	'fields' => array(
 		array(

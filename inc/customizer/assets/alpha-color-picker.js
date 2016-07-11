@@ -78,7 +78,7 @@
 
 			el.wrap( '<span class="wp-picker-input-wrap" />' ).after(self.button);
 
-			el.wpd_iris( {
+			el.ms_iris( {
 				target: self.pickerContainer,
 				hide: self.options.hide,
 				width: self.options.width,
@@ -175,13 +175,13 @@
 			});
 		},
 		open: function() {
-			this.element.show().wpd_iris( 'toggle' ).focus();
+			this.element.show().ms_iris( 'toggle' ).focus();
 			this.button.removeClass( 'hidden' );
 			this.toggler.addClass( 'wp-picker-open' );
 			$( 'body' ).trigger( 'click.wpcolorpicker' ).on( 'click.wpcolorpicker', this.close );
 		},
 		close: function() {
-			this.element.hide().wpd_iris( 'toggle' );
+			this.element.hide().ms_iris( 'toggle' );
 			this.button.addClass( 'hidden' );
 			this.toggler.removeClass( 'wp-picker-open' );
 			$( 'body' ).off( 'click.wpcolorpicker', this.close );
@@ -191,17 +191,17 @@
 		// $("#input").wpColorPicker('color', '#bada55') to set
 		color: function( newColor ) {
 			if ( newColor === undef ) {
-				return this.element.wpd_iris( 'option', 'color' );
+				return this.element.ms_iris( 'option', 'color' );
 			}
 
-			this.element.wpd_iris( 'option', 'color', newColor );
+			this.element.ms_iris( 'option', 'color', newColor );
 		}
 	});
 
 	/**
 	 * Overwrite iris
 	 */
-	$.widget( 'wpd.wpd_iris', $.a8c.iris, {
+	$.widget( 'wpd.ms_iris', $.a8c.iris, {
 		_create: function() {
 			this._super();
 

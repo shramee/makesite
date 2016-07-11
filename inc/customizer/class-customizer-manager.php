@@ -1,15 +1,15 @@
 <?php
 /**
- * Contains WPD_Settings_Page class
+ * Contains MS_Settings_Page class
  * @author shramee
  * @since 1.0.0
  */
 
-if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
+if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 	/**
-	 * Class WPD_Customizer_Manager
+	 * Class MS_Customizer_Manager
 	 */
-	class WPD_Customizer_Manager {
+	class MS_Customizer_Manager {
 
 		/** @var array Customizer controls classes */
 		protected $controls_classes;
@@ -43,6 +43,8 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 
 		/** @var array Paths to files to include in customizer */
 		protected $include = '';
+
+		protected $section_prefix = 'ms-';
 
 		/**
 		 * Gets the value of protected properties
@@ -88,10 +90,10 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 			}
 
 			if ( empty( $this->id ) ) {
-				$this->id = wpd_make_id( $this->title );
+				$this->id = ms_make_id( $this->title );
 			}
 
-			if ( ! class_exists( 'WPD_Customize_Control' ) ) {
+			if ( ! class_exists( 'MS_Customize_Control' ) ) {
 				include_once 'class-customize-controls.php';
 			}
 
@@ -99,14 +101,14 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				'color'				=> 'WP_Customize_Color_Control',
 				'image'				=> 'WP_Customize_Image_Control',
 				'upload'			=> 'WP_Customize_Upload_Control',
-				'alpha-color'		=> 'WPD_Customize_Control',
-				'on-off'			=> 'WPD_Customize_Control',
-				'checkboxes'		=> 'WPD_Customize_Control',
-				'img-checkboxes'	=> 'WPD_Customize_Control',
-				'img-radio'			=> 'WPD_Customize_Control',
-				'button-checkboxes'	=> 'WPD_Customize_Control',
-				'button-radio'		=> 'WPD_Customize_Control',
-				'multi-select'		=> 'WPD_Customize_Control',
+				'alpha-color'		=> 'MS_Customize_Control',
+				'on-off'			=> 'MS_Customize_Control',
+				'checkboxes'		=> 'MS_Customize_Control',
+				'img-checkboxes'	=> 'MS_Customize_Control',
+				'img-radio'			=> 'MS_Customize_Control',
+				'button-checkboxes'	=> 'MS_Customize_Control',
+				'button-radio'		=> 'MS_Customize_Control',
+				'multi-select'		=> 'MS_Customize_Control',
 			) );
 
 			$this->customizer_register( $manager );
@@ -138,7 +140,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 
 			/**
 			 * @var array $sections Customizer sections to  create
-			 * WPD_Customizer_Manager::customizer_sections() prepares the section id from names in fields data
+			 * MS_Customizer_Manager::customizer_sections() prepares the section id from names in fields data
 			 */
 			$sections = $this->customizer_sections( $fields );
 
@@ -151,10 +153,10 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				 * Filters panel arguments.
 				 * The dynamic part refers to the id of the ID of options group
 				 * While registering the multiple sections,
-				 * this hooks is available in addition to wpd_customizer_$this->id_section_args
+				 * this hooks is available in addition to ms_customizer_$this->id_section_args
 				 * @param array $panel_args
 				 */
-				$panel_args = apply_filters( 'wpd_customizer_' . $this->id . '_panel_args', array(
+				$panel_args = apply_filters( 'ms_customizer_' . $this->id . '_panel_args', array(
 						'title'    => $this->title,
 						'priority' => 1,
 				) );
@@ -171,7 +173,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 					 * @param array $section_args
 					 * @param string $section_id
 					 */
-					$section_args = apply_filters( 'wpd_customizer_' . $this->id . '_section_args', array(
+					$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
 						'title' => $section_title,
 						'panel' => "$this->token-$this->id",
 					), $section_id );
@@ -188,7 +190,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				 * While registering the only main section $args can be filtered directly
 				 * @param array $section_args
 				 */
-				$section_args = apply_filters( 'wpd_customizer_' . $this->id . '_section_args', array(
+				$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
 					'title' => $this->title,
 					'priority' => 1,
 				) );
@@ -220,28 +222,37 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 					'default' => '',
 				) );
 
-				$option['id'] = $this->token . '-' . $this->id . '[' . $option['id'] . ']';
-
 				if ( empty( $option['section'] ) ) {
 					$option['section'] = $this->token . '-' . $this->id;
 				} else {
-					$section = $option['section'];
-					if ( is_array( $section ) ) {
-						$sections[ $section[0] ] = $section[1];
-						$section = $section[0];
-					} else if ( is_string( $section ) ) {
-						if ( 0 === strpos( $section, 'existing_' ) ) {
-							$section = str_replace( 'existing_', '', $section );
-						} else {
-							$section = $this->token . "-{$this->id}-" . wpd_make_id( $section );
-							$sections[ $section ] = $option['section'];
-						}
-					}
-					$option['section'] = $section;
+					$this->get_customizer_section_from_field( $option, $sections );
 				}
 			}
 			return $sections;
 		}
+
+		/**
+		 * Gets section data from field
+		 * @param array $option
+		 * @param array $sections
+		 * @since 0.7
+		 */
+		private function get_customizer_section_from_field( &$option, &$sections ) {
+			$sec = $option['section'];
+			if ( is_array( $sec ) ) {
+				$sections[ $sec[0] ] = $sec[1];
+				$sec = $sec[0];
+			} else if ( is_string( $sec ) ) {
+				if ( 0 === strpos( $sec, 'existing_' ) ) {
+					$sec = str_replace( 'existing_', '', $sec );
+				} else {
+					$sec = $this->section_prefix . ms_make_id( $sec );
+					$sections[ $sec ] = $option['section'];
+				}
+			}
+			$option['section'] = $sec;
+		}
+
 		/**
 		 * Adds controls and settings to WP_Customize_Manager
 		 * @param array $fields Controls data
@@ -264,7 +275,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 				 * @param array $setting_args Arguments
 				 * @param array $option Option data
 				 */
-				$setting_args = apply_filters( 'wpd_customizer_' . $this->id . '_setting_args', array(
+				$setting_args = apply_filters( 'ms_customizer_' . $this->id . '_setting_args', array(
 						'default' => $option['default'],
 						'type'    => $this->settings_type,
 					), $option );

@@ -166,7 +166,7 @@ class Makesite {
 	 */
 	function widgets_init() {
 
-		$sidebars = apply_filters(
+		$widget_areas = apply_filters(
 			'makesite_widget_areas',
 			array(
 				'sidebar-1' => esc_html__( 'Secondary Sidebar', 'makesite' ),
@@ -174,37 +174,23 @@ class Makesite {
 				'left-slide' => esc_html__( 'Slide in left', 'makesite' ),
 				'right-slide' => esc_html__( 'Slide in right', 'makesite' ),
 			)
-		);
-
-		foreach ( $sidebars as $id => $sb ) {
-
-			if ( is_string( $sb ) ) {
-				$name = $sb;
-				$sb = array();
-				$sb['name'] = $name;
-				$sb['id'] = $id;
-			}
-
-			$sb = wp_parse_args( $sb, array(
+		); // Get widget areas to register
+		foreach ( $widget_areas as $id => $wa ) {
+			if ( is_string( $wa ) ) {
+				$name = $wa;
+				$wa = array();
+				$wa['name'] = $name;
+			} // If widget is a string set it as name of widget area
+			$wa = wp_parse_args( $wa, array(
+				'id'            => $id,
 				'description'   => '',
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</section>',
 				'before_title'  => '<h2 class="widget-title">',
 				'after_title'   => '</h2>',
-			) );
-			register_sidebar( $sb );
-
+			) ); // Widget area args
+			register_sidebar( $wa ); // Register the widget area
 		}
-
-		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar', 'makesite' ),
-			'id'            => 'sidebar-1',
-			'description'   => '',
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
 	}
 
 	/**
