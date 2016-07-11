@@ -32,8 +32,9 @@ class MS_Customize_Control extends WP_Customize_Control {
 	public function render_select( $attr = '' ) {
 		//Customizer field link
 		$link = $this->get_link();
+		$attr = esc_html( "$attr $link" );
 		//Open select
-		echo "<select $attr $link>";
+		echo "<select $attr>";
 		$multi_values = ! is_array( $this->value() ) ? explode( '|', $this->value() ) : $this->value();
 		//Options to select from
 		foreach ( $this->choices as $value => $label ) {

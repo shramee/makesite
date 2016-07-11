@@ -9,12 +9,9 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 	 * @action makesite_sidebar - 25
 	 * @since 1.0.0
 	 */
-	function makesite_slide_ins( $sidebar_active ) {
-
+	function makesite_slide_ins() {
 
 		$left_slide_in = is_active_sidebar( 'left-slide' );
-
-		var_dump( $left_slide_in );
 
 		/**
 		 * Hide or show the sidebar
@@ -71,7 +68,7 @@ endif;
 if ( ! function_exists( 'makesite_lsi_widgets' ) ) :
 	/**
 	 * Outputs skip links in sidebar
-	 * @param bool $sidebar_active
+	 * @param bool $slide_in_active
 	 * @action makesite_sidebar - 25
 	 * @since 1.0.0
 	 */
@@ -86,7 +83,7 @@ if ( ! function_exists( 'makesite_lsi_widgets' ) ) :
 			?>
 			<div class="overlay" data-toggle-class data-toggle-target=".slide-in"></div>
 			<?php
-			dynamic_sidebar( "left-slide" );
+			dynamic_sidebar( 'left-slide' );
 		}
 	}
 endif;
@@ -95,7 +92,7 @@ endif;
 if ( ! function_exists( 'makesite_rsi_widgets' ) ) :
 	/**
 	 * Outputs skip links in sidebar
-	 * @param bool $sidebar_active
+	 * @param bool $slide_in_active
 	 * @action makesite_sidebar - 25
 	 * @since 1.0.0
 	 */

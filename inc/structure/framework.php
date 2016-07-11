@@ -69,7 +69,7 @@ function ms_do_action( $tag, $before = '', $after = '', $args = array() ) {
 }
 
 /**
- * @param array $tag Tag to hook function to `makesite_` prepended automatically
+ * @param string $tag Tag to hook function to `makesite_` prepended automatically
  * @param callable $function_to_add
  * @param int $priority
  * @param int $accepted_args
