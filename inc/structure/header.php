@@ -16,7 +16,6 @@ if ( ! function_exists( 'makesite_hd_skiplinks' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_hd_skiplinks() {
-		$skip2contnt = esc_html__( 'Skip to content', 'makesite' )
 		?>
 		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'makesite' ); ?></a>
 		<?php
@@ -76,9 +75,13 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_hd_navigation() {
-		$fw_cntnr = $fw_cntnr_close = '';
+		$fw_ct = $fw_ct_close = '';
 
-		if ( $full_width = apply_filters( 'makesite_hd_full_width_navigation', true ) ) {
+		/**
+		 * @filter makesite_hd_full_width_navigation
+		 * Make the navigation span full width
+		 */
+		if ( apply_filters( 'makesite_hd_full_width_navigation', true ) ) {
 			$fw_ct       = '<div class="col-full">';
 			$fw_ct_close = '</div><!-- .col-full -->';
 		}

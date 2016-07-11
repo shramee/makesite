@@ -56,8 +56,6 @@ class MS_Customize_Control extends WP_Customize_Control {
 			$format = '<img src="%s">';
 		} else if ( false !== strpos( $this->type, 'button' ) ) {
 			$format = '<div class="button">%s</div> ';
-		} else {
-			$format = '%s ';
 		}
 
 		return $format;

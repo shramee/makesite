@@ -200,11 +200,10 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 				) );
 				//Adding single section
 				$this->man->add_section( "$this->token-$this->id", $section_args );
-
 			}
 		}
 
-		function controls_scripts() {
+		public function controls_scripts() {
 			wp_enqueue_script( 'wpd-alpha-color-picker-js', get_template_directory_uri() . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
 			wp_enqueue_style( 'wpd-customizer-controls-css', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.css' );
 			wp_enqueue_script( 'wpd-customizer-controls-js', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.js', array( 'jquery' ) );

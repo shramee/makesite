@@ -16,7 +16,7 @@ class Makesite {
 
 	protected $dt = array();
 
-	function __construct() {
+	public function __construct() {
 		add_action( 'after_setup_theme',	array( $this, 'setup' ) );
 		add_action( 'after_setup_theme',	array( $this, 'content_width' ), 0 );
 		add_action( 'widgets_init',			array( $this, 'widgets_init' ) );
@@ -27,7 +27,7 @@ class Makesite {
 		add_action( 'admin_bar_menu',		array( $this, 'admin_bar_menu' ), 999 );
 	}
 
-	function __get( $name ) {
+	public function __get( $name ) {
 		if ( array_key_exists( $name, $this->dt ) ) {
 			return $this->dt[ $name ];
 		} else {
@@ -40,7 +40,7 @@ class Makesite {
 	 * @param WP_Admin_Bar $admin_bar
 	 * @action admin_bar_menu
 	 */
-	function admin_bar_menu( $admin_bar ) {
+	public function admin_bar_menu( $admin_bar ) {
 		?>
 		<style>
 			#wp-admin-bar-design a:before {
@@ -64,7 +64,7 @@ class Makesite {
 	 * @param array $classes Classes for the body element.
 	 * @return array
 	 */
-	function body_class( $classes ) {
+	public function body_class( $classes ) {
 		// Adds a class of hfeed to non-singular pages.
 		if ( ! is_singular() ) {
 			$classes[] = 'hfeed';
@@ -76,7 +76,7 @@ class Makesite {
 		return $classes;
 	}
 
-	function sidebar_classes( &$classes ) {
+	public function sidebar_classes( &$classes ) {
 
 		$this->dt['sb1'] = is_active_sidebar( 'sidebar-1' );
 		/**
@@ -101,7 +101,7 @@ class Makesite {
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 * @action after_setup_theme
 	 */
-	function setup() {
+	public function setup() {
 
 		// Load text domain, translations in /languages/ directory.
 		load_theme_textdomain( 'makesite', get_template_directory() . '/languages' );
@@ -156,7 +156,7 @@ class Makesite {
 	 * @action after_setup_theme - 0
 	 * @global int $content_width
 	 */
-	function content_width() {
+	public function content_width() {
 		$GLOBALS['content_width'] = apply_filters( 'makesite_content_width', 640 );
 	}
 
@@ -164,7 +164,7 @@ class Makesite {
 	 * Register widget areas.
 	 * @action widgets_init
 	 */
-	function widgets_init() {
+	public function widgets_init() {
 
 		$widget_areas = apply_filters(
 			'makesite_widget_areas',
@@ -185,7 +185,7 @@ class Makesite {
 	 * @param array|string $args
 	 * @param string $id
 	 */
-	function register_widget_area( $args, $id ) {
+	public function register_widget_area( $args, $id ) {
 		if ( is_string( $args ) ) {
 			$name = $args;
 			$args = array();
@@ -206,7 +206,7 @@ class Makesite {
 	 * Enqueue scripts and styles.
 	 * @action wp_enqueue_scripts
 	 */
-	function scripts() {
+	public function scripts() {
 
 		wp_enqueue_style( 'makesite-style', get_stylesheet_uri() );
 		wp_enqueue_style( 'makesite-fa', get_stylesheet_directory_uri() . '/css/font-awesome.css' );
@@ -225,7 +225,7 @@ class Makesite {
 	 * See: https://jetpack.com/support/infinite-scroll/
 	 * See: https://jetpack.com/support/responsive-videos/
 	 */
-	function jetpack_setup() {
+	public function jetpack_setup() {
 		// Add theme support for Infinite Scroll.
 		add_theme_support( 'infinite-scroll', array(
 			'container' => 'main',
@@ -240,7 +240,7 @@ class Makesite {
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function infinite_scroll_render() {
+	public function infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :
