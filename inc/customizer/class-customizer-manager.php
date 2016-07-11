@@ -85,13 +85,19 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 
 		public function init( WP_Customize_Manager $manager ) {
 
+			if ( empty( $this->id ) ) {
+				$this->id = ms_make_id( $this->title );
+			}
+
 			if ( ! is_callable( $this->add_control_callback ) ) {
 				$this->add_control_callback = array( $this, 'add_control', );
 			}
 
-			if ( empty( $this->id ) ) {
-				$this->id = ms_make_id( $this->title );
-			}
+			$this->controls_classes();
+			$this->customizer_register( $manager );
+		}
+
+		protected function controls_classes() {
 
 			if ( ! class_exists( 'MS_Customize_Control' ) ) {
 				include_once 'class-customize-controls.php';
@@ -110,8 +116,6 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 				'button-radio'		=> 'MS_Customize_Control',
 				'multi-select'		=> 'MS_Customize_Control',
 			) );
-
-			$this->customizer_register( $manager );
 		}
 
 		/**
@@ -262,13 +266,6 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 			foreach ( $fields as $option ) {
 				$settings_class = $this->settings_class;
 
-				$option = wp_parse_args(
-					$option,
-					array(
-						'default' => '',
-					)
-				);
-
 				/**
 				 * Filters settings arguments.
 				 * The dynamic part refers to the ID of options group
@@ -298,37 +295,21 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 			$this->man->add_setting( new $settings_class( $this->man, $option['id'], $setting_args ) );
 
 			//Create a section class
-			if ( ! empty( $option['control_class'] ) ) {
-				$control_class = $option['control_class'];
-				//Add control
-				$this->man->add_control(
-					new $control_class(
-						$this->man,
-						$option['id'],
-						$option
-					)
-				);
-			} else if ( ! empty( $this->controls_classes[ $option['type'] ] ) ) {
-				$control_class = $this->controls_classes[ $option['type'] ];
-				//Add control
-				$this->man->add_control(
-					new $control_class(
-						$this->man,
-						$option['id'],
-						$option
-					)
-				);
-			} else {
-				$control_class = $this->default_control_class;
-				//Add control
-				$this->man->add_control(
-					new $control_class(
-						$this->man,
-						$option['id'],
-						$option
-					)
-				);
-			}
+			$control_class =
+				! empty( $option['control_class'] ) ?
+					$option['control_class'] :
+					! empty( $this->controls_classes[ $option['type'] ] ) ?
+						$this->controls_classes[ $option['type'] ] :
+						$this->default_control_class;
+
+			//Add control
+			$this->man->add_control(
+				new $control_class(
+					$this->man,
+					$option['id'],
+					$option
+				)
+			);
 		}
 	}
 }

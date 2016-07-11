@@ -161,7 +161,7 @@ class Makesite {
 	}
 
 	/**
-	 * Register widget area.
+	 * Register widget areas.
 	 * @action widgets_init
 	 */
 	function widgets_init() {
@@ -175,22 +175,31 @@ class Makesite {
 				'right-slide' => esc_html__( 'Slide in right', 'makesite' ),
 			)
 		); // Get widget areas to register
-		foreach ( $widget_areas as $id => $wa ) {
-			if ( is_string( $wa ) ) {
-				$name = $wa;
-				$wa = array();
-				$wa['name'] = $name;
-			} // If widget is a string set it as name of widget area
-			$wa = wp_parse_args( $wa, array(
-				'id'            => $id,
-				'description'   => '',
-				'before_widget' => '<section id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</section>',
-				'before_title'  => '<h2 class="widget-title">',
-				'after_title'   => '</h2>',
-			) ); // Widget area args
-			register_sidebar( $wa ); // Register the widget area
+		foreach ( $widget_areas as $id => $args ) {
+			$this->register_widget_area( $args, $id );
 		}
+	}
+
+	/**
+	 * Register widget area.
+	 * @param array|string $args
+	 * @param string $id
+	 */
+	function register_widget_area( $args, $id ) {
+		if ( is_string( $args ) ) {
+			$name = $args;
+			$args = array();
+			$args['name'] = $name;
+		} // If widget is a string set it as name of widget area
+		$args = wp_parse_args( $args, array(
+			'id'            => $id,
+			'description'   => '',
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		) ); // Widget area args
+		register_sidebar( $args ); // Register the widget area
 	}
 
 	/**
