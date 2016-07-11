@@ -11,8 +11,10 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 	 */
 	function makesite_slide_ins( $sidebar_active ) {
 
+
 		$left_slide_in = is_active_sidebar( 'left-slide' );
-		$right_slide_in = is_active_sidebar( 'right-slide' );
+
+		var_dump( $left_slide_in );
 
 		/**
 		 * Hide or show the sidebar
@@ -37,6 +39,8 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 			);
 
 		}
+
+		$right_slide_in = is_active_sidebar( 'right-slide' );
 
 		/**
 		 * Hide or show the sidebar

@@ -63,9 +63,9 @@ function ms_do_action( $tag, $before = '', $after = '', $args = array() ) {
 		return;
 	}
 
-	echo apply_filters( "makesite_{$tag}_before", $before );
+	echo apply_filters( "{$tag}_before", $before );
 	do_action_ref_array( $tag, $args );
-	echo apply_filters( "makesite_{$tag}_after", $after );
+	echo apply_filters( "{$tag}_after", $after );
 }
 
 /**

@@ -32,7 +32,7 @@
 }
 
 .overlay {
-	@include position-absolute(-999em,-99em,-999em,-99em);
+	@include position-absolute(-999em,-999em,-999em,-999em);
 	background: rgba(0,0,0,0.5);
 }
 

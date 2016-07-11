@@ -23,6 +23,8 @@ class Makesite {
 		add_action( 'wp_enqueue_scripts',	array( $this, 'scripts' ) );
 		add_action( 'after_setup_theme',	array( $this, 'jetpack_setup' ) );
 		add_action( 'body_class',			array( $this, 'body_class' ) );
+		add_action( 'admin_bar',			array( $this, 'body_class' ) );
+		add_action( 'admin_bar_menu',		array( $this, 'admin_bar_menu' ), 999 );
 	}
 
 	function __get( $name ) {
@@ -31,6 +33,29 @@ class Makesite {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Adds customization link to admin bar
+	 * @param WP_Admin_Bar $admin_bar
+	 * @action admin_bar_menu
+	 */
+	function admin_bar_menu( $admin_bar ) {
+		?>
+		<style>
+			#wp-admin-bar-design a:before {
+				content: '\f116';
+				margin-top: 3px;
+			}
+		</style>
+		<?php
+		$url = 'http://makesite.dev/customize?url=' . urlencode( site_url() );
+		$admin_bar->add_menu( array(
+//			'parent' => 'new-content',
+			'id'     => 'design',
+			'title'  => 'Design',
+			'href'   => $url . '',
+		) );
 	}
 
 	/**
@@ -53,21 +78,21 @@ class Makesite {
 
 	function sidebar_classes( &$classes ) {
 
-		$this->dt['sidebar_1'] = is_active_sidebar( 'sidebar-1' );
+		$this->dt['sb1'] = is_active_sidebar( 'sidebar-1' );
 		/**
 		 * Hide or show the sidebar
 		 * @hook filter makesite_show_sidebar
 		 */
-		if ( $this->dt['show_sb1'] = apply_filters( 'makesite_show_sidebar_1', $this->dt['sidebar_1'] ) ) {
+		if ( $this->dt['show_sb1'] = apply_filters( 'makesite_show_sidebar_1', $this->dt['sb1'] ) ) {
 			$classes[] = 'sb1-active';
 		}
 
-		$this->dt['sidebar_2'] = is_active_sidebar( 'sidebar-2' );
+		$this->dt['sb2'] = is_active_sidebar( 'sidebar-2' );
 		/**
 		 * Hide or show the sidebar
 		 * @hook filter makesite_show_sidebar
 		 */
-		if ( $this->dt['show_sb2'] = apply_filters( 'makesite_show_sidebar_2', $this->dt['sidebar_2'] ) ) {
+		if ( $this->dt['show_sb2'] = apply_filters( 'makesite_show_sidebar_2', $this->dt['sb2'] ) ) {
 			$classes[] = 'sb2-active';
 		}
 	}
@@ -197,12 +222,6 @@ class Makesite {
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
-
-		if ( is_front_page() ) {
-			wp_enqueue_style( 'makesite-home-animation', get_stylesheet_directory_uri() . '/css/home-animation.css' );
-			wp_enqueue_script( 'makesite-home-animation', get_template_directory_uri() . '/js/home-animation.js', array( 'jquery' ), '20151215', true );
-			ms_hook( 'after_header', 'makesite_home_animation' );
-		}
 	}
 
 	/**
@@ -239,6 +258,7 @@ class Makesite {
 
 }
 
+/** @var Makesite $makesite */
 $makesite = new Makesite();
 
 /** Custom template tags for this theme. */

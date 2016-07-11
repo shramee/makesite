@@ -33,7 +33,7 @@ if ( ! class_exists( 'WPD_Customizer_Manager' ) ) {
 		protected $man;
 
 		/** @var string Sections and fields prefix */
-		protected $token = 'wpd';
+		protected $token = 'ms';
 
 		/** @var string Settings class for all settings to register in this control */
 		protected $settings_class = 'WP_Customize_Setting';

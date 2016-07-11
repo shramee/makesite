@@ -723,9 +723,9 @@ select {
 .overlay {
   position: absolute;
   top: -999em;
-  right: -99em;
+  right: -999em;
   bottom: -999em;
-  left: -99em;
+  left: -999em;
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -1206,7 +1206,7 @@ a.slide-in-toggle {
   position: absolute;
   top: 0;
   left: 100%;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25), -1px 1px 2px rgba(255, 255, 255, 0.25), -1px -1px 2px rgba(255, 255, 255, 0.25), 1px -1px 2px rgba(255, 255, 255, 0.25);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5), -1px -1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5);
   z-index: 1;
 }
 
@@ -1282,6 +1282,7 @@ a.slide-in-toggle {
   }
 
   .site-content {
+    width: 1000px;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -1356,30 +1357,31 @@ object {
   text-align: center;
   vertical-align: top;
   width: 100%;
+  margin: 2.5%;
 }
 .gallery-columns-2 .gallery-item {
-  max-width: 50%;
+  max-width: 45%;
 }
 .gallery-columns-3 .gallery-item {
-  max-width: 33.33%;
+  max-width: 28.33%;
 }
 .gallery-columns-4 .gallery-item {
-  max-width: 25%;
-}
-.gallery-columns-5 .gallery-item {
   max-width: 20%;
 }
+.gallery-columns-5 .gallery-item {
+  max-width: 15%;
+}
 .gallery-columns-6 .gallery-item {
-  max-width: 16.66%;
+  max-width: 11.66%;
 }
 .gallery-columns-7 .gallery-item {
-  max-width: 14.28%;
+  max-width: 9.28%;
 }
 .gallery-columns-8 .gallery-item {
-  max-width: 12.5%;
+  max-width: 7.5%;
 }
 .gallery-columns-9 .gallery-item {
-  max-width: 11.11%;
+  max-width: 6.11%;
 }
 
 .gallery-caption {

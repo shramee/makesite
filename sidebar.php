@@ -17,9 +17,7 @@ if ( $makesite->show_sb1 ) {
 	 * Makesite render sidebar
 	 * @hook action makesite_sidebar
 	 * @param bool $sidebar_active_1 Is sidebar-1 active
-	 * @hooked makesite_sb_open    -  7
 	 * @hooked makesite_sb_widgets - 25
-	 * @hooked makesite_sb_close   - 97
 	 */
 	ms_do_action(
 		'sidebar',
@@ -37,9 +35,7 @@ if ( $makesite->show_sb2 ) {
 	 * Makesite render sidebar
 	 * @hook action makesite_sidebar
 	 * @param bool $sidebar_active_2 Is sidebar-2 active
-	 * @hooked makesite_sb_open    -  7
 	 * @hooked makesite_sb_widgets - 25
-	 * @hooked makesite_sb_close   - 97
 	 */
 	ms_do_action(
 		'sidebar2',

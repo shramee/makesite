@@ -8,7 +8,7 @@ include dirname( __FILE__ ) . '/framework.php';
 //Slide in areas' functions
 include dirname( __FILE__ ) . '/slides.php';
 //Slide in areas' hooks
-ms_hook( 'before_site',    'makesite_slide_ins', 25 );
+add_action( 'wp_footer',    'makesite_slide_ins', 25 );
 ms_hook( 'left_slide_in',  'makesite_lsi_widgets', 25 );
 ms_hook( 'right_slide_in', 'makesite_rsi_widgets', 25 );
 

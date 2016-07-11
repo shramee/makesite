@@ -19,7 +19,6 @@ function makesite_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'makesite_customize_register' );
 
-
 /**
  * Set up the WordPress core custom header feature.
  *
@@ -73,7 +72,7 @@ if ( ! function_exists( 'makesite_header_style' ) ) {
 			?>
 			.site-title a,
 			.site-description {
-				color: # <?php echo esc_attr( $header_text_color ); ?>;
+				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
 
 			<?php endif; ?>
@@ -91,78 +90,12 @@ function makesite_customize_preview_js() {
 add_action( 'customize_preview_init', 'makesite_customize_preview_js' );
 
 new WPD_Customizer_Manager( array(
+	'title' => 'Customization key',
 	'fields' => array(
 		array(
-			'id' => 'test-control-1',
-			'type' => 'alpha-color',
-			'label' => 'Test alpha color',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
-		),
-		array(
-			'id' => 'test-control-2',
-			'type' => 'on-off',
-			'label' => 'Test on off',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
-		),
-		array(
-			'id' => 'test-control-3',
-			'type' => 'checkboxes',
-			'label' => 'Test checkboxes',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
-		),
-		array(
-			'id' => 'test-control-4',
-			'type' => 'img-checkboxes',
-			'label' => 'Test img checkboxes',
-			'choices' => array(
-				1 => get_template_directory_uri() . '/img/home-animation/img1.jpg',
-				2 => get_template_directory_uri() . '/img/home-animation/img2.jpg'
-			),
-		),
-		array(
-			'id' => 'test-control-5',
-			'type' => 'img-radio',
-			'label' => 'Test img radio',
-			'choices' => array(
-				1 => get_template_directory_uri() . '/img/home-animation/img1.jpg',
-				2 => get_template_directory_uri() . '/img/home-animation/img2.jpg'
-			),
-		),
-		array(
-			'id' => 'test-control-6',
-			'type' => 'button-checkboxes',
-			'label' => 'Test button checkboxes',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
-		),
-		array(
-			'id' => 'test-control-7',
-			'type' => 'button-radio',
-			'label' => 'Test button radio',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
-		),
-		array(
-			'id' => 'test-control-8',
-			'type' => 'multi-select',
-			'label' => 'Test multi select',
-			'choices' => array(
-				1 => 'One',
-				2 => 'Two'
-			),
+			'id' => 'site-customization-key',
+			'type' => 'text',
+			'label' => 'Site customization key',
 		),
 	)
 ) );

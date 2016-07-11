@@ -1,15 +1,9 @@
-# Logs
-*.log
-
-# Sass
-.sass-cache
-
 # Grunt
 /node_modules/
 
 # Codekit
 config.codekit
 
-# .* files
+# .* files and directories (.logs, .sass-cache etc)
 .*
 */.*
