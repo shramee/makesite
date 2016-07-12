@@ -49,13 +49,18 @@ class Makesite {
 			}
 		</style>
 		<?php
-		$url = 'http://makesite.dev/customize?url=' . urlencode( site_url() );
-		$admin_bar->add_menu( array(
-//			'parent' => 'new-content',
-			'id'     => 'design',
-			'title'  => 'Design',
-			'href'   => $url . '',
-		) );
+		if ( ! is_admin() ) {
+
+			$url = admin_url( "admin-ajax.php?action=makesite_design" );
+			$page_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$url = add_query_arg( 'url', urlencode( $page_url ), $url );
+
+			$admin_bar->add_menu( array(
+				'id'    => 'design',
+				'title' => 'Design',
+				'href'  => $url . '',
+			) );
+		}
 	}
 
 	/**

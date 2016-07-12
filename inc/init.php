@@ -16,3 +16,7 @@ require_once dirname( __FILE__ ) . '/customizer/customizer.php';
 /** Structure functions and hooks. */
 require_once dirname( __FILE__ ) . '/structure/init.php';
 
+if ( ! empty( $_GET['action'] ) ) {
+	/** Structure functions and hooks. */
+	require_once dirname( __FILE__ ) . '/design/class-makesite-design.php';
+}
