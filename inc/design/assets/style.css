@@ -1,0 +1,17 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body, html, .wrap, aside, section, #site-iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.wrap {
+	display: flex;
+}
+
+aside {
+	width: 25%;
+	background: #eee;
+}

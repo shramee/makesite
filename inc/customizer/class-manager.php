@@ -1,15 +1,15 @@
 <?php
 /**
- * Contains MS_Settings_Page class
+ * Contains Liby_New_Settings_Page class
  * @author shramee
  * @since 1.0.0
  */
 
-if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
+if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 	/**
-	 * Class MS_Customizer_Manager
+	 * Class Makesite_Customizer_Manager
 	 */
-	class MS_Customizer_Manager {
+	class Makesite_Customizer_Manager {
 
 		/** @var array Customizer controls classes */
 		protected $controls_classes;
@@ -26,7 +26,7 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 		/** @var array Section fields */
 		protected $fields = array();
 
-		/** @var callable Callback to add control */
+		/** @var mixed Callback to add control */
 		protected $add_control_callback;
 
 		/** @var WP_Customize_Manager Customize manager */
@@ -43,8 +43,6 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 
 		/** @var array Paths to files to include in customizer */
 		protected $include = '';
-
-		protected $section_prefix = 'ms-';
 
 		/**
 		 * Gets the value of protected properties
@@ -76,46 +74,32 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 				}
 			}
 
-			//Register the panels, sections, controls and settings
-			add_action( 'customize_register', array( $this, 'init' ), $priority );
-
-			//Control scripts
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
-		}
-
-		public function init( WP_Customize_Manager $manager ) {
-
-			if ( empty( $this->id ) ) {
-				$this->id = ms_make_id( $this->title );
-			}
-
 			if ( ! is_callable( $this->add_control_callback ) ) {
 				$this->add_control_callback = array( $this, 'add_control', );
 			}
 
-			$this->controls_classes();
-			$this->customizer_register( $manager );
-		}
-
-		protected function controls_classes() {
-
-			if ( ! class_exists( 'MS_Customize_Control' ) ) {
-				include_once 'class-customize-controls.php';
+			if ( empty( $this->id ) ) {
+				$this->id = liby_make_id( $this->title );
 			}
 
 			$this->controls_classes = wp_parse_args( $this->controls_classes, array(
-				'color'				=> 'WP_Customize_Color_Control',
-				'image'				=> 'WP_Customize_Image_Control',
-				'upload'			=> 'WP_Customize_Upload_Control',
-				'alpha-color'		=> 'MS_Customize_Control',
-				'on-off'			=> 'MS_Customize_Control',
-				'checkboxes'		=> 'MS_Customize_Control',
-				'img-checkboxes'	=> 'MS_Customize_Control',
-				'img-radio'			=> 'MS_Customize_Control',
-				'button-checkboxes'	=> 'MS_Customize_Control',
-				'button-radio'		=> 'MS_Customize_Control',
-				'multi-select'		=> 'MS_Customize_Control',
+				'color'             => 'WP_Customize_Color_Control',
+				'image'             => 'WP_Customize_Image_Control',
+				'upload'            => 'WP_Customize_Upload_Control',
+				'alpha-color'       => 'Makesite_Customizer_Control',
+				'checkboxes'        => 'Makesite_Customizer_Control',
+				'img-checkboxes'    => 'Makesite_Customizer_Control',
+				'img-radio'         => 'Makesite_Customizer_Control',
+				'button-checkboxes' => 'Makesite_Customizer_Control',
+				'button-radio'      => 'Makesite_Customizer_Control',
+				'multi-select'      => 'Makesite_Customizer_Control',
 			) );
+
+			//Register the panels, sections, controls and settings
+			add_action( 'customize_register', array( $this, 'customizer_register' ), $priority );
+
+			//Control scripts
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
 		}
 
 		/**
@@ -144,7 +128,7 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 
 			/**
 			 * @var array $sections Customizer sections to  create
-			 * MS_Customizer_Manager::customizer_sections() prepares the section id from names in fields data
+			 * Makesite_Customizer_Manager::customizer_sections() prepares the section id from names in fields data
 			 */
 			$sections = $this->customizer_sections( $fields );
 
@@ -157,12 +141,12 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 				 * Filters panel arguments.
 				 * The dynamic part refers to the id of the ID of options group
 				 * While registering the multiple sections,
-				 * this hooks is available in addition to ms_customizer_$this->id_section_args
+				 * this hooks is available in addition to liby_customizer_$this->id_section_args
 				 * @param array $panel_args
 				 */
-				$panel_args = apply_filters( 'ms_customizer_' . $this->id . '_panel_args', array(
-						'title'    => $this->title,
-						'priority' => 1,
+				$panel_args = apply_filters( 'liby_customizer_' . $this->id . '_panel_args', array(
+					'title'    => $this->title,
+					'priority' => 1,
 				) );
 
 				//Adding the panel
@@ -177,7 +161,7 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 					 * @param array $section_args
 					 * @param string $section_id
 					 */
-					$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
+					$section_args = apply_filters( 'liby_customizer_' . $this->id . '_section_args', array(
 						'title' => $section_title,
 						'panel' => "$this->token-$this->id",
 					), $section_id );
@@ -194,19 +178,20 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 				 * While registering the only main section $args can be filtered directly
 				 * @param array $section_args
 				 */
-				$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
+				$section_args = apply_filters( 'liby_customizer_' . $this->id . '_section_args', array(
 					'title' => $this->title,
 					'priority' => 1,
 				) );
 				//Adding single section
 				$this->man->add_section( "$this->token-$this->id", $section_args );
+
 			}
 		}
 
-		public function controls_scripts() {
-			wp_enqueue_script( 'wpd-alpha-color-picker-js', get_template_directory_uri() . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
-			wp_enqueue_style( 'wpd-customizer-controls-css', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.css' );
-			wp_enqueue_script( 'wpd-customizer-controls-js', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.js', array( 'jquery' ) );
+		function controls_scripts() {
+			wp_enqueue_script( 'liby-alpha-color-picker-js', LIBY_DIR_URL . '/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+			wp_enqueue_style( 'liby-customizer-controls-css', LIBY_DIR_URL . '/assets/customizer-controls.css' );
+			wp_enqueue_script( 'liby-customizer-controls-js', LIBY_DIR_URL . '/assets/customizer-controls.js', array( 'jquery' ) );
 		}
 
 		/**
@@ -225,37 +210,28 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 					'default' => '',
 				) );
 
+				$option['id'] = $this->token . '-' . $this->id . '[' . $option['id'] . ']';
+
 				if ( empty( $option['section'] ) ) {
 					$option['section'] = $this->token . '-' . $this->id;
 				} else {
-					$this->get_customizer_section_from_field( $option, $sections );
+					$section = $option['section'];
+					if ( is_array( $section ) ) {
+						$sections[ $section[0] ] = $section[1];
+						$section = $section[0];
+					} else if ( is_string( $section ) ) {
+						if ( 0 === strpos( $section, 'existing_' ) ) {
+							$section = str_replace( 'existing_', '', $section );
+						} else {
+							$section = $this->token . "-{$this->id}-" . liby_make_id( $section );
+							$sections[ $section ] = $option['section'];
+						}
+					}
+					$option['section'] = $section;
 				}
 			}
 			return $sections;
 		}
-
-		/**
-		 * Gets section data from field
-		 * @param array $option
-		 * @param array $sections
-		 * @since 0.7
-		 */
-		private function get_customizer_section_from_field( &$option, &$sections ) {
-			$sec = $option['section'];
-			if ( is_array( $sec ) ) {
-				$sections[ $sec[0] ] = $sec[1];
-				$sec = $sec[0];
-			} else if ( is_string( $sec ) ) {
-				if ( 0 === strpos( $sec, 'existing_' ) ) {
-					$sec = str_replace( 'existing_', '', $sec );
-				} else {
-					$sec = $this->section_prefix . ms_make_id( $sec );
-					$sections[ $sec ] = $option['section'];
-				}
-			}
-			$option['section'] = $sec;
-		}
-
 		/**
 		 * Adds controls and settings to WP_Customize_Manager
 		 * @param array $fields Controls data
@@ -265,16 +241,23 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 			foreach ( $fields as $option ) {
 				$settings_class = $this->settings_class;
 
+				$option = wp_parse_args(
+					$option,
+					array(
+						'default' => '',
+					)
+				);
+
 				/**
 				 * Filters settings arguments.
 				 * The dynamic part refers to the ID of options group
 				 * @param array $setting_args Arguments
 				 * @param array $option Option data
 				 */
-				$setting_args = apply_filters( 'ms_customizer_' . $this->id . '_setting_args', array(
-						'default' => $option['default'],
-						'type'    => $this->settings_type,
-					), $option );
+				$setting_args = apply_filters( 'liby_customizer_' . $this->id . '_setting_args', array(
+					'default' => $option['default'],
+					'type'    => $this->settings_type,
+				), $option );
 
 				//Render Simple controls ( Containing single field )
 				call_user_func( $this->add_control_callback, $option, $setting_args, $settings_class, $this );
@@ -294,21 +277,37 @@ if ( ! class_exists( 'MS_Customizer_Manager' ) ) {
 			$this->man->add_setting( new $settings_class( $this->man, $option['id'], $setting_args ) );
 
 			//Create a section class
-			$control_class =
-				! empty( $option['control_class'] ) ?
-					$option['control_class'] :
-					! empty( $this->controls_classes[ $option['type'] ] ) ?
-						$this->controls_classes[ $option['type'] ] :
-						$this->default_control_class;
-
-			//Add control
-			$this->man->add_control(
-				new $control_class(
-					$this->man,
-					$option['id'],
-					$option
-				)
-			);
+			if ( ! empty( $option['control_class'] ) ) {
+				$control_class = $option['control_class'];
+				//Add control
+				$this->man->add_control(
+					new $control_class(
+						$this->man,
+						$option['id'],
+						$option
+					)
+				);
+			} else if ( ! empty( $this->controls_classes[ $option['type'] ] ) ) {
+				$control_class = $this->controls_classes[ $option['type'] ];
+				//Add control
+				$this->man->add_control(
+					new $control_class(
+						$this->man,
+						$option['id'],
+						$option
+					)
+				);
+			} else {
+				$control_class = $this->default_control_class;
+				//Add control
+				$this->man->add_control(
+					new $control_class(
+						$this->man,
+						$option['id'],
+						$option
+					)
+				);
+			}
 		}
 	}
 }

@@ -14,7 +14,6 @@ class MS_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.
-	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @var    string
@@ -23,9 +22,7 @@ class MS_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * Render the multi select control
-	 *
 	 * @param string $attr
-	 *
 	 * @since  1.0.0
 	 * @access public
 	 */
@@ -64,9 +61,7 @@ class MS_Customize_Control extends WP_Customize_Control {
 
 	/**
 	 * Returns the input for radio and checkboxes
-	 *
 	 * @param string $value the value for this input
-	 *
 	 * @access public
 	 * @return string HTML for the input
 	 * @since  1.0.0
@@ -85,7 +80,6 @@ class MS_Customize_Control extends WP_Customize_Control {
 			$multi_values = ! is_array( $this->value() ) ? explode( '|', $this->value() ) : $this->value();
 			$attrs .= 'type="checkbox" ' . checked( true, in_array( $value, $multi_values ), false );
 		}
-
 		return "<input $attrs>";
 	}
 

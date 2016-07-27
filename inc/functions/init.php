@@ -24,7 +24,6 @@ class Makesite {
 		add_action( 'after_setup_theme',	array( $this, 'jetpack_setup' ) );
 		add_action( 'body_class',			array( $this, 'body_class' ) );
 		add_action( 'admin_bar',			array( $this, 'body_class' ) );
-		add_action( 'admin_bar_menu',		array( $this, 'admin_bar_menu' ), 999 );
 	}
 
 	public function __get( $name ) {
@@ -32,34 +31,6 @@ class Makesite {
 			return $this->dt[ $name ];
 		} else {
 			return false;
-		}
-	}
-
-	/**
-	 * Adds customization link to admin bar
-	 * @param WP_Admin_Bar $admin_bar
-	 * @action admin_bar_menu
-	 */
-	public function admin_bar_menu( $admin_bar ) {
-		?>
-		<style>
-			#wp-admin-bar-design a:before {
-				content: '\f116';
-				margin-top: 3px;
-			}
-		</style>
-		<?php
-		if ( ! is_admin() ) {
-
-			$url = admin_url( "admin-ajax.php?action=makesite_design" );
-			$page_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			$url = add_query_arg( 'url', urlencode( $page_url ), $url );
-
-			$admin_bar->add_menu( array(
-				'id'    => 'design',
-				'title' => 'Design',
-				'href'  => $url . '',
-			) );
 		}
 	}
 

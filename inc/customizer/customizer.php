@@ -5,7 +5,7 @@
  * @package makesite
  */
 
-require_once 'class-customizer-manager.php';
+require_once 'class-manager.php';
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
