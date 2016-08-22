@@ -85,17 +85,28 @@ class Makesite_Customizer_Control extends WP_Customize_Control {
 
 	/**
 	 * Displays the control content.
-	 *
+	 * @uses Makesite_Customizer_Control::render_head(), Makesite_Customizer_Control::render_inputs()
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function render_content() {
-
 		if ( empty( $this->choices ) && ! in_array( $this->type, array( 'alpha-color', 'heading', ) ) ) {
 			return;
 		}
+		$this->render_head();
+		if ( 'heading' != $this->type ) {
+			$this->render_inputs();
+		}
+	}
 
+	/**
+	 * Renders control heading and description
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_head() {
 		if ( 'heading' == $this->type ) {
 			echo '<br><hr>';
 		}
@@ -104,35 +115,49 @@ class Makesite_Customizer_Control extends WP_Customize_Control {
 
 		if ( !empty( $this->description ) ) {
 			?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 			<?php
 		}
+	}
 
+	/**
+	 * Renders control inputs
+	 * @uses Makesite_Customizer_Control::render_multi_inputs()
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_inputs() {
 		?>
 		<div class="<?php echo 'liby-custom-control button-control liby-' . $this->type; ?>">
 			<?php
-			switch( $this->type ) {
-				case 'checkboxes':
-				case 'img-checkboxes':
-				case 'button-checkboxes':
-				$this->render_select( 'style="display:none" multiple="multiple"' );
-				case 'img-radio':
-				case 'button-radio':
-					$format = $this->get_format();
-					foreach ( $this->choices as $value => $label ) {
-						echo '<label>' . $this->get_input( $value ) . sprintf( $format, $label ) . '</label>';
-					}
-					break;
-				case 'multi-select':
-					$this->render_select( 'multiple="multiple"' );
-					break;
-				case 'alpha-color':
+			if ( 'multi-select' == $this->type ) {
+				$this->render_select( 'multiple="multiple"' );
+			} else if ( 'alpha-color' == $this->type ) {
 				?>
-					<input class='color-picker-hex' data-alpha='true' type='text' value=''<?php echo esc_attr( $this->value() ); ?>' <?php $this->link(); ?> />
+				<input class='color-picker-hex' data-alpha='true' type='text' value=''<?php echo esc_attr( $this->value() ); ?>' <?php $this->link(); ?> />
 				<?php
+			} else{
+				$this->render_multi_inputs();
 			}
 			?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Renders inputs for multi option controls
+	 * @since  1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_multi_inputs() {
+		if ( false !== strpos( $this->type, 'checkboxes' ) ) {
+			$this->render_select( 'style="display:none" multiple="multiple"' );
+		}
+		$format = $this->get_format();
+		foreach ( $this->choices as $value => $label ) {
+			echo '<label>' . $this->get_input( $value ) . sprintf( $format, $label ) . '</label>';
+		}
 	}
 }

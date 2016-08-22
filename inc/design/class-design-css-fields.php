@@ -8,15 +8,22 @@
 
 class Makesite_Design_Css_Fields {
 
-	protected function get_style( $format, $setting, $f ) {
-		$method = 'css_' . ms_make_id( $f['type'], '_' );
-		if ( method_exists( $this, $method ) ) {
-			$vals = explode( '|', $setting ); //Setting multi values from string
-
-			return sprintf( $format, $this->$method( $vals ) ); // Getting style from callback
+	protected function field_css( $format, $setting, $f ) {
+		$style = '';
+		if ( is_array( $format )  ) {
+			if ( ! empty( $format[ $setting ] ) ) {
+				$style = $format[ $setting ];
+			}
 		} else {
-			return sprintf( $format, $setting );
+			$method = ms_make_id( $f['type'], '_' ) . '_field_css';
+			if ( method_exists( $this, $method ) ) {
+				$style = sprintf( $format, $this->$method( explode( '|', $setting ) ) ); // Getting style from callback
+			} else {
+				$style = sprintf( $format, $setting );
+			}
 		}
+
+		return $style;
 	}
 
 	/**
@@ -24,7 +31,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_font( $vals ) {
+	protected function font_field_css( $vals ) {
 		//Split values to array
 		if ( ! empty( $vals[4] ) ) {
 			$this->gf_load[ $vals[4] ][] = $vals[2] ? $vals[2] : '400';
@@ -47,7 +54,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_border( $vals ) {
+	protected function border_field_css( $vals ) {
 		//Split values to array
 		if ( ! empty( $vals[1] ) ) {
 			//Set property value
@@ -64,7 +71,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_all_border( $vals ) {
+	protected function all_border_field_css( $vals ) {
 		//Split values to array
 		if ( ! empty( $vals[1] ) ) {
 			$sides = explode( '::', $vals[0] );
@@ -86,7 +93,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_spacing( $vals ) {
+	protected function spacing_field_css( $vals ) {
 		//Split values to array
 		if ( isset( $vals[1] ) ) {
 			return implode( 'px ', $vals ) . 'px';
@@ -100,7 +107,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_shadow( $vals ) {
+	protected function shadow_field_css( $vals ) {
 		//Split values to array
 		if ( isset( $vals[1] ) ) {
 			$value = '';
@@ -122,7 +129,7 @@ class Makesite_Design_Css_Fields {
 	 * @param array $vals Current settings
 	 * @return string $css
 	 */
-	protected function css_text_shadow( $vals ) {
+	protected function text_shadow_field_css( $vals ) {
 		//Split values to array
 		if ( isset( $vals[3] ) ) {
 			$value = '';
