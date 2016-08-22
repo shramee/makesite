@@ -1,0 +1,109 @@
+@import '../vars/forms';
+
+input,
+textarea,
+.button,
+button,
+label,
+.btn,
+.btn2x,
+.btn3x,
+.btn4x,
+.btn5x {
+  display: inline-block;
+  height: $formElHeight;
+  line-height: $formElLineHeight;
+  padding: $formElPadding;
+  font-size: $formElFontSize;
+  border: $formElBorder;
+  vertical-align: middle;
+}
+
+textarea {
+  height: 7em;
+}
+
+textarea,
+input {
+  background: $formElBackground;
+  width: 100%;
+  margin-bottom: 0.7em;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+.horizontal {
+  display: inline-block;
+  input:not([type="radio"]):not([type="checkbox"]):not([type="range"]),
+  *,
+  button,
+  .button,
+  [class *= 'btn'] {
+    width: auto;
+  }
+}
+
+/* Components - Forms - Fieldsets */
+fieldset {
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  > input:not([type='radio']):not([type='checkbox']),
+  > *,
+  > button,
+  > .button,
+  > [class *= 'btn'] {
+    margin: 0;
+    border: none;
+    border-bottom: inherit;
+    border-radius: 0;
+    background: inherit;
+    color: inherit;
+    text-align: inherit;
+  }
+  > input:not([type='radio']):not([type='checkbox']):last-child,
+  > :last-child {
+    border-bottom: none;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+  > input:not([type='radio']):not([type='checkbox']):first-child,
+  > :first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  &.horizontal {
+    display: inline-block;
+    font-size: 0;
+    > input:not([type='radio']):not([type='checkbox']),
+    > *,
+    > button,
+    > .button,
+    > [class *= 'btn'] {
+      font-size: 16px;
+      border-bottom: none;
+      border-right: inherit;
+      width: auto;
+      height: 2.5em;
+    }
+    > input:not([type='radio']):not([type='checkbox']):last-child,
+    > :last-child {
+      border-right: none;
+      border-top-right-radius: inherit;
+      border-bottom-left-radius: 0;
+    }
+    > input:not([type='radio']):not([type='checkbox']):first-child,
+    > :first-child {
+      border-bottom-left-radius: inherit;
+      border-top-right-radius: 0;
+    }
+
+  }
+}
+

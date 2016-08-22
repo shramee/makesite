@@ -1,0 +1,77 @@
+// Center block
+@mixin centerBlock {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+// Position absolute
+@mixin position( $top : 0, $right : 0, $bottom : 0, $left : 0, $position : absolute ) {
+  position: $position;
+
+  @if ( "number" == type-of($top) ) {
+    top: $top;
+  }
+  @if ( "number" == type-of($right) ) {
+    right: $right;
+  }
+  @if ( "number" == type-of($bottom) ) {
+    bottom: $bottom;
+  }
+  @if ( "number" == type-of($left) ) {
+    left: $left;
+  }
+}
+
+// Get contrasting black or white color with appropriate transparency
+@mixin contrastingColor( $color ) {
+  $brit : (red($color) * 0.299 + green($color) * 0.412 + blue($color) * 0.290) * 3 / 2.55;
+  @if 232 < $brit { //Very bright color
+    color: #777; // Slightly Dark Text Color
+    color: rgba(0,0,0,0.61)
+  } @else if 151 < $brit { //Brightish color
+    color: #333; // Dark Text Color
+    color: rgba(0,0,0,0.79)
+  } @else if 88 < $brit { //Darkish color
+    color: #eee; // Bright Text Color
+    color: rgba(255,255,255,0.88)
+  } @else { //Very dark color
+    color: #ccc; // Slightly Bright Text Color
+    color: rgba(255,255,255,0.7)
+  }
+}
+
+// Generate grid column
+@mixin gridItemWidth( $columns, $span :  1, $gutter : 1.6 ){
+  width: #{( $span * 99.9999% / $columns ) - $gutter};
+  @if ( 1.6 != $gutter ) {
+    margin: $gutter/2 * 1%;
+  }
+}
+
+// Generate grid
+@mixin generateGrid( $pre, $gutter : 1.6 ){
+  @for $i from 1 through 12 {
+    .#{$pre}#{$i} {
+      @include gridItemWidth( 12, $i, $gutter );
+    }
+  }
+}
+
+@mixin generateGridPushPull( $pre ){
+  @for $i from 1 through 12 {
+    .#{$pre}-ps#{$i} {
+      left: percentage(($i / 12));
+    }
+    .#{$pre}-pl#{$i} {
+      right: percentage(($i / 12));
+    }
+  }
+}

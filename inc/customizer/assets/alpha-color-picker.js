@@ -42,11 +42,10 @@
 
 		return '#' + hex;
 	};
-
 	/**
 	 * Overwrite wpColorPicker
 	 */
-	$.widget( 'wpd.wpdColorPicker', $.wp.wpColorPicker, {
+	$.widget( 'ms.msColorPicker', $.wp.wpColorPicker, {
 		_create: function() {
 			// bail early for unsupported Iris.
 			if ( ! $.support.iris ) {
@@ -368,5 +367,5 @@
 
 // Auto Call plugin is class is color-picker
 jQuery( document ).ready( function( $ ) {
-	$( '.wpd-color-picker' ).wpdColorPicker();
+	$( '.ms-color-picker' ).msColorPicker();
 } );

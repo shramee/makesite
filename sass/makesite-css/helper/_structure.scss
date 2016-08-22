@@ -1,0 +1,140 @@
+
+.nav-vertical,
+.nav-horizontal {
+  padding: 0;
+  margin: 0;
+  a {
+    display: block;
+    position: relative;
+    padding: 1em;
+    color: inherit;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  li {
+    background: inherit;
+    display: block;
+    position: relative;
+    border-color: inherit;
+    ul:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.034);
+    }
+    ul {
+      border-color: inherit;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+      background: inherit;
+      position: absolute;
+      width: 160px;
+      display: none;
+      left: 100%;
+      top: 0;
+      z-index: 99999;
+      li {
+        width: 100%;
+      }
+    }
+    &:hover > ul {
+      display: block;
+    }
+  }
+}
+
+.nav-vertical {
+  max-width: 500px;
+}
+
+.nav-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  > li {
+    float: left;
+    &.right ~ li.right {
+      margin-right: 0;
+    }
+    > ul {
+      left: 0;
+      top: 100%;
+    }
+  }
+}
+
+.small-nav-arrows,
+.large-nav-arrows,
+.nav-arrows {
+  > li ul {
+    &:before {
+      width: 0;
+      height: 0;
+      border: 11px solid transparent;
+      bottom: auto;
+      right: auto;
+      background: none;
+    }
+  }
+  &.submenu-arrows li li ul,
+  &.nav-vertical > li > ul {
+    border-left-style: solid;
+    border-left-width: 3px;
+    &:before {
+      top: 0.79em;
+      left: -25px;
+      border-right-color: inherit;
+    }
+  }
+  &.nav-horizontal {
+    > li > ul {
+      border-top-style: solid;
+      border-top-width: 3px;
+      &:before {
+        top: -25px;
+        left: 0.79em;
+        border-bottom-color: inherit;
+      }
+    }
+  }
+}
+
+.large-nav-arrows {
+  > li ul:before {
+    border: 16px solid transparent;
+  }
+  &.submenu-arrows li li ul:before,
+  &.nav-vertical > li > ul:before {
+    left: -35px;
+    top: 0.43em;
+  }
+  &.nav-horizontal > li > ul:before {
+    top: -35px;
+    left: 0.43em;
+  }
+}
+
+.small-nav-arrows {
+  > li ul:before {
+    border: 7px solid transparent;
+  }
+  &.submenu-arrows li li ul:before,
+  &.nav-vertical > li > ul:before {
+    left: -17px;
+    top: 1em;
+  }
+  &.nav-horizontal > li > ul:before {
+    top: -17px;
+    left: 1em;
+  }
+}
+
+.nav-arrows {
+  border-color: rgba(0, 0, 0, 0.25);
+}

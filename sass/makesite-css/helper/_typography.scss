@@ -1,0 +1,109 @@
+@import "../vars/typography";
+
+/* Helpers - Text - Alignment */
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Helpers - Text - Case */
+.lowercase {
+  text-transform: lowercase;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.small-caps {
+  font-variant: small-caps;
+}
+
+/* Helpers - Text - Shadow */
+.text-shadow,
+.text-shadow * {
+  text-shadow: $textShadowDistance $textShadowDistance $textShadowBlur $textShadowColor;
+}
+.text-shadow2x,
+.text-shadow2x * {
+  text-shadow: 2*$textShadowDistance 2*$textShadowDistance $textShadowBlur $textShadowColor;
+}
+.text-shadow-white,
+.text-shadow-white * {
+  text-shadow: $textLightShadowDistance $textLightShadowDistance $textLightShadowBlur $textLightShadowColor;
+}
+.text-shadow-white2x,
+.text-shadow-white2x * {
+  text-shadow: 2*$textLightShadowDistance 2*$textLightShadowDistance $textLightShadowBlur $textLightShadowColor;
+}
+
+/* Helpers - Text - Fancy */
+.text-outline,
+.text-outline * {
+  text-shadow:
+     1px  1px 0 $textOutlineColor,
+    -1px  1px 0 $textOutlineColor,
+     1px -1px 0 $textOutlineColor,
+    -1px -1px 0 $textOutlineColor;
+}
+.text-outline-white,
+.text-outline-white * {
+  text-shadow:
+     1px  1px 0 $textLightOutlineColor,
+    -1px  1px 0 $textLightOutlineColor,
+     1px -1px 0 $textLightOutlineColor,
+    -1px -1px 0 $textLightOutlineColor;
+}
+.text-blur,
+.text-blur * {
+  color: rgba(0,0,0,0) !important;
+  text-shadow: 0 0 0.1em rgba(0,0,0,0.88);
+}
+.text-blur-white,
+.text-blur-white * {
+  color: rgba(0,0,0,0) !important;
+  text-shadow: 0 0 0.1em rgba(255,255,255,0.88);
+}
+
+/* Helpers - Text - Letter Spacing */
+.lspacing,
+.lspa,
+.lspacing *,
+.lspa *{
+  letter-spacing: $letterSpacing
+}
+.lspacing2x,
+.lspa2x,
+.lspacing2x *,
+.lspa2x *{
+  letter-spacing: 2*$letterSpacing
+}
+.lspacing3x,
+.lspa3x,
+.lspacing3x *,
+.lspa3x *{
+  letter-spacing: 3*$letterSpacing
+}
+.lspacing4x,
+.lspa4x,
+.lspacing4x *,
+.lspa4x *{
+  letter-spacing: 4*$letterSpacing
+}
+.lspacing5x,
+.lspa5x,
+.lspacing5x *,
+.lspa5x *{
+  letter-spacing: 5*$letterSpacing
+}
+
+// Refer to color helpers for lovely text colors :)

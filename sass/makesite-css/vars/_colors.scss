@@ -1,0 +1,326 @@
+$allColors : (
+        #1abc9c : (
+          ".tu-bg"
+          ".tu-bghov:hover, .tu-bghov:focus"
+          ".tu"
+          ".tu-hov:hover, .tu-hov:focus"
+          ".tu-bor"
+          ".tu-borhov:hover, .tu-borhov:focus"
+        ),
+        #2ecc71 : (
+          ".em-bg, .green-bg"
+          ".em-bghov:hover, .em-bghov:focus, .green-bghov:hover, .green-bghov:focus"
+          ".em, .green"
+          ".em-hov:hover, .em-hov:focus, .green-hov:hover, .green-hov:focus"
+          ".em-bor, .green-bor"
+          ".em-borhov:hover, .em-borhov:focus, .green-borhov:hover, .green-borhov:focus"
+        ),
+        #3498db : (
+          ".pe-bg"
+          ".pe-bghov:hover, .pe-bghov:focus"
+          ".pe"
+          ".pe-hov:hover, .pe-hov:focus"
+          ".pe-bor"
+          ".pe-borhov:hover, .pe-borhov:focus"
+        ),
+        #9b59b6 : (
+          ".am-bg"
+          ".am-bghov:hover, .am-bghov:focus"
+          ".am"
+          ".am-hov:hover, .am-hov:focus"
+          ".am-bor"
+          ".am-borhov:hover, .am-borhov:focus"
+        ),
+        #34495e : (
+          ".we-bg"
+          ".we-bghov:hover, .we-bghov:focus"
+          ".we"
+          ".we-hov:hover, .we-hov:focus"
+          ".we-bor"
+          ".we-borhov:hover, .we-borhov:focus"
+        ),
+        #16a085 : (
+          ".gr-bg"
+          ".gr-bghov:hover, .gr-bghov:focus"
+          ".gr"
+          ".gr-hov:hover, .gr-hov:focus"
+          ".gr-bor"
+          ".gr-borhov:hover, .gr-borhov:focus"
+        ),
+        #2abb67 : (
+          ".ne-bg"
+          ".ne-bghov:hover, .ne-bghov:focus"
+          ".ne"
+          ".ne-hov:hover, .ne-hov:focus"
+          ".ne-bor"
+          ".ne-borhov:hover, .ne-borhov:focus"
+        ),
+        #2a84be : (
+          ".be-bg, .blue-bg"
+          ".be-bghov:hover, .be-bghov:focus, .blue-bghov:hover, .blue-bghov:focus"
+          ".be, .blue"
+          ".be-hov:hover, .be-hov:focus, .blue-hov:hover, .blue-hov:focus"
+          ".be-bor, .blue-bor"
+          ".be-borhov:hover, .be-borhov:focus, .blue-borhov:hover, .blue-borhov:focus"
+        ),
+        #8e44ad : (
+          ".wi-bg, .purple-bg"
+          ".wi-bghov:hover, .wi-bghov:focus, .purple-bghov:hover, .purple-bghov:focus"
+          ".wi, .purple"
+          ".wi-hov:hover, .wi-hov:focus, .purple-hov:hover, .purple-hov:focus"
+          ".wi-bor, .purple-bor"
+          ".wi-borhov:hover, .wi-borhov:focus, .purple-borhov:hover, .purple-borhov:focus"
+        ),
+        #2c3e50 : (
+          ".mi-bg"
+          ".mi-bghov:hover, .mi-bghov:focus"
+          ".mi"
+          ".mi-hov:hover, .mi-hov:focus"
+          ".mi-bor"
+          ".mi-borhov:hover, .mi-borhov:focus"
+        ),
+        #f1c40f : (
+          ".su-bg, .yellow-bg"
+          ".su-bghov:hover, .su-bghov:focus, .yellow-bghov:hover, .yellow-bghov:focus"
+          ".su, .yellow"
+          ".su-hov:hover, .su-hov:focus, .yellow-hov:hover, .yellow-hov:focus"
+          ".su-bor, .yellow-bor"
+          ".su-borhov:hover, .su-borhov:focus, .yellow-borhov:hover, .yellow-borhov:focus"
+        ),
+        #e67e22 : (
+          ".ca-bg"
+          ".ca-bghov:hover, .ca-bghov:focus"
+          ".ca"
+          ".ca-hov:hover, .ca-hov:focus"
+          ".ca-bor"
+          ".ca-borhov:hover, .ca-borhov:focus"
+        ),
+        #e74c3c : (
+          ".al-bg"
+          ".al-bghov:hover, .al-bghov:focus"
+          ".al"
+          ".al-hov:hover, .al-hov:focus"
+          ".al-bor"
+          ".al-borhov:hover, .al-borhov:focus"
+        ),
+        #ecf0f1 : (
+          ".cl-bg, .white-bg"
+          ".cl-bghov:hover, .cl-bghov:focus, .white-bghov:hover, .white-bghov:focus"
+          ".cl, .white"
+          ".cl-hov:hover, .cl-hov:focus, .white-hov:hover, .white-hov:focus"
+          ".cl-bor, .white-bor"
+          ".cl-borhov:hover, .cl-borhov:focus, .white-borhov:hover, .white-borhov:focus"
+        ),
+        #95a5a6 : (
+          ".co-bg, .gray-bg"
+          ".co-bghov:hover, .co-bghov:focus, .gray-bghov:hover, .gray-bghov:focus"
+          ".co, .gray"
+          ".co-hov:hover, .co-hov:focus, .gray-hov:hover, .gray-hov:focus"
+          ".co-bor, .gray-bor"
+          ".co-borhov:hover, .co-borhov:focus, .gray-borhov:hover, .gray-borhov:focus"
+        ),
+        #f39c12 : (
+          ".or-bg"
+          ".or-bghov:hover, .or-bghov:focus"
+          ".or"
+          ".or-hov:hover, .or-hov:focus"
+          ".or-bor"
+          ".or-borhov:hover, .or-borhov:focus"
+        ),
+        #d35400 : (
+          ".pu-bg"
+          ".pu-bghov:hover, .pu-bghov:focus"
+          ".pu"
+          ".pu-hov:hover, .pu-hov:focus"
+          ".pu-bor"
+          ".pu-borhov:hover, .pu-borhov:focus"
+        ),
+        #c0392b : (
+          ".po-bg, .red-bg"
+          ".po-bghov:hover, .po-bghov:focus, .red-bghov:hover, .red-bghov:focus"
+          ".po, .red"
+          ".po-hov:hover, .po-hov:focus, .red-hov:hover, .red-hov:focus"
+          ".po-bor, .red-bor"
+          ".po-borhov:hover, .po-borhov:focus, .red-borhov:hover, .red-borhov:focus"
+        ),
+        #bdc3c7 : (
+          ".si-bg"
+          ".si-bghov:hover, .si-bghov:focus"
+          ".si"
+          ".si-hov:hover, .si-hov:focus"
+          ".si-bor"
+          ".si-borhov:hover, .si-borhov:focus"
+        ),
+        #7f8c8d : (
+          ".as-bg, .grey-bg"
+          ".as-bghov:hover, .as-bghov:focus, .grey-bghov:hover, .grey-bghov:focus"
+          ".as, .grey"
+          ".as-hov:hover, .as-hov:focus, .grey-hov:hover, .grey-hov:focus"
+          ".as-bor, .grey-bor"
+          ".as-borhov:hover, .as-borhov:focus, .grey-borhov:hover, .grey-borhov:focus"
+        ),
+);
+
+
+//$allColors : (
+//        #1abc9c : (
+//          ".tu-bg, .turquoise-bg"
+//          ".tu-bghov:hover, .turquoise-bghov:hover"
+//          ".tu, .turquoise"
+//          ".tu-hov:hover, .turquoise-hov:hover"
+//          ".tu-bor, .turquoise-bor"
+//          ".tu-borhov, .turquoise-borhov"
+//        ),
+//        #2ecc71 : (
+//          ".em-bg, .emerland-bg, .green-bg"
+//          ".em-bghov:hover, .emerland-bghov:hover, .green-bghov:hover"
+//          ".em, .emerland, .green"
+//          ".em-hov:hover, .emerland-hov:hover, .green-hov:hover"
+//          ".em-bor, .emerland-bor, .green-bor"
+//          ".em-borhov, .emerland-borhov, .green-borhov"
+//        ),
+//        #3498db : (
+//          ".pe-bg, .peter-river-bg"
+//          ".pe-bghov:hover, .peter-river-bghov:hover"
+//          ".pe, .peter-river"
+//          ".pe-hov:hover, .peter-river-hov:hover"
+//          ".pe-bor, .peter-river-bor"
+//          ".pe-borhov, .peter-river-borhov"
+//        ),
+//        #9b59b6 : (
+//          ".am-bg, .amethyst-bg"
+//          ".am-bghov:hover, .amethyst-bghov:hover"
+//          ".am, .amethyst"
+//          ".am-hov:hover, .amethyst-hov:hover"
+//          ".am-bor, .amethyst-bor"
+//          ".am-borhov, .amethyst-borhov"
+//        ),
+//        #34495e : (
+//          ".we-bg, .wet-asphalt-bg"
+//          ".we-bghov:hover, .wet-asphalt-bghov:hover"
+//          ".we, .wet-asphalt"
+//          ".we-hov:hover, .wet-asphalt-hov:hover"
+//          ".we-bor, .wet-asphalt-bor"
+//          ".we-borhov, .wet-asphalt-borhov"
+//        ),
+//        #16a085 : (
+//          ".gr-bg, .green-sea-bg"
+//          ".gr-bghov:hover, .green-sea-bghov:hover"
+//          ".gr, .green-sea"
+//          ".gr-hov:hover, .green-sea-hov:hover"
+//          ".gr-bor, .green-sea-bor"
+//          ".gr-borhov, .green-sea-borhov"
+//        ),
+//        #2abb67 : (
+//          ".ne-bg, .nephritis-bg"
+//          ".ne-bghov:hover, .nephritis-bghov:hover"
+//          ".ne, .nephritis"
+//          ".ne-hov:hover, .nephritis-hov:hover"
+//          ".ne-bor, .nephritis-bor"
+//          ".ne-borhov, .nephritis-borhov"
+//        ),
+//        #2a84be : (
+//          ".be-bg, .belize-hole-bg, .blue-bg"
+//          ".be-bghov:hover, .belize-hole-bghov:hover, .blue-bghov:hover"
+//          ".be, .belize-hole, .blue"
+//          ".be-hov:hover, .belize-hole-hov:hover, .blue-hov:hover"
+//          ".be-bor, .belize-hole-bor, .blue-bor"
+//          ".be-borhov, .belize-hole-borhov, .blue-borhov"
+//        ),
+//        #8e44ad : (
+//          ".wi-bg, .wisteria-bg, .purple-bg"
+//          ".wi-bghov:hover, .wisteria-bghov:hover, .purple-bghov:hover"
+//          ".wi, .wisteria, .purple"
+//          ".wi-hov:hover, .wisteria-hov:hover, .purple-hov:hover"
+//          ".wi-bor, .wisteria-bor, .purple-bor"
+//          ".wi-borhov, .wisteria-borhov, .purple-borhov"
+//        ),
+//        #2c3e50 : (
+//          ".mi-bg, .midnight-blue-bg"
+//          ".mi-bghov:hover, .midnight-blue-bghov:hover"
+//          ".mi, .midnight-blue"
+//          ".mi-hov:hover, .midnight-blue-hov:hover"
+//          ".mi-bor, .midnight-blue-bor"
+//          ".mi-borhov, .midnight-blue-borhov"
+//        ),
+//        #f1c40f : (
+//          ".su-bg, .sun-flower-bg, .yellow-bg"
+//          ".su-bghov:hover, .sun-flower-bghov:hover, .yellow-bghov:hover"
+//          ".su, .sun-flower, .yellow"
+//          ".su-hov:hover, .sun-flower-hov:hover, .yellow-hov:hover"
+//          ".su-bor, .sun-flower, .yellow-bor"
+//          ".su-borhov, .sun-flower, .yellow-borhov"
+//        ),
+//        #e67e22 : (
+//          ".ca-bg, .carrot-bg"
+//          ".ca-bghov:hover, .carrot-bghov:hover"
+//          ".ca, .carrot"
+//          ".ca-hov:hover, .carrot-hov:hover"
+//          ".ca-bor, .carrot-bor"
+//          ".ca-borhov, .carrot-borhov"
+//        ),
+//        #e74c3c : (
+//          ".al-bg, .alizarin-bg"
+//          ".al-bghov:hover, .alizarin-bghov:hover"
+//          ".al, .alizarin"
+//          ".al-hov:hover, .alizarin-hov:hover"
+//          ".al-bor, .alizarin-bor"
+//          ".al-borhov, .alizarin-borhov"
+//        ),
+//        #ecf0f1 : (
+//          ".cl-bg, .clouds-bg, .white-bg"
+//          ".cl-bghov:hover, .clouds-bghov:hover, .white-bghov:hover"
+//          ".cl, .clouds, .white"
+//          ".cl-hov:hover, .clouds-hov:hover, .white-hov:hover"
+//          ".cl-bor, .clouds-bor, .white-bor"
+//          ".cl-borhov, .clouds-borhov, .white-borhov"
+//        ),
+//        #95a5a6 : (
+//          ".co-bg, .concrete-bg, .gray-bg"
+//          ".co-bghov:hover, .concrete-bghov:hover, .gray-bghov:hover"
+//          ".co, .concrete, .gray"
+//          ".co-hov:hover, .concrete-hov:hover, .gray-hov:hover"
+//          ".co-bor, .concrete-bor, .gray-bor"
+//          ".co-borhov, .concrete-borhov, .gray-borhov"
+//        ),
+//        #f39c12 : (
+//          ".or-bg, .orange-bg"
+//          ".or-bghov:hover, .orange-bghov:hover"
+//          ".or, .orange"
+//          ".or-hov:hover, .orange-hov:hover"
+//          ".or-bor, .orange-bor"
+//          ".or-borhov, .orange-borhov"
+//        ),
+//        #d35400 : (
+//          ".pu-bg, .pumpkin-bg"
+//          ".pu-bghov:hover, .pumpkin-bghov:hover"
+//          ".pu, .pumpkin"
+//          ".pu-hov:hover, .pumpkin-hov:hover"
+//          ".pu-bor, .pumpkin-bor"
+//          ".pu-borhov, .pumpkin-borhov"
+//        ),
+//        #c0392b : (
+//          ".po-bg, .pomegranate-bg, .red-bg"
+//          ".po-bghov:hover, .pomegranate-bghov:hover, .red-bghov:hover"
+//          ".po, .pomegranate, .red"
+//          ".po-hov:hover, .pomegranate-hov:hover, .red-hov:hover"
+//          ".po-bor, .pomegranate-bor, .red-bor"
+//          ".po-borhov, .pomegranate-borhov, .red-borhov"
+//        ),
+//        #bdc3c7 : (
+//          ".si-bg, .silver-bg"
+//          ".si-bghov:hover, .silver-bghov:hover"
+//          ".si, .silver"
+//          ".si-hov:hover, .silver-hov:hover"
+//          ".si-bor, .silver-bor"
+//          ".si-borhov, .silver-borhov"
+//        ),
+//        #7f8c8d : (
+//          ".as-bg, .asbestos-bg, .grey-bg"
+//          ".as-bghov:hover, .asbestos-bghov:hover, .grey-bghov:hover"
+//          ".as, .asbestos, .grey"
+//          ".as-hov:hover, .asbestos-hov:hover, .grey-hov:hover"
+//          ".as-bor, .asbestos-bor, .grey-bor"
+//          ".as-borhov, .asbestos-borhov, .grey-borhov"
+//        ),
+//);

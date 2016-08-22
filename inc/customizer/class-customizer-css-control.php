@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0.0
  * @access public
  */
-class Makesite_Customize_Control extends WP_Customize_Control {
+class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 
 	/**
 	 * Value for the field
@@ -48,15 +48,6 @@ class Makesite_Customize_Control extends WP_Customize_Control {
 	 */
 	protected $multi_values = array();
 
-	public function enqueue() {
-		wp_enqueue_script( 'jquery-ui-slider' );
-		wp_enqueue_style( 'makesite-customizer-controls-css', MS_ADMN_ASSETS . '/css/customizer-controls.css', array(), MS_VER );
-		wp_enqueue_script( 'makesite-customizer-controls-js', MS_ADMN_ASSETS . '/js/customizer-controls.js', array( 'jquery' ), MS_VER, 'in_footer' );
-		//Google fonts
-		wp_enqueue_style( 'makesite-google-fonts-css', MS_ADMN_ASSETS . '/css/google-fonts.css', array(), MS_VER );
-		wp_enqueue_script( 'makesite-google-fonts-js', MS_ADMN_ASSETS . '/js/google-fonts.js', array( 'jquery' ), MS_VER, 'in_footer' );
-	}
-
 	/**
 	 * Displays the control content.
 	 *
@@ -66,7 +57,7 @@ class Makesite_Customize_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		$method = 'render_' . liby_make_id( $this->type, '_' ) . '_content';
+		$method = 'render_' . ms_make_id( $this->type, '_' ) . '_content';
 
 		if ( ! method_exists( $this, $method ) ) {
 			return;
@@ -104,9 +95,11 @@ class Makesite_Customize_Control extends WP_Customize_Control {
 	protected function render_slider_content() {
 		$this->input_attrs = wp_parse_args( $this->input_attrs, array(
 			'step' => 1,
+			'min' => 0,
+			'max' => 160,
 		) );
 
-		$this->output_main_control( 'range', liby_stringify_property_value_pair( $this->input_attrs ) . ' class="ms-width-75 ms-slider"' );
+		$this->output_main_control( 'range', ms_stringify_prop_val( $this->input_attrs ) . ' class="ms-width-75 ms-slider"' );
 		$number_attr = "class='ms-width-25 alignright ms-slider-val'";
 
 		if ( 'designer' != ms_user() ) {
@@ -211,7 +204,7 @@ class Makesite_Customize_Control extends WP_Customize_Control {
 	 * @since 1.0.0
 	 */
 	protected function render_font_content() {
-		$values = 6 == count( $this->multi_values ) ? $this->multi_values : array( '', '', '', '', '', '', );
+		$values = 7 == count( $this->multi_values ) ? $this->multi_values : array( '', '', '', '', '', '', '', );
 		$fonts  = array( '' => 'Default', );
 		$fonts  = array_merge( $fonts, ms_get_fonts() );
 		$hidden = "style='display:none;'";

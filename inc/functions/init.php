@@ -47,6 +47,7 @@ class Makesite {
 			$classes[] = 'archive';
 		}
 
+		$classes[] = get_option( 'ms_design_body_classes' );
 		$this->sidebar_classes( $classes );
 
 		return $classes;
@@ -184,10 +185,20 @@ class Makesite {
 	 */
 	public function scripts() {
 
-		wp_enqueue_style( 'makesite-style', get_stylesheet_uri() );
-		wp_enqueue_style( 'makesite-fa', get_stylesheet_directory_uri() . '/css/font-awesome.css' );
+		// Theme styles
+		wp_enqueue_style( 'makesite-style', get_template_directory_uri() . '/style.css' );
+		// Theme design customizations
+		wp_add_inline_style( 'makesite-style', get_option( 'ms_design_css' ) );
 
-		wp_enqueue_script( 'makesite-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20151215', true );
+		// Font Awesome
+		wp_enqueue_style( 'makesite-fa', get_template_directory_uri() . '/css/font-awesome.css' );
+
+		// Google fonts
+		$google_fonts = get_option( 'ms_design_google_fonts' );
+		if ( $google_fonts )
+			wp_enqueue_style( 'makesite-google-fonts', $google_fonts );
+
+		wp_enqueue_script( 'makesite-public-js', get_template_directory_uri() . '/js/ms-public.js', array( 'jquery' ), MS_VER, true );
 		wp_enqueue_script( 'makesite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

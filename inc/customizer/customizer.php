@@ -5,8 +5,6 @@
  * @package makesite
  */
 
-require_once 'class-manager.php';
-
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
@@ -89,7 +87,7 @@ function makesite_customize_preview_js() {
 }
 add_action( 'customize_preview_init', 'makesite_customize_preview_js' );
 
-new MS_Customizer_Manager( array(
+new Makesite_Customizer_Manager( array(
 	'title' => 'Customization key',
 	'fields' => array(
 		array(

@@ -1,0 +1,58 @@
+// Body
+$defaultFont : 14px;
+$bodyFontFamily : Verdana, Geneva, sans-serif;
+$bodyLineHeight : 1.6;
+$bodyBackground : #f5f5f5;
+$textColor : #555;
+
+// Accessibility
+// Screen reader text focus
+$SRTBackground : #eee;
+$SRTColor : #2870a7;
+
+// Tag: hr
+$hrColor : #999;
+
+// Heading
+$headingFontFamily : "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$headingFontWieght : 300;
+$headingColor : #555;
+
+// Links
+$linkFontFamily : inherit;
+$linkColor : #2996d4;
+$linkHoverColor : #2870a7;
+
+// Tag: small
+$smallColor : inherit;
+$headSmallOpacity : 0.7;
+
+$containerWidth : 1240px;
+$padding : 16px;
+
+// Padding for elements
+$blockPadding: .35em .7em;
+
+// Tag: code
+$codeColor: #2980b9;
+$codeBackground: #eee;
+$codeBorderRadius: .25em;
+
+// Tag: kbd
+$kbdColor: #ffe;
+$kbdBackground: #515252;
+$kbdBorderRadius: .2em;
+
+// Tag: pre
+$preColor: #16a085;
+$preBackground: #eed;
+$preBorderRadius: .2em;
+
+// Tag: mark
+$markBackground: #b7ff1a;
+
+// Quotes
+$quoteBorderColor: rgba(0,0,0,0.43);
+
+// Tags: abbr, acronym
+$abbrBorderColor : #777;

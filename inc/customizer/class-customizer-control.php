@@ -92,12 +92,15 @@ class Makesite_Customizer_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		if ( empty( $this->choices ) && 'alpha-color' != $this->type ) { return; }
-
-		if ( !empty( $this->label ) ) { ?>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php
+		if ( empty( $this->choices ) && ! in_array( $this->type, array( 'alpha-color', 'heading', ) ) ) {
+			return;
 		}
+
+		if ( 'heading' == $this->type ) {
+			echo '<br><hr>';
+		}
+
+		?><span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span><?php
 
 		if ( !empty( $this->description ) ) {
 			?>

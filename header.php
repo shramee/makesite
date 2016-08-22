@@ -38,8 +38,8 @@
 	 */
 	ms_do_action(
 		'header',
-		'<header id="masthead" class="site-header" role="banner"><div class="col-full">',
-		'</div><!-- .col-full --></header><!-- #masthead -->'
+		'<header id="masthead" class="site-header" role="banner"><div class="container">',
+		'</div><!-- .container --></header><!-- #masthead -->'
 	);
 
 	/**

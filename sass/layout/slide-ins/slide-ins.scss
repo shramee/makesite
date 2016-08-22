@@ -56,7 +56,8 @@ a.slide-in-toggle {
 	content: '\f054';
 }
 
-.toggled .slide-in-toggle {
+.toggled .slide-in-toggle,
+.toggled .slide-in-toggle:hover {
 	color: #fff;
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.25), -1px 1px 2px rgba(0,0,0,0.25), -1px -1px 2px rgba(0,0,0,0.25), 1px -1px 2px rgba(0,0,0,0.25);
 }
@@ -79,7 +80,7 @@ a.slide-in-toggle {
 	opacity: 1;
 }
 
-.slide-in .col-full {
+.slide-in .container {
 	max-height: 100%;
 	margin: 0;
 	padding: 0 0 2.5em;

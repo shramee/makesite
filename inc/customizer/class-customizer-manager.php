@@ -13,7 +13,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		/** @var array Customizer controls classes */
 		protected $controls_classes;
 
-		/** @var string Customizer control class fallback */
+		/** @var string Customizer control class f lback */
 		protected $default_control_class = 'WP_Customize_Control';
 
 		/** @var string Section id */
@@ -21,6 +21,9 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 
 		/** @var string Section title */
 		protected $title = 'Untitled';
+
+		/** @var int Priority for panel/section */
+		protected $priority = 1;
 
 		/** @var array Section fields */
 		protected $fields = array();
@@ -79,9 +82,10 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		}
 
 		/**
+		 * Initiates registering customizer elements
 		 * @param WP_Customize_Manager $manager
 		 */
-		public function init( WP_Customize_Manager $manager ) {
+		public function init( $manager ) {
 			if ( empty( $this->id ) ) {
 				$this->id = ms_make_id( $this->title );
 			}
@@ -93,11 +97,11 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		}
 
 		/**
-		 *
+		 * Returns classes needed to render the controls
 		 */
 		protected function controls_classes() {
-			if ( ! class_exists( 'MS_Customize_Control' ) ) {
-				include_once 'class-customize-controls.php';
+			if ( ! class_exists( 'Makesite_Customizer_Control' ) ) {
+				include_once 'class-customizer-control.php';
 			}
 			$this->controls_classes = wp_parse_args( $this->controls_classes, array(
 				'color'             => 'WP_Customize_Color_Control',
@@ -120,11 +124,10 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		 * @action customize_register
 		 * @since 0.7
 		 */
-		public function customizer_register( WP_Customize_Manager $manager ) {
+		public function customizer_register( $manager ) {
 			if ( file_exists( $this->include ) ) {
 				include_once $this->include;
 			}
-			require_once 'class-customize-controls.php';
 			//Set customize manager
 			$this->man = $manager;
 			//Register customizer elements
@@ -153,7 +156,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				 */
 				$panel_args = apply_filters( 'ms_customizer_' . $this->id . '_panel_args', array(
 					'title'    => $this->title,
-					'priority' => 1,
+					'priority' => $this->priority,
 				) );
 				//Adding the panel
 				$this->man->add_panel( "$this->token-$this->id", $panel_args );
@@ -187,10 +190,22 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				$this->man->add_section( "$this->token-$this->id", $section_args );
 			}
 		}
-		function controls_scripts() {
-			wp_enqueue_script( 'wpd-alpha-color-picker-js', get_template_directory_uri() . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
-			wp_enqueue_style( 'wpd-customizer-controls-css', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.css' );
-			wp_enqueue_script( 'wpd-customizer-controls-js', get_template_directory_uri() . '/inc/customizer/assets/customizer-controls.js', array( 'jquery' ) );
+
+		/**
+		 * Enqueues customizer scripts and styles
+		 */
+		public function controls_scripts() {
+			// Alpha color picker
+			wp_enqueue_script( 'ms-color-picker', MS_URL . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+
+			//Google fonts
+			wp_enqueue_style( 'makesite-google-fonts-css', MS_URL . 'inc/customizer/assets/google-fonts.css', array(), MS_VER );
+			wp_enqueue_script( 'makesite-google-fonts-js', MS_URL . 'inc/customizer/assets/google-fonts.js', array( 'jquery' ), MS_VER, 'in_footer' );
+
+			// Controls JS
+			wp_enqueue_style( 'makesite-customizer-controls-css', MS_URL . 'inc/customizer/assets/customizer-controls.css', array(), MS_VER );
+			wp_enqueue_script( 'makesite-customizer-controls-js', MS_URL . 'inc/customizer/assets/customizer-controls.js', array( 'ms-color-picker', 'makesite-google-fonts-js' ), MS_VER, 'in_footer' );
+
 		}
 
 		/**

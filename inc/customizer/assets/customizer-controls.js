@@ -1,9 +1,7 @@
 /**
  * Created by shramee on 19/10/15.
  */
-jQuery( function ( $ ) {
-	var api = wp.customize;
-
+( function ( $, api ) {
 	api.ms_multi_checkbox = api.Control.extend( {
 		ready : function () {
 			var $control = this.container.find('.wpd-custom-control'),
@@ -26,7 +24,7 @@ jQuery( function ( $ ) {
 			$b.click( function ( e ) {
 				e.preventDefault();
 				var $$ = $( this );
-				console.log( $$.hasClass( 'button-primary' ) );
+
 				if ( $$.hasClass( 'button-primary' ) ) {
 					$$.siblings( 'input' )
 						.val( '' )
@@ -74,4 +72,56 @@ jQuery( function ( $ ) {
 	});
 
 	api.controlConstructor['alpha-color'] = api.ms_alpha_color_control;
-} );
+
+	/* CSS complex controls */
+	api.msSaveVals = function ( e ) {
+		var $p = e.data.p,
+			save_vals = $p.find( 'input, select, textarea' ).not( '.val-store, [type="button"]' ).map(
+				function () {
+					var $t = $( this ),
+						chkbx = $t.is(':checkbox');
+					if (  $t.is(':radio') ) {
+						if ( $t.is(':checked') ) {
+							return this.value;
+						}
+					} else if ( ! chkbx || ( chkbx && $t.is(':checked') ) ) {
+						return this.value;
+					} else {
+						return '';
+					}
+				}
+			).get().join( '|' );
+		$p.find( 'input.val-store' ).val( save_vals ).change();
+	};
+
+	api.msFields = api.Control.extend( {
+		ready : function () {
+			var $p = this.container;
+			$p.find( '.ms-color' ).msColorPicker( {
+				change : function ( e, ui ) {
+					//$( this ).val( ui.color.toString() );
+					setTimeout( function () {
+						api.msSaveVals( { data : { p : $p } } );
+					}, 250 );
+				},
+				clear : function ( e, ui ) {
+					//$( this ).val( ui.color.toString() );
+					setTimeout( function () {
+						api.msSaveVals( { data : { p : $p } } );
+					}, 250 );
+				}
+			} );
+			$p.find( '.ms-google-fonts' ).msGoogleFonts();
+			var $inputs = $p.find( 'input, select, textarea' ).not( '.val-store, [type="button"], .wp-color-picker' );
+			$inputs.change( { p : $p }, api.msSaveVals );
+		}
+	} );
+	api.controlConstructor['slider'] = api.msFields;
+	api.controlConstructor['shadow'] = api.msFields;
+	api.controlConstructor['border'] = api.msFields;
+	api.controlConstructor['all-border'] = api.msFields;
+	api.controlConstructor['font'] = api.msFields;
+	api.controlConstructor['text_shadow'] = api.msFields;
+	api.controlConstructor['spacing'] = api.msFields;
+
+} ) ( jQuery, wp.customize );

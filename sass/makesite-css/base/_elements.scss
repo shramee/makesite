@@ -1,0 +1,180 @@
+html,
+body {
+  font-family: $bodyFontFamily;
+  font-size: $defaultFont;
+  color: $textColor;
+  line-height: $bodyLineHeight;
+  background: $bodyBackground; /* Fallback for when there is no custom background color defined. */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  font-family: $linkFontFamily;
+  color: $linkColor;
+  &:not([class*="btn"]) {
+    &:hover {
+      color: $linkHoverColor;
+      text-decoration: underline;
+    }
+    &:focus {
+      outline: thin dotted;
+    }
+    &:hover,
+    &:active {
+      outline: 0;
+    }
+  }
+}
+
+blockquote, q {
+  quotes: "" "";
+
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+hr {
+  background-color: $hrColor;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0.5em;
+  list-style-position: inside;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+img {
+  height: auto; /* Make sure images are scaled correctly. */
+  max-width: 100%; /* Adhere to container width. */
+}
+
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+  border-spacing: 0;
+}
+
+tr, td, th {
+  color: inherit;
+  border-color: inherit;
+}
+
+.striped tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+th, td {
+  padding: 0.5em 0.7em;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+th {
+  border-bottom-width: 2px;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+dfn, cite, em, i {
+  font-style: italic;
+}
+
+blockquote {
+  margin: 0 1.5em;
+}
+
+address {
+  margin: 0 0 1.5em;
+}
+
+small {
+  color: $smallColor;
+  font-size: 80%
+}
+
+code, .code {
+  padding: $blockPadding;
+  color: $codeColor;
+  background: $codeBackground;
+  border-radius: $codeBorderRadius;
+}
+
+pre, .pre {
+  padding: $blockPadding;
+  color: $preColor;
+  background: $preBackground;
+  border-radius: $preBorderRadius;
+}
+
+kbd, .kbd {
+  padding: $blockPadding;
+  color: $kbdColor;
+  background: $kbdBackground;
+  border-radius: $kbdBorderRadius;
+}
+
+mark, ins {
+  background: $markBackground;
+}
+
+blockquote,
+.blockquote {
+  padding: $blockPadding;
+  border-left: .25rem solid #999;
+  border-left: .25rem solid $quoteBorderColor;
+
+  &.text-right {
+    padding: .25rem 0.7rem;
+    border-left-width: 0;
+    border-right-width: .25rem;
+  }
+
+  footer {
+    opacity: 0.7;
+  }
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted $abbrBorderColor;
+  cursor: help;
+}
+
+big {
+  font-size: 125%;
+}

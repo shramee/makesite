@@ -1,17 +1,18 @@
 .site {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .site-content {
-	width: 1000px;
-	display: flex;
-	flex-direction: row;
-	margin-top: $gutter;
+  max-width: 1000px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  margin-top: $gutter;
 }
 
 .content-area {
-	flex: 1 1 auto;
-	min-width: 300px; // Fixing content
+  flex: 1 1 auto;
+  min-width: 300px; // Fixing content
 }

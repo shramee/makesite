@@ -4,7 +4,7 @@
  * Author: WPDevelopment
  * Author URI: http://wpdevelopment.me
  * Description: Great theme framework for building kick-ass web apps
- * Version: 0.7.0
+ * Version: 0.0.7
  * License: GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: makesite
@@ -49,23 +49,8 @@ TABLE OF CONTENTS:
 @import "abstract/variables";
 @import "abstract/mixins";
 
-/* # Normalize */
-@import "vendor/normalize";
-
-/* # Accessibility */
-@import "base/accessibility";
-
-/* # Elements */
-@import "base/elements";
-
-/* # Grid */
-@import "base/grid";
-
-/* # Helper Classes */
-@import "base/helper";
-
-/* # Typography */
-@import "base/typography";
+/* # Makesite CSS framework */
+@import "makesite-css/makesite";
 
 // Site styles
 @import "layout/site";

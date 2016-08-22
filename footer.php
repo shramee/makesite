@@ -28,8 +28,8 @@
 		 */
 		ms_do_action(
 			'footer',
-			'<footer id="colophon" class="site-footer" role="contentinfo"><div class="col-full">',
-			'</div><!-- .col-full --></footer><!-- #colophon -->'
+			'<footer id="colophon" class="site-footer" role="contentinfo"><div class="container">',
+			'</div><!-- .container --></footer><!-- #colophon -->'
 		);
 		?>
 	</div><!-- #page -->

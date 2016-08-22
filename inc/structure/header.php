@@ -82,8 +82,8 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 		 * Make the navigation span full width
 		 */
 		if ( apply_filters( 'makesite_hd_full_width_navigation', true ) ) {
-			$fw_ct       = '<div class="col-full">';
-			$fw_ct_close = '</div><!-- .col-full -->';
+			$fw_ct       = '<div class="container">';
+			$fw_ct_close = '</div><!-- .container -->';
 		}
 
 		echo "$fw_ct_close<nav id='site-navigation' class='main-navigation' role='navigation'>";
@@ -111,7 +111,13 @@ if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_desktop_nav() {
-		wp_nav_menu( array( 'theme_location' => 'primary-desktop', 'menu_id' => 'desktop-menu' ) );
+		wp_nav_menu(
+			array(
+				'theme_location' => 'primary-desktop',
+				'menu_id' => 'desktop-menu',
+				'menu_class' => 'nav-horizontal'
+			)
+		);
 	}
 endif;
 

@@ -1,0 +1,143 @@
+@import "../vars/box";
+/* Helpers - Box - Alignment */
+.alignleft, .left {
+  float: left;
+  margin-right: auto;
+}
+.alignright, .right {
+  float: right;
+  margin-left: auto;
+}
+.aligncenter, .center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Helpers - Box - Shadow */
+.shadow {
+  box-shadow: 1px 1px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow2 {
+  box-shadow: 2px 2px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow3 {
+  box-shadow: 3px 3px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow4 {
+  box-shadow: 4px 4px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow5 {
+  box-shadow: 5px 5px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow-down {
+  box-shadow: 0 2px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow-up {
+  box-shadow: 0 -2px $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow-left {
+  box-shadow: 2px 0 $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+.shadow-right {
+  box-shadow: -2px 0 $boxShadowBlur $boxShadowSpread $boxShadowColor;
+}
+
+.shadow-in {
+  box-shadow: 0 0 $boxInsetShadowBlur $boxInsetShadowSpread $boxInsetShadowColor inset;
+}
+
+.shadow-in-down {
+  box-shadow: 0 1px $boxInsetShadowBlur $boxInsetShadowSpread $boxInsetShadowColor inset;
+}
+
+.shadow-in-up {
+  box-shadow: 0 -1px $boxInsetShadowBlur $boxInsetShadowSpread $boxInsetShadowColor inset;
+}
+
+.shadow-in-left {
+  box-shadow: 1px 0 $boxInsetShadowBlur $boxInsetShadowSpread $boxInsetShadowColor inset;
+}
+
+.shadow-in-right {
+  box-shadow: -1px 0 $boxInsetShadowBlur $boxInsetShadowSpread $boxInsetShadowColor inset;
+}
+
+/* Helpers - Box - Effects */
+.outset,
+.outset2x {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.34);
+  border-right-color: rgba(0,0,0,0.34);
+  border-bottom-color: rgba(0,0,0,0.34);
+  box-shadow: 0 0 7px rgba(0,0,0,0.25);
+  padding: 16px;
+}
+
+.inset,
+.inset2x {
+  background: rgba(0,0,0,0.025);
+  border: 1px solid rgba(0,0,0,0.34);
+  border-right-color: rgba(255,255,255,0.34);
+  border-bottom-color: rgba(255,255,255,0.34);
+  box-shadow: 0 0 7px rgba(0,0,0,0.25) inset;
+  padding: 16px;
+}
+
+.outset2x,
+.inset2x {
+  border-width: 2px;
+}
+
+/* Helpers - Box - Padding */
+.pad0 {
+  padding: 0
+}
+.pad {
+  padding: ($boxPad * 0.7) $boxPad
+}
+.pad2x {
+  padding: (2*($boxPad * 0.7)) (2*$boxPad)
+}
+.pad3x {
+  padding: (3*($boxPad * 0.7)) (3*$boxPad)
+}
+.pad4x {
+  padding: (4*($boxPad * 0.7)) (4*$boxPad)
+}
+.pad5x {
+  padding: (5*($boxPad * 0.7)) (5*$boxPad)
+}
+
+/* Helpers - Box - Height */
+
+.hi {
+  height: $boxHi;
+  overflow: auto;
+}
+.hi2x {
+  height: (2*$boxHi);
+  overflow: auto;
+}
+.hi3x {
+  height: (3*$boxHi);
+  overflow: auto;
+}
+.hi4x {
+  height: (4*$boxHi);
+  overflow: auto;
+}
+.hi5x {
+  height: (5*$boxHi);
+  overflow: auto;
+}
+.hi-fu {
+  height: 700px; //For old browsers
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Helpers - Box - Border */
+@import "border";
+
+// Refer to color helpers for lovely background and border colors :)

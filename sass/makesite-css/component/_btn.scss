@@ -1,0 +1,45 @@
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.btn,
+.btn2x,
+.btn3x,
+.btn4x,
+.btn5x {
+  border: $btnBorder;
+  background: $btnBackground;
+  color: $btnColor;
+  border-radius: $btnBorderRadius;
+  opacity: 0.79;
+}
+
+.btn {
+  font-size: 0.8em;
+}
+
+.btn2x {
+  font-size: 1.6em;
+}
+
+.btn3x {
+  font-size: 2.5em;
+}
+
+.btn4x {
+  font-size: 3.2em;
+}
+
+.btn5x {
+  font-size: 4em;
+}
+
+.btn:hover,
+.btn2x:hover,
+.btn3x:hover,
+.btn4x:hover,
+.btn5x:hover {
+  opacity: 1;
+  text-decoration: none;
+}

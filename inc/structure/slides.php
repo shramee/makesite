@@ -30,8 +30,8 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 			 */
 			ms_do_action(
 				'left_slide_in',
-				'<aside id="left-slide-in" class="slide-in left-slide-in" role="complementary"><div class="col-full">',
-				'</div><!-- .col-full --></aside><!-- #left-slide-in -->',
+				'<aside id="left-slide-in" class="slide-in left-slide-in" role="complementary"><div class="container">',
+				'</div><!-- .container --></aside><!-- #left-slide-in -->',
 				array( $left_slide_in )
 			);
 
@@ -56,8 +56,8 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 			 */
 			ms_do_action(
 				'right_slide_in',
-				'<aside id="right-slide-in" class="slide-in right-slide-in" role="complementary"><div class="col-full">',
-				'</div><!-- .col-full --></aside><!-- #right-slide-in -->',
+				'<aside id="right-slide-in" class="slide-in right-slide-in" role="complementary"><div class="container">',
+				'</div><!-- .container --></aside><!-- #right-slide-in -->',
 				array( $right_slide_in )
 			);
 
