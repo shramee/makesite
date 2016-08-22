@@ -56,8 +56,6 @@ class Makesite_Design {
 
 		$ms_fields = self::fields();
 
-		print_awesome_r( $ms_fields );
-
 		$idCount = [];
 		$count = [ 0, 0, 0, ];
 
@@ -89,12 +87,19 @@ class Makesite_Design {
 	}
 
 	static function fields() {
-		$fields = file_get_contents( MS_SITE . '/wp-admin/admin-ajax.php?action=design_fields&site=' . site_url() );
+		$response = wp_remote_get( MS_SITE . '/wp-admin/admin-ajax.php?action=design_fields&site=' . site_url() );
+		if( is_array($response) ) {
+			$fields = $response['body']; // use the content
+		}
 		if ( $fields ) {
-			return json_decode( $fields, 'assoc_array' );
+			$fields = json_decode( $fields, 'assoc_array' );
+
+			return apply_filters( 'makesite_design_fields', $fields );
 		}
 		return array();
 	}
+
+
 
 	private function setup() {
 		add_action( 'ms_design_enqueue', array( $this, 'enqueue', ) );

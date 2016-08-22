@@ -47,7 +47,7 @@ if ( ! function_exists( 'makesite_ft_info' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_ft_info() {
-		$designer_link = '<a href="http://wpdevelopment.me" title="WordPress Themes & Plugins by WPDevelopment">WPDevelopment</a>';
+		$designer_link = '<a href="' . MS_SITE  . '" title="WordPress Themes & Plugins by WPDevelopment">WPDevelopment</a>';
 		$designer = '<br>' . sprintf( esc_html__( '%1$s designed by %2$s.', 'makesite' ), 'makesite', $designer_link );
 		$designer = apply_filters( 'makesite_ft_designer', $designer );
 		?>

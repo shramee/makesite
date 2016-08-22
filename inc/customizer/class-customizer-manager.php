@@ -100,9 +100,6 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		 * Returns classes needed to render the controls
 		 */
 		protected function controls_classes() {
-			if ( ! class_exists( 'Makesite_Customizer_Control' ) ) {
-				include_once 'class-customizer-control.php';
-			}
 			$this->controls_classes = wp_parse_args( $this->controls_classes, array(
 				'color'             => 'WP_Customize_Color_Control',
 				'image'             => 'WP_Customize_Image_Control',
