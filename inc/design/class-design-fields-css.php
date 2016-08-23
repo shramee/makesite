@@ -8,6 +8,12 @@
 
 class Makesite_Design_Fields_Css {
 
+	/** @var array Google fonts to load */
+	protected $gf_load  = array();
+
+	/** @var array Google fonts */
+	protected $gf_data;
+
 	protected function field_css( $setting, $format, $f ) {
 		$style = '';
 		if ( is_array( $format )  ) {
@@ -35,19 +41,33 @@ class Makesite_Design_Fields_Css {
 	 * @return string $css
 	 */
 	protected function font_field_css( $vals ) {
-		if ( ! empty( $vals[4] ) ) {
-			$this->gf_load[ $vals[4] ][] = $vals[2] ? $vals[2] : '400';
-			//Set property value
-			if ( strpos( $vals[4], ' Light' ) ) {
-				$vals[4] = "'$vals[4]', '" . str_replace( ' Light', '', $vals[4] ) . "'";
-				$vals[2] = '300';
-			}
-			$value = "font:{$vals[0]} {$vals[1]} {$vals[2]} {$vals[3]}px {$vals[4]}; color: {$vals[5]}";
-			//Return styles data
-			return $value;
+		$value = '';
+		$vals[1] = empty( $vals[1] ) ? 400 : $vals[1];
+		$this->gf_load[ $vals[5] ][] = $vals[1];
+		//Set property value
+		if ( strpos( $vals[5], ' Light' ) ) {
+			$vals[5] = "'$vals[5]', '" . str_replace( ' Light', '', $vals[5] ) . "'";
+			$vals[1] -= 200;
 		}
 
-		return '';
+		$value .= empty( $vals[0] ) ? '' : "font-style:$vals[0];";
+		$value .= "font-weight:$vals[1];";
+		$value .= empty( $vals[2] ) ? '' : "text-decoration:$vals[2];";
+		if ( empty( $vals[3] ) ) {
+			$value .= 'font-variant:normal;';
+		} else {
+			if ( 'normal' == $vals[3] ) {
+				$value .= 'text-transform:uppercase;';
+			} else {
+				$value .= "font-variant:small-caps;";
+			}
+		}
+		$value .= empty( $vals[4] ) ? '' : "font-size:$vals[4]px;";
+		$value .= empty( $vals[5] ) ? '' : "font-family:$vals[5];";
+		$value .= empty( $vals[6] ) ? '' : "color:$vals[6];";
+
+		//Return styles data
+		return $value;
 	}
 
 	/**
@@ -136,7 +156,7 @@ class Makesite_Design_Fields_Css {
 					$value .= $val . ' ';
 				}
 			}
-			return $value;
+			return "text-shadow:$value;";
 		}
 
 		return '';

@@ -115,7 +115,7 @@ if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 			array(
 				'theme_location' => 'primary-desktop',
 				'menu_id' => 'desktop-menu',
-				'menu_class' => 'nav-horizontal'
+				'menu_class' => 'nav-horizontal menu-primary'
 			)
 		);
 	}

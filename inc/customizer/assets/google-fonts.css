@@ -1,23 +1,31 @@
+.ms-google-fonts-wrap {
+	padding-top: 40px;
+	position: relative;
+	background: #f5ffff;
+	border: 1px solid #dfdfdf;
+}
 .ms-google-fonts {
 	display: none;
-	height: 280px;
+	height: 0;
 	overflow: auto;
-	background: #fff;
-	border: 1px solid #dfdfdf;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
+	transition: height .5s .5s;
+}
+
+.ms-google-fonts-wrap:hover .ms-google-fonts {
+	height: 280px;
+	transition: height .5s;
 }
 
 .ms-google-fonts span {
 	display: block;
+	height: 30px;
 	padding: 5px 10px;
 	text-indent: -9999px;
 	background-repeat: no-repeat;
-	height: 30px;
 	background-image: url(all-fonts.png);
 	margin-bottom: 0;
 	cursor: pointer;
+	border-bottom: none;
 }
 
 .ms-google-fonts span:hover {
@@ -25,7 +33,12 @@
 }
 
 .ms-google-fonts span.active {
-	background-color: #dff0fc;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left:0;
+	right: 0;
+	border-bottom: 1px solid #dfdfdf;
 }
 
 .ms-gf-abel { background-position: 0 -40px; }

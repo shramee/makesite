@@ -104,6 +104,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				'color'             => 'WP_Customize_Color_Control',
 				'image'             => 'WP_Customize_Image_Control',
 				'upload'            => 'WP_Customize_Upload_Control',
+				'heading'           => 'Makesite_Customizer_Control',
 				'alpha-color'       => 'Makesite_Customizer_Control',
 				'on-off'            => 'Makesite_Customizer_Control',
 				'checkboxes'        => 'Makesite_Customizer_Control',
@@ -157,6 +158,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				) );
 				//Adding the panel
 				$this->man->add_panel( "$this->token-$this->id", $panel_args );
+				$section_priority = 2;
 				//Adding each section in the panel
 				foreach ( $sections as $section_id => $section_title ) {
 					/**
@@ -168,6 +170,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 					$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
 						'title' => $section_title,
 						'panel' => "$this->token-$this->id",
+						'priority' => $section_priority++,
 					), $section_id );
 					//Adding section
 					$this->man->add_section( $section_id, $section_args );

@@ -9,17 +9,12 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 	/** @var Makesite_Design Instance */
 	protected static $instance;
 
+	/**
+	 * Get design fields data
+	 * @return array Design fields data
+	 */
 	public static function fields() {
-		$response = wp_remote_get( MS_SITE . '/wp-json/makesite/v1/design_fields?site=' . site_url() );
-		if( is_array($response) ) {
-			$fields = $response['body']; // use the content
-		}
-
-		if ( ! empty( $fields ) ) {
-			$fields = json_decode( $fields, 'assoc_array' );
-			return apply_filters( 'makesite_design_fields', $fields );
-		}
-		return array();
+		return ( include 'design-fields.php' );
 	}
 
 	/** @var Makesite_Design_Customizer_Register Instance */
@@ -33,12 +28,6 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 
 	/** @var string Google fonts url */
 	protected $gf_url = '';
-
-	/** @var array Google fonts to load */
-	protected $gf_load  = array();
-
-	/** @var array Google fonts */
-	protected $gf_data;
 
 	/**
 	 * Magic __get to access protected properties
@@ -178,10 +167,12 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 		$load_fonts = array();
 
 		foreach( $this->gf_load as $font => $weight )
-			$load_fonts[] = $font . ':' . implode( ':', $weight );
+			if ( ! empty( $font ) ) {
+				$load_fonts[] = $font . ':' . implode( ',', $weight );
+			}
 
 		if ( $load_fonts )
-			return '//fonts.googleapis.com/css?family=' . join( '%7C', $load_fonts );
+			return '//fonts.googleapis.com/css?family=' . join( '|', $load_fonts );
 
 		return '';
 	}
@@ -191,12 +182,13 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 	 * @since 1.0.0
 	 */
 	public function process_google_fonts() {
-		foreach( $this->gf_load as $font => $weight ) {
+		foreach( $this->gf_load as $font => &$weight ) {
 			if ( 'Open Sans Condensed' == $font ) {
 				$this->gf_load[ $font ] = array( '300' );
 			} elseif ( strpos( $font, ' Light' ) ) {
 				$this->gf_load[ str_replace( ' Light', '', $font ) ][] = '300';
 			}
+			$this->gf_load[ $font ] = array_unique( $this->gf_load[ $font ] );
 		}
 		$this->gf_load = apply_filters( 'makesite_google_fonts', $this->gf_load );
 	}

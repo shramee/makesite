@@ -95,7 +95,9 @@ class Makesite_Customizer_Control extends WP_Customize_Control {
 			return;
 		}
 		$this->render_head();
-		if ( 'heading' != $this->type ) {
+		if ( 'heading' == $this->type ) {
+			echo '<hr>';
+		} else {
 			$this->render_inputs();
 		}
 	}

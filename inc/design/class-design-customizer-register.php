@@ -12,7 +12,6 @@ class Makesite_Design_Customizer_Register {
 	/** @var array  */
 	protected $panel_args = array(
 		'controls_classes' => array(
-			'heading'     => 'Makesite_Customizer_CSS_Control',
 			'slider'      => 'Makesite_Customizer_CSS_Control',
 			'shadow'      => 'Makesite_Customizer_CSS_Control',
 			'border'      => 'Makesite_Customizer_CSS_Control',

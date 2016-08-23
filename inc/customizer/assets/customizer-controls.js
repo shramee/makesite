@@ -55,9 +55,9 @@
 			var control = this,
 				picker = this.container.find('.color-picker-hex');
 
-			picker.val( control.setting() ).wpdColorPicker({
+			picker.val( control.setting() ).msColorPicker({
 				change: function() {
-					control.setting.set( picker.wpdColorPicker('color') );
+					control.setting.set( picker.msColorPicker('color') );
 				},
 				clear: function() {
 					control.setting.set( false );
@@ -66,7 +66,7 @@
 
 			control.setting.bind( function( value ) {
 				picker.val( value );
-				picker.wpdColorPicker( 'color', value );
+				picker.msColorPicker( 'color', value );
 			});
 		}
 	});
