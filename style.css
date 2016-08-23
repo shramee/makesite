@@ -964,7 +964,7 @@ a.slide-in-toggle { color: #000; position: absolute; top: 0; left: 100%; text-sh
 @media only screen and (min-width: 700px) and (min-width: 1060px) { /* ## Header */
   /* ## Menus */ }
 @media only screen and (min-width: 700px) { /* # Layouts */
-  .site { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+  .site { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; margin: auto; }
   .site-content { max-width: 1000px; padding: 0; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; margin-top: 1.6rem; }
   .content-area { -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; min-width: 300px; } }
 /* # Infinite scroll */

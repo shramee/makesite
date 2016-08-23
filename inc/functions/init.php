@@ -47,7 +47,7 @@ class Makesite {
 			$classes[] = 'archive';
 		}
 
-		$classes[] = get_option( 'ms_design_body_classes' );
+		$classes = array_merge( $classes, Makesite_Design::instance()->body_class );
 		$this->sidebar_classes( $classes );
 
 		return $classes;
@@ -184,19 +184,19 @@ class Makesite {
 	 * @action wp_enqueue_scripts
 	 */
 	public function scripts() {
+		$design = Makesite_Design::instance();
 
 		// Theme styles
 		wp_enqueue_style( 'makesite-style', get_template_directory_uri() . '/style.css' );
 		// Theme design customizations
-		wp_add_inline_style( 'makesite-style', get_option( 'ms_design_css' ) );
+		wp_add_inline_style( 'makesite-style', $design->css );
 
 		// Font Awesome
 		wp_enqueue_style( 'makesite-fa', get_template_directory_uri() . '/css/font-awesome.css' );
 
 		// Google fonts
-		$google_fonts = get_option( 'ms_design_google_fonts' );
-		if ( $google_fonts )
-			wp_enqueue_style( 'makesite-google-fonts', $google_fonts );
+		if ( $design->gf_url )
+			wp_enqueue_style( 'makesite-google-fonts', $design->gf_url );
 
 		wp_enqueue_script( 'makesite-public-js', get_template_directory_uri() . '/js/ms-public.js', array( 'jquery' ), MS_VER, true );
 		wp_enqueue_script( 'makesite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );

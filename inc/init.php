@@ -52,5 +52,3 @@ require_once dirname( __FILE__ ) . '/structure/init.php';
 
 /** Theme design */
 Makesite_Design::instance();
-
-Makesite_Design_Css::instance();

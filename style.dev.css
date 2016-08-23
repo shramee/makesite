@@ -2903,6 +2903,7 @@ a.slide-in-toggle {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin: auto;
   }
 
   .site-content {

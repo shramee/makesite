@@ -43,14 +43,10 @@ class Makesite_Design_Customizer_Register {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		global $wp_customize;
-		if ( $wp_customize instanceof WP_Customize_Manager ) {
-			return;
-		}
 
 		$custo_args = $this->panel_args;
 
-		$ms_fields = self::fields();
+		$ms_fields = Makesite_Design::fields();
 
 		foreach ( $ms_fields as $title => $fields ) {
 

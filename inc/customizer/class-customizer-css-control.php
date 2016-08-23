@@ -359,7 +359,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 
 			<div class="ms-subcontrol">
 				<span class="ms-subcontrol-title">Spread:</span>
-				<?php $this->output_input( $this->multi_values[ $key_index ++ ], 'range', "class='ms-val ms-val-spread'" ); ?>
+				<?php $this->output_input( $this->multi_values[ $key_index ++ ], 'range', "max='25' class='ms-val ms-val-spread'" ); ?>
 			</div><!-- .ms-subcontrol -->
 
 		<?php } ?>
