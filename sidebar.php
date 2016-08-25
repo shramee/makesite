@@ -21,11 +21,16 @@ if ( $makesite->show_sb1 ) {
 	 */
 	ms_do_action(
 		'sidebar',
-		'<aside id="sidebars" class="widget-area widget-area-1" role="complementary">',
-		'</aside><!-- #sidebars -->',
+		array(
+			'tag'   => 'aside',
+			'attrs' => array(
+				'id'    => "secondary",
+				'class' => "widget-area widget-area-1",
+				'role'  => "complementary",
+			),
+		),
 		array( $makesite->sb1 )
 	);
-
 }
 
 // If show sidebar is falsy, return
@@ -39,9 +44,14 @@ if ( $makesite->show_sb2 ) {
 	 */
 	ms_do_action(
 		'sidebar2',
-		'<aside id="tertiary" class="widget-area widget-area-2" role="complementary">',
-		'</aside><!-- #tertiary -->',
+		array(
+			'tag'   => 'aside',
+			'attrs' => array(
+				'id'    => "tertiary",
+				'class' => "widget-area widget-area-2",
+				'role'  => "complementary",
+			),
+		),
 		array( $makesite->sb2 )
 	);
-
 }

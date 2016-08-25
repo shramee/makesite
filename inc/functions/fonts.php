@@ -432,3 +432,5 @@ $google_fonts = array(
 		'type'			=> 'sans-serif',
 	),
 );
+
+return $google_fonts;

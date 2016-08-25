@@ -1,6 +1,8 @@
 
 .nav-vertical,
-.nav-horizontal {
+.nav-vertical > ul,
+.nav-horizontal,
+.nav-horizontal > ul {
   padding: 0;
   margin: 0;
   a {
@@ -48,11 +50,13 @@
   }
 }
 
-.nav-vertical {
+.nav-vertical,
+.nav-vertical > ul {
   max-width: 500px;
 }
 
-.nav-horizontal {
+.nav-horizontal,
+.nav-horizontal > ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -83,7 +87,8 @@
     }
   }
   &.submenu-arrows li li ul,
-  &.nav-vertical > li > ul {
+  &.nav-vertical > li > ul,
+  &.nav-vertical > ul > li > ul {
     border-left-style: solid;
     border-left-width: 3px;
     &:before {
@@ -92,7 +97,8 @@
       border-right-color: inherit;
     }
   }
-  &.nav-horizontal {
+  &.nav-horizontal,
+  &.nav-horizontal > ul {
     > li > ul {
       border-top-style: solid;
       border-top-width: 3px;
@@ -110,11 +116,13 @@
     border: 16px solid transparent;
   }
   &.submenu-arrows li li ul:before,
-  &.nav-vertical > li > ul:before {
+  &.nav-vertical > li > ul:before,
+  &.nav-vertical > ul > li > ul:before {
     left: -35px;
     top: 0.43em;
   }
-  &.nav-horizontal > li > ul:before {
+  &.nav-horizontal > li > ul:before,
+  &.nav-horizontal > ul > li > ul:before {
     top: -35px;
     left: 0.43em;
   }
@@ -125,11 +133,13 @@
     border: 7px solid transparent;
   }
   &.submenu-arrows li li ul:before,
-  &.nav-vertical > li > ul:before {
+  &.nav-vertical > li > ul:before,
+  &.nav-vertical > ul > li > ul:before {
     left: -17px;
     top: 1em;
   }
-  &.nav-horizontal > li > ul:before {
+  &.nav-horizontal > li > ul:before,
+  &.nav-horizontal > ul > li > ul:before {
     top: -17px;
     left: 1em;
   }

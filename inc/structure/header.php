@@ -90,14 +90,26 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 
 		ms_do_action(
 			'header_desktop_nav',
-			"<div class='desktop-menu s-hide'>$fw_ct",
-			"$fw_ct_close</div><!-- .desktop-menu -->"
+			array(
+				'tag'    => 'div',
+				'attrs'  => array(
+					'class' => "desktop-menu s-hide",
+				),
+				'before' => $fw_ct,
+				'after'  => $fw_ct_close,
+			)
 		);
 
 		ms_do_action(
 			'header_mobile_nav',
-			"$fw_ct<div class='mobile-menu m-hide l-hide'>",
-			"</div><!-- .desktop-menu -->$fw_ct_close"
+			array(
+				'tag'    => 'div',
+				'attrs'  => array(
+					'class' => "mobile-menu m-hide l-hide",
+				),
+				'before' => $fw_ct,
+				'after'  => $fw_ct_close,
+			)
 		);
 
 		echo "</nav><!-- #site-navigation -->$fw_ct";

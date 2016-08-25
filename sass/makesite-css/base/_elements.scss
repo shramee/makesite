@@ -18,18 +18,15 @@ a {
   text-decoration: none;
   font-family: $linkFontFamily;
   color: $linkColor;
-  &:not([class*="btn"]) {
-    &:hover {
-      color: $linkHoverColor;
-      text-decoration: underline;
-    }
-    &:focus {
-      outline: thin dotted;
-    }
-    &:hover,
-    &:active {
-      outline: 0;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus {
+    outline: thin dotted;
+  }
+  &:hover,
+  &:active {
+    outline: 0;
   }
 }
 

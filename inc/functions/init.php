@@ -191,9 +191,6 @@ class Makesite {
 		// Theme design customizations
 		wp_add_inline_style( 'makesite-style', $design->css );
 
-		// Font Awesome
-		wp_enqueue_style( 'makesite-fa', get_template_directory_uri() . '/css/font-awesome.css' );
-
 		// Google fonts
 		if ( $design->gf_url )
 			wp_enqueue_style( 'makesite-google-fonts', $design->gf_url );

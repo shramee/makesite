@@ -189,7 +189,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 * @since 1.0.0
 	 */
 	protected function render_font_content() {
-		$vals = 7 == count( $this->multi_values ) ? $this->multi_values : array( '', '', '', '', '', '', '', );
+		$vals = 8 == count( $this->multi_values ) ? $this->multi_values : array( '', '', '', '', '', '', '', 0, );
 		$fonts  = array( '' => 'Default', );
 		$fonts  = array_merge( $fonts, ms_get_fonts() );
 		$hidden = "style='display:none;'";
@@ -199,11 +199,13 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 		//Font display
 		$this->render_font_display_content( $vals, $hidden );
 		//Font size
-		$this->render_input_subcontrol( 'Font size:', $vals[4], 'number', "min='0' max='160' step='1' class='ms-val ms-val-right'" );
+		$this->render_input_subcontrol( 'Font size:', $vals[4], 'number', "min='5' max='160' step='1' class='ms-val ms-val-right'" );
 		//Font family
 		$this->render_select_subcontrol( 'Font family:', $fonts, $vals[5], "class='ms-val ms-google-fonts ms-font-family'" );
 		//Color
 		$this->render_input_subcontrol( 'Color:', $vals[6], 'text', "class='ms-val ms-val-color ms-color'" );
+		//Letter spacing
+		$this->render_input_subcontrol( 'Letter spacing (em):', $vals[7], 'range', "min='0' max='1.6' step='0.05' class='ms-val ms-val-lspacing'" );
 
 		$this->output_main_control();
 	}

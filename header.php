@@ -38,8 +38,16 @@
 	 */
 	ms_do_action(
 		'header',
-		'<header id="masthead" class="site-header" role="banner"><div class="container">',
-		'</div><!-- .container --></header><!-- #masthead -->'
+		array(
+			'tag'    => 'header',
+			'attrs'  => array(
+				'id'    => "masthead",
+				'class' => "site-header",
+				'role'  => "banner",
+			),
+			'before' => '<div class="container">',
+			'after'  => '</div><!--.container-->',
+		)
 	);
 
 	/**

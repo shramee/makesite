@@ -23,11 +23,8 @@
 /*
 TABLE OF CONTENTS:
 	# Normalize
-	# Accessibility
-	# Elements
-	# Grid
-	# Forms
-	# Typography
+	# Font awesome
+	# Makesite CSS framework
 	# Header
 	# Content
 	    ## Posts and pages
@@ -48,6 +45,9 @@ TABLE OF CONTENTS:
 // Variables and Mixins
 @import "abstract/variables";
 @import "abstract/mixins";
+
+/* # Font awesome */
+@import "font-awesome/font-awesome";
 
 /* # Makesite CSS framework */
 @import "makesite-css/makesite";

@@ -184,11 +184,12 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 	public function process_google_fonts() {
 		foreach( $this->gf_load as $font => &$weight ) {
 			if ( 'Open Sans Condensed' == $font ) {
-				$this->gf_load[ $font ] = array( '300' );
+				$this->gf_load[ $font ] = array( '300' => 1 );
 			} elseif ( strpos( $font, ' Light' ) ) {
-				$this->gf_load[ str_replace( ' Light', '', $font ) ][] = '300';
+				$this->gf_load[ str_replace( ' Light', '', $font ) ]['300'] = 1;
 			}
-			$this->gf_load[ $font ] = array_unique( $this->gf_load[ $font ] );
+
+			$this->gf_load[ $font ] = array_keys( $this->gf_load[ $font ] );
 		}
 		$this->gf_load = apply_filters( 'makesite_google_fonts', $this->gf_load );
 	}
@@ -198,3 +199,5 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 		update_option( 'makesite_setting', $makesite );
 	}
 }
+
+new WP_Widget_Search();

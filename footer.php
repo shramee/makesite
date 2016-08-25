@@ -28,8 +28,16 @@
 		 */
 		ms_do_action(
 			'footer',
-			'<footer id="colophon" class="site-footer" role="contentinfo"><div class="container">',
-			'</div><!-- .container --></footer><!-- #colophon -->'
+			array(
+				'tag'    => 'footer',
+				'attrs'  => array(
+					'id'    => "colophon",
+					'class' => "site-footer",
+					'role'  => "contentinfo",
+				),
+				'before' => '<div class="container">',
+				'after'  => '</div>',
+			)
 		);
 		?>
 	</div><!-- #page -->

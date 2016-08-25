@@ -1,11 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shramee
- * Date: 22/08/16
- * Time: 2:19 PM
- */
 
+/**
+ * Class Makesite_Design_Fields_Css
+ * Generates css from design fields
+ */
 class Makesite_Design_Fields_Css {
 
 	/** @var array Google fonts to load */
@@ -42,32 +40,46 @@ class Makesite_Design_Fields_Css {
 	 */
 	protected function font_field_css( $vals ) {
 		$value = '';
-		$vals[1] = empty( $vals[1] ) ? 400 : $vals[1];
-		$this->gf_load[ $vals[5] ][] = $vals[1];
+		$vals[1] = ms_array_value( $vals, 1, 400 );
+
+		$this->gf_load[ $vals[5] ][ $vals[1] ] = 1;
+
 		//Set property value
 		if ( strpos( $vals[5], ' Light' ) ) {
 			$vals[5] = "'$vals[5]', '" . str_replace( ' Light', '', $vals[5] ) . "'";
 			$vals[1] -= 200;
 		}
 
-		$value .= empty( $vals[0] ) ? '' : "font-style:$vals[0];";
 		$value .= "font-weight:$vals[1];";
-		$value .= empty( $vals[2] ) ? '' : "text-decoration:$vals[2];";
-		if ( empty( $vals[3] ) ) {
-			$value .= 'font-variant:normal;';
-		} else {
-			if ( 'normal' == $vals[3] ) {
-				$value .= 'text-transform:uppercase;';
-			} else {
-				$value .= "font-variant:small-caps;";
-			}
-		}
-		$value .= empty( $vals[4] ) ? '' : "font-size:$vals[4]px;";
-		$value .= empty( $vals[5] ) ? '' : "font-family:$vals[5];";
-		$value .= empty( $vals[6] ) ? '' : "color:$vals[6];";
+
+		$value .= ms_sprintf_array_val( 'font-style:%s;', $vals, 0 );
+		$value .= ms_sprintf_array_val( 'text-decoration:%s;', $vals, 2 );
+
+		$value .= $this->font_field_style_css( ms_array_value( $vals, 3 ) );
+		$value .= ms_sprintf_array_val( 'font-size:%spx;', $vals, 4 );
+		$value .= ms_sprintf_array_val( 'font-family:%s;', $vals, 5 );
+		$value .= ms_sprintf_array_val( 'color:%s;', $vals, 6 );
+		$value .= ms_sprintf_array_val( 'letter-spacing:%sem;', $vals, 7 );
 
 		//Return styles data
 		return $value;
+	}
+
+	/**
+	 * Return font style setting for font field
+	 * @param $style string Font style setting
+	 * @return string Font style css
+	 */
+	protected function font_field_style_css( $style ) {
+		if ( ! empty( $vals[3] ) ) {
+			if ( 'normal' == $vals[3] ) {
+				return 'text-transform:uppercase;';
+			} else {
+				return "font-variant:small-caps;";
+			}
+		}
+
+		return 'font-variant:normal;';
 	}
 
 	/**

@@ -40,9 +40,15 @@ function makesite_content() {
 			 */
 			ms_do_action(
 				$hook,
-				'<main id="main" class="site-main" role="main">',
-				'</main><!-- #main -->'
-				);
+				array(
+					'tag'   => 'main',
+					'attrs' => array(
+						'id'    => "main",
+						'class' => "site-main",
+						'role'  => "main",
+					),
+				)
+			);
 			?>
 	</div><!-- #primary -->
 	<?php
@@ -53,18 +59,37 @@ function makesite_content() {
  * @param string $tag Tag for hook
  * @param string $before HTML before hook
  * @param string $after HTML after hook
- * @param array $args Arguments for functions hooked
+ * @param array $func_args Arguments for functions hooked
  * @since 1.0.0
  */
-function ms_do_action( $tag, $before = '', $after = '', $args = array() ) {
+function ms_do_action( $tag, $args, $func_args = array() ) {
 	$tag  = "makesite_$tag";
 
 	if ( ! has_filter( $tag ) ) {
 		return;
 	}
 
+	$args = wp_parse_args(
+		$args,
+		array(
+			'attrs' => array(),
+			'before' => '',
+			'after' => '',
+		)
+	);
+
+	$before = $args['before'];
+	$after = $args['after'];
+
+	if ( ! empty( $args['tag'] ) ) {
+		$attrs = apply_filters( "{$tag}_attrs", $args['attrs'] );
+
+		$before = "<$args[tag] " . ms_stringify_prop_val( $attrs ) . ">$before";
+		$after = "$after</$args[tag]>";
+	}
+
 	echo apply_filters( "{$tag}_before", $before );
-	do_action_ref_array( $tag, $args );
+	do_action_ref_array( $tag, $func_args );
 	echo apply_filters( "{$tag}_after", $after );
 }
 

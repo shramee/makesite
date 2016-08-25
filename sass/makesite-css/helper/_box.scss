@@ -137,6 +137,18 @@
   overflow: auto;
 }
 
+.right-absolute,
+.right-abs {
+  @include position( 0, 0, 0, auto );
+  margin: auto;
+}
+
+.left-absolute,
+.left-abs {
+  @include position( 0, auto, 0, 0 );
+  margin: auto;
+}
+
 /* Helpers - Box - Border */
 @import "border";
 

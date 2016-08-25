@@ -26,7 +26,7 @@ function ms_minify( $html ) {
  */
 function ms_get_fonts( $data = null ) {
 
-	require 'fonts.php';
+	$google_fonts = include 'fonts.php';
 
 	if ( $data ) {
 		return apply_filters( 'ms_fonts', $google_fonts );
@@ -204,7 +204,7 @@ if ( ! function_exists( 'ms_make_id' ) ) {
 	}
 }
 
-if ( ! function_exists( 'ms_minify_html' ) ) {
+if ( ! function_exists( 'ms_minify' ) ) {
 
 	/**
 	 * Minify HTML
@@ -212,7 +212,7 @@ if ( ! function_exists( 'ms_minify_html' ) ) {
 	 * @return string Minified HTML
 	 * @since 1.0.0
 	 */
-	function ms_minify_html( $html ) {
+	function ms_minify( $html ) {
 		$html = str_replace( array( "\n", "\t", ), '', $html );
 		return $html;
 	}
@@ -229,22 +229,36 @@ if ( ! function_exists( 'ms_array_val' ) ) {
 	 *
 	 * @return mixed Value or Formatted value if string
 	 */
-	function ms_array_value( $array, $key, $default = null, $format = '%s' ) {
-		if ( isset( $array[ $key ] ) ) {
-			$value = $array[ $key ];
-		} else {
-			$value = $default;
+	function ms_array_value( $array, $key, $default = null ) {
+
+		if ( ! empty( $array[ $key ] ) ) {
+			return $array[ $key ];
 		}
 
+		return $default;
+	}
+}
+
+if ( ! function_exists( 'ms_sprintf_array_val' ) ) {
+	/**
+	 * Returns value from from array if key exists
+	 *
+	 * @param array $array The text to convert into id
+	 * @param string $key Key of the value
+	 * @param mixed $default returned if key doesn't exist
+	 * @param string $format To return value in a format
+	 *
+	 * @return mixed Value or Formatted value if string
+	 */
+	function ms_sprintf_array_val( $format = '%s', $array, $key, $default = null ) {
+
+		$value = ! empty( $array[ $key ] ) ? $array[ $key ] : $default;
+
 		if ( ! empty( $value ) ) {
-			if ( is_string( $value ) ) {
-				return sprintf( $format, $value );
-			} else {
-				return $value;
-			}
-		} else {
-			return null;
+			return sprintf( $format, $value );
 		}
+
+		return null;
 	}
 }
 
