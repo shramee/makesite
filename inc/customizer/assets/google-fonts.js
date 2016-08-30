@@ -22,13 +22,13 @@
 		} );
 		$t.after( $( '<div />' ).addClass( 'ms-google-fonts-wrap' ).append( $div ) );
 		$t.hide();
+		$div = $t.siblings( '.ms-google-fonts-wrap' ).children( '.ms-google-fonts' );
 		$div.show();
 		$div.find( 'span' ).click( function () {
-			var $$ = $( this ),
-				$select = $$.parents( '.ms-google-fonts-wrap' ).siblings( 'select' );
+			var $$ = $( this );
 			$$.siblings().removeClass( 'active' );
 			$$.addClass( 'active' );
-			$select.val( $$.data( 'font' ) ).change();
+			$t.val( $$.data( 'font' ) ).change();
 		} );
 
 		var $active_field = $t.siblings( 'div.ms-google-fonts' ).find( '.active' );

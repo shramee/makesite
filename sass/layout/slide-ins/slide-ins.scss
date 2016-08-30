@@ -43,16 +43,16 @@ a.slide-in-toggle {
 	right: 100%;
 }
 
-.slide-in-toggle .fa {
+.slide-in-toggle [class*='icon-'] {
 	font-size: 25px;
 	padding: 0.25em;
 }
 
-.toggled .slide-in-toggle .fa:before {
+.toggled .slide-in-toggle [class*='icon-']:before {
 	content: '\f053';
 }
 
-.right-slide-in.toggled .slide-in-toggle .fa:before {
+.right-slide-in.toggled .slide-in-toggle [class*='icon-']:before {
 	content: '\f054';
 }
 

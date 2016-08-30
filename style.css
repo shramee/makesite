@@ -1849,14 +1849,14 @@ Buttons */
 
 /*!
 Helpers - Structure */
-.nav-vertical, .nav-vertical > ul, .nav-horizontal, .nav-horizontal > ul { padding: 0; margin: 0; }
-.nav-vertical a, .nav-vertical > ul a, .nav-horizontal a, .nav-horizontal > ul a { display: block; position: relative; padding: 1em; color: inherit; }
-.nav-vertical a:hover, .nav-vertical > ul a:hover, .nav-horizontal a:hover, .nav-horizontal > ul a:hover { opacity: 0.7; }
-.nav-vertical li, .nav-vertical > ul li, .nav-horizontal li, .nav-horizontal > ul li { background: inherit; display: block; position: relative; border-color: inherit; }
-.nav-vertical li ul:before, .nav-vertical > ul li ul:before, .nav-horizontal li ul:before, .nav-horizontal > ul li ul:before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; top: 0; background: rgba(0, 0, 0, 0.034); }
-.nav-vertical li ul, .nav-vertical > ul li ul, .nav-horizontal li ul, .nav-horizontal > ul li ul { border-color: inherit; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; padding: 0; margin: 0; background: inherit; position: absolute; width: 160px; display: none; left: 100%; top: 0; z-index: 99999; }
-.nav-vertical li ul li, .nav-vertical > ul li ul li, .nav-horizontal li ul li, .nav-horizontal > ul li ul li { width: 100%; }
-.nav-vertical li:hover > ul, .nav-vertical > ul li:hover > ul, .nav-horizontal li:hover > ul, .nav-horizontal > ul li:hover > ul { display: block; }
+.nav-vertical, .nav-horizontal { padding: 0; margin: 0; }
+.nav-vertical a, .nav-horizontal a { display: block; position: relative; padding: 1em; color: inherit; }
+.nav-vertical a:hover, .nav-horizontal a:hover { opacity: 0.7; }
+.nav-vertical li, .nav-horizontal li { background: inherit; display: block; position: relative; border-color: inherit; }
+.nav-vertical li ul:before, .nav-horizontal li ul:before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; top: 0; background: rgba(0, 0, 0, 0.034); }
+.nav-vertical li ul, .nav-horizontal li ul { border-color: inherit; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; padding: 0; margin: 0; background: inherit; position: absolute; width: 160px; display: none; left: 100%; top: 0; z-index: 99999; }
+.nav-vertical li ul li, .nav-horizontal li ul li { width: 100%; }
+.nav-vertical li:hover > ul, .nav-horizontal li:hover > ul { display: block; }
 
 .nav-vertical, .nav-vertical > ul { max-width: 500px; }
 
@@ -2222,13 +2222,13 @@ Helpers - Text */
 .main-navigation ul ul { background: #333; min-width: 200px; }
 .main-navigation ul a { padding: 16px; display: block; text-decoration: none; color: #fff; }
 
-.mobile-menu { padding: 1em; }
+.mobile-menu { padding: 1px; }
 .mobile-menu ul ul { margin: 0 16px; }
 .mobile-menu .menu { overflow: hidden; max-height: 0; -webkit-transition: max-height 0.5s; transition: max-height 0.5s; padding: 0; }
-.mobile-menu.menu-toggled .menu { max-height: 1600px; }
-.mobile-menu.menu-toggled .menu-toggle .fa:before { content: "\f00d"; }
-.mobile-menu .menu-toggle { text-align: center; display: block; padding: 0; font-size: 18px; }
-.mobile-menu .menu-toggle .fa { margin: 0 0.5em 1px 0; font-size: 25px; vertical-align: middle; }
+.mobile-menu.menu-toggled .menu, .mobile-menu .menu-toggled .menu { max-height: 1600px; }
+.mobile-menu.menu-toggled .menu-toggle span[class*='icon-']:before, .mobile-menu .menu-toggled .menu-toggle span[class*='icon-']:before { content: "\f00d"; }
+.mobile-menu .menu-toggle { text-align: center; display: block; width: 115px; padding: 0.7em; margin: 1em auto; font-size: 18px; color: #fff; text-decoration: none; background: rgba(0, 0, 0, 0.5); cursor: pointer; }
+.mobile-menu .menu-toggle span[class*='icon-'] { margin: 0 0.5em 1px 0; font-size: 25px; vertical-align: middle; }
 
 /* # Content */
 /* ## Posts and pages */
@@ -2293,11 +2293,11 @@ a.slide-in-toggle { color: #000; position: absolute; top: 0; left: 100%; text-sh
 
 .right-slide-in .slide-in-toggle { left: auto; right: 100%; }
 
-.slide-in-toggle .fa { font-size: 25px; padding: 0.25em; }
+.slide-in-toggle [class*='icon-'] { font-size: 25px; padding: 0.25em; }
 
-.toggled .slide-in-toggle .fa:before { content: '\f053'; }
+.toggled .slide-in-toggle [class*='icon-']:before { content: '\f053'; }
 
-.right-slide-in.toggled .slide-in-toggle .fa:before { content: '\f054'; }
+.right-slide-in.toggled .slide-in-toggle [class*='icon-']:before { content: '\f054'; }
 
 .toggled .slide-in-toggle, .toggled .slide-in-toggle:hover { color: #fff; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25), -1px 1px 2px rgba(0, 0, 0, 0.25), -1px -1px 2px rgba(0, 0, 0, 0.25), 1px -1px 2px rgba(0, 0, 0, 0.25); }
 

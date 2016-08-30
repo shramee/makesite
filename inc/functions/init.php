@@ -24,6 +24,23 @@ class Makesite {
 		add_action( 'after_setup_theme',	array( $this, 'jetpack_setup' ) );
 		add_action( 'body_class',			array( $this, 'body_class' ) );
 		add_action( 'admin_bar',			array( $this, 'body_class' ) );
+		// Add class to top level menu items
+		add_filter( 'wp_nav_menu_objects', array( $this, 'menu_objects' ) );
+	}
+
+	/**
+	 * Adds `menu-item-top-level` class to top level menu items
+	 * @param array $item
+	 * @return array
+	 */
+	public function menu_objects( $items ) {
+		foreach ( $items as &$item ) {
+			if ( ! $item->menu_item_parent ) {
+				$item->classes[] = 'menu-item-top-level';
+			}
+		}
+
+		return $items;
 	}
 
 	public function __get( $name ) {
@@ -120,12 +137,6 @@ class Makesite {
 			'quote',
 			'link',
 		) );
-
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'makesite_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
 	}
 
 	/**

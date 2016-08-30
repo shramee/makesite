@@ -184,7 +184,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				 */
 				$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
 					'title' => $this->title,
-					'priority' => 1,
+					'priority' => $this->priority,
 				) );
 				//Adding single section
 				$this->man->add_section( "$this->token-$this->id", $section_args );

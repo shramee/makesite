@@ -8,7 +8,7 @@
 	$( '.menu-toggle' ).click( function () {
 		$( this ).parent().toggleClass( 'menu-toggled' );
 	} );
-	$( "body" ).delegate( "[data-toggle-class]", "click", function() {
+	$( "body" ).delegate( "[data-toggle-class], [data-toggle-target]", "click", function() {
 		var $t = $( this ),
 			target = $t.data( 'toggle-target' ), // Selector for target
 			$target = target ? $t.closest( target ) : $t.parent(), // jQuery object for target

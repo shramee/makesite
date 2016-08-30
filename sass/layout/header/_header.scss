@@ -52,7 +52,7 @@
 }
 
 .mobile-menu {
-	padding: 1em;
+	padding: 1px;
 	ul ul {
 		margin: 0 $padding;
 	}
@@ -63,20 +63,28 @@
 		padding: 0;
 	}
 
-	&.menu-toggled .menu {
-		max-height: 1600px;
-	}
+	&.menu-toggled, .menu-toggled {
+		.menu {
+			max-height: 1600px;
+		}
 
-	&.menu-toggled .menu-toggle .fa:before {
-		content: "\f00d";
+		.menu-toggle span[class*='icon-']:before {
+			content: "\f00d";
+		}
 	}
 
 	.menu-toggle {
 		text-align: center;
 		display: block;
-		padding:0;
+		width: 115px;
+		padding: 0.7em;
+		margin: 1em auto;
 		font-size: 18px;
-		.fa {
+		color: #fff;
+		text-decoration: none;
+		background: rgba(0,0,0,0.5);
+		cursor: pointer;
+		span[class*='icon-'] {
 			margin: 0 0.5em 1px 0;
 			font-size: 25px;
 			vertical-align: middle;

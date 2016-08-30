@@ -24,6 +24,13 @@ if ( ! empty( $panels ) ) {
 				$label = $f['label'];
 				$id_format = $id . '-%s';
 
+				//Padding
+				$id   = sprintf( $id_format, 'padding' );
+				$f['type'] = 'spacing';
+				$f['label'] = $label . ' Padding';
+				$all_custo_fields[ $id ] = $f;
+				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'padding:%s' );
+
 				//BG Color
 				$id   = sprintf( $id_format, 'bg-color' );
 				$f['type'] = 'alpha-color';
@@ -37,12 +44,6 @@ if ( ! empty( $panels ) ) {
 				$f['label'] = $label . ' Border';
 				$all_custo_fields[ $id ] = $f;
 
-				//Shadow
-				$id   = sprintf( $id_format, 'shadow' );
-				$f['type'] = 'shadow';
-				$f['label'] = $label . ' Shadow';
-				$all_custo_fields[ $id ] = $f;
-
 				//Rounded corners
 				$id   = sprintf( $id_format, 'border-radius' );
 				$f['type'] = 'slider';
@@ -50,12 +51,11 @@ if ( ! empty( $panels ) ) {
 				$all_custo_fields[ $id ] = $f;
 				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'border-radius:%spx' );
 
-				//Padding
-				$id   = sprintf( $id_format, 'padding' );
-				$f['type'] = 'spacing';
-				$f['label'] = $label . ' Padding';
+				//Shadow
+				$id   = sprintf( $id_format, 'shadow' );
+				$f['type'] = 'shadow';
+				$f['label'] = $label . ' Shadow';
 				$all_custo_fields[ $id ] = $f;
-				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'padding:%s' );
 
 				$fields = array_merge(
 					array_slice( $fields, 0, $i ),

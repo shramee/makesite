@@ -88,28 +88,24 @@ if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 
 		echo "$fw_ct_close<nav id='site-navigation' class='main-navigation' role='navigation'>";
 
-		ms_do_action(
-			'header_desktop_nav',
-			array(
-				'tag'    => 'div',
-				'attrs'  => array(
-					'class' => "desktop-menu s-hide",
-				),
-				'before' => $fw_ct,
-				'after'  => $fw_ct_close,
-			)
+		$menu_action_args = array(
+			'tag'    => 'div',
+			'attrs'  => array(
+				'class' => "desktop-menu s-hide",
+			),
+			'before' => $fw_ct,
+			'after'  => $fw_ct_close,
 		);
 
 		ms_do_action(
+			'header_desktop_nav',
+			$menu_action_args
+		);
+
+		$menu_action_args['attrs']['class'] = "mobile-menu m-hide l-hide";
+		ms_do_action(
 			'header_mobile_nav',
-			array(
-				'tag'    => 'div',
-				'attrs'  => array(
-					'class' => "mobile-menu m-hide l-hide",
-				),
-				'before' => $fw_ct,
-				'after'  => $fw_ct_close,
-			)
+			$menu_action_args
 		);
 
 		echo "</nav><!-- #site-navigation -->$fw_ct";
@@ -118,41 +114,57 @@ endif;
 
 if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 	/**
-	 * Outputs skip links in header
+	 * Outputs desktop nav
 	 * @action makesite_header
 	 * @since 1.0.0
 	 */
 	function makesite_desktop_nav() {
-		wp_nav_menu(
-			array(
-				'theme_location' => 'primary-desktop',
-				'menu_id' => 'desktop-menu',
-				'menu_class' => 'nav-horizontal menu-primary'
-			)
-		);
+		if ( apply_filters( 'ms_show_desktop_menu', has_nav_menu( 'primary-desktop' ) ) ) {
+			wp_nav_menu(
+				array(
+					'theme_location' => 'primary-desktop',
+					'menu_id'        => 'desktop-menu',
+					'menu_class'     => 'nav-horizontal menu-primary',
+				)
+			);
+		} elseif ( current_user_can( 'edit_theme_options' ) ) {
+			$url = admin_url( 'nav-menus.php' );
+			echo "<a href='$url'>Click here to assign desktop menu.</a>";
+		}
 	}
 endif;
 
 if ( ! function_exists( 'makesite_mobile_nav_btn' ) ) :
 	/**
-	 * Outputs skip links in header
+	 * Outputs mobile nav toggle button
 	 * @action makesite_header
 	 * @since 1.0.0
 	 */
 	function makesite_mobile_nav_btn() {
-		?>
-		<a class="menu-toggle"><i class="fa fa-bars"></i>Menu</a>
-		<?php
+		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile' ) ) ) {
+			?>
+			<a class="menu-toggle"><i class="icon-bars"></i> Menu</a>
+			<?php
+		} elseif ( current_user_can( 'edit_theme_options' ) ) {
+			$url = admin_url( 'nav-menus.php' );
+			echo "<a href='$url'>Assign mobile menu.</a>";
+		}
 	}
 endif;
 
 if ( ! function_exists( 'makesite_mobile_nav' ) ) :
 	/**
-	 * Outputs skip links in header
+	 * Outputs mobile nav
 	 * @action makesite_header
 	 * @since 1.0.0
 	 */
 	function makesite_mobile_nav() {
-		wp_nav_menu( array( 'theme_location' => 'primary-mobile', 'menu_id' => 'mobile-menu' ) );
+		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile' ) ) ) {
+			wp_nav_menu( array(
+				'theme_location' => 'primary-mobile',
+				'menu_id'        => 'mobile-menu',
+				'menu_class'     => 'menu-mobile',
+			) );
+		}
 	}
 endif;

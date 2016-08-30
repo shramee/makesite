@@ -3,6 +3,9 @@
 /**
  * Class Makesite_Design
  * Initiate Makesite design
+ * @property-read string $css Site CSS
+ * @property-read string $body_class Classes to apply to body
+ * @property-read string $gf_url URL to call in google fonts used
  */
 class Makesite_Design extends Makesite_Design_Fields_Css {
 
@@ -19,15 +22,6 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 
 	/** @var Makesite_Design_Customizer_Register Instance */
 	protected $admin;
-
-	/** @var array Styles data */
-	protected $css = '';
-
-	/** @var array Classes to add to body */
-	protected $body_class = array();
-
-	/** @var string Google fonts url */
-	protected $gf_url = '';
 
 	/**
 	 * Magic __get to access protected properties
@@ -128,32 +122,10 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 		$ms_fields = Makesite_Design::fields();
 		foreach ( $ms_fields as $settings_group => $options ) {
 			foreach( $options as $id => $f ) {
-
-				$f['default'] = empty( $f['default'] ) ? '' : $f['default'];
-
-				//Getting setting in a var
-				$setting = get_option( $id, $f['default'] );
-
-				if ( $this->is_field_css( $setting, $f ) ) {
-					$styles .= $this->field_css(  $setting, $f['output'], $f );
-				}
+				$styles .= $this->process_setting( $id, $f );
 			}
 		}
 		$this->css = $styles;
-	}
-
-	protected function is_field_css( $setting, $f ) {
-
-		if ( empty( $setting ) )
-			return false;
-
-		if ( ! empty( $f['body_class'] ) )
-			$this->body_class[] = sprintf( $f['body_class'], $setting );
-
-		if ( empty( $f['output'] ) )
-			return false;
-
-		return true;
 	}
 
 	/**

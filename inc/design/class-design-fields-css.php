@@ -12,6 +12,61 @@ class Makesite_Design_Fields_Css {
 	/** @var array Google fonts */
 	protected $gf_data;
 
+	/** @var array Styles data */
+	protected $css = '';
+
+	/** @var array Classes to add to body */
+	protected $body_class = array();
+
+	/** @var array Font value formats */
+	protected $font_format = array(
+		0 => 'font-style:%s;',
+		1 => 'font-weight:%s;',
+		2 => 'text-decoration:%s;',
+		4 => 'font-size:%spx;',
+		5 => 'font-family:%s;',
+		6 => 'color:%s;',
+		7 => 'letter-spacing:%sem;',
+	);
+
+	/** @var string Google fonts url */
+	protected $gf_url = '';
+
+	/**
+	 * Generates CSS data from settings
+	 * @action wp
+	 * @uses Makesite_Design::$styles, Makesite_Design::$gf_load
+	 * @since 1.0.0
+	 */
+	protected function process_setting( $id, $f ) {
+		if ( empty( $f['default'] ) ) {
+			$f['default'] = '';
+		}
+
+		//Getting setting in a var
+		$setting = get_option( $id, $f['default'] );
+
+		if ( $this->is_field_css( $setting, $f ) ) {
+			return $this->field_css( $setting, $f['output'], $f );
+		}
+
+		return '';
+	}
+
+	protected function is_field_css( $setting, $f ) {
+
+		if ( empty( $setting ) )
+			return false;
+
+		if ( ! empty( $f['body_class'] ) )
+			$this->body_class[] = sprintf( $f['body_class'], $setting );
+
+		if ( empty( $f['output'] ) )
+			return false;
+
+		return true;
+	}
+
 	protected function field_css( $setting, $format, $f ) {
 		$style = '';
 		if ( is_array( $format )  ) {
@@ -50,16 +105,10 @@ class Makesite_Design_Fields_Css {
 			$vals[1] -= 200;
 		}
 
-		$value .= "font-weight:$vals[1];";
-
-		$value .= ms_sprintf_array_val( 'font-style:%s;', $vals, 0 );
-		$value .= ms_sprintf_array_val( 'text-decoration:%s;', $vals, 2 );
+		foreach ( $this->font_format as $k => $f )
+			$value .= ms_sprintf_array_val( $f, $vals, $k );
 
 		$value .= $this->font_field_style_css( ms_array_value( $vals, 3 ) );
-		$value .= ms_sprintf_array_val( 'font-size:%spx;', $vals, 4 );
-		$value .= ms_sprintf_array_val( 'font-family:%s;', $vals, 5 );
-		$value .= ms_sprintf_array_val( 'color:%s;', $vals, 6 );
-		$value .= ms_sprintf_array_val( 'letter-spacing:%sem;', $vals, 7 );
 
 		//Return styles data
 		return $value;

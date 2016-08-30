@@ -93,7 +93,7 @@ if ( ! function_exists( 'makesite_lsi_widgets' ) ) :
 			echo apply_filters(
 				'left_slide_in_toggle',
 				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in" href="javascript:0">' .
-				'<i class="fa fa-chevron-right"></i>' .
+				'<i class="icon-chevron-right"></i>' .
 				'<span class="screen-reader-text">Open left slide</span></a>'
 			);
 			?>
@@ -117,7 +117,7 @@ if ( ! function_exists( 'makesite_rsi_widgets' ) ) :
 			echo apply_filters(
 				'right_slide_in_toggle',
 				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in" href="javascript:0">' .
-				'<i class="fa fa-chevron-left"></i>' .
+				'<i class="icon-chevron-left"></i>' .
 				'<span class="screen-reader-text">Open right slide</span></a>'
 			);
 			?>
