@@ -53,5 +53,6 @@ require_once dirname( __FILE__ ) . '/structure/init.php';
 /** Theme design */
 Makesite_Design::instance();
 
-/** Build posts */
+/** Build posts *
 Makesite_Build::instance();
+// */
