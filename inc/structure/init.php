@@ -1,6 +1,6 @@
 <?php
 /**
- * @developer wpdevelopment.me <shramee@wpdvelopment.me>
+ * @developer shramee.me <me@shramee.me>
  */
 
 require_once dirname( __FILE__ ) . '/framework.php';

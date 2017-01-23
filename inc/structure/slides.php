@@ -1,6 +1,6 @@
 <?php
 /**
- * @developer wpdevelopment.me <shramee@wpdvelopment.me>
+ * @developer shramee.me <me@shramee.me>
  */
 if ( ! function_exists( 'makesite_slide_ins' ) ) :
 	/**

@@ -4,7 +4,7 @@
  * @action makesite_footer
  * @since 1.0.0
  *
- * @developer wpdevelopment.me <shramee@wpdvelopment.me>
+ * @developer shramee.me <me@shramee.me>
  *
  * @package makesite
  */
