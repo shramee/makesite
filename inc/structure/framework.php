@@ -63,33 +63,61 @@ function makesite_content() {
  * @since 1.0.0
  */
 function ms_do_action( $tag, $args, $func_args = array() ) {
-	$tag  = "makesite_$tag";
+	$tag = "makesite_$tag";
 
-	if ( ! has_filter( $tag ) ) {
+	ob_start();
+	// The action hook for content
+	do_action_ref_array( $tag, $func_args );
+
+	$contents = ob_get_clean();
+
+	if ( ! $contents ) {
 		return;
 	}
 
 	$args = wp_parse_args(
 		$args,
 		array(
-			'attrs' => array(),
+			'attrs'  => array(),
 			'before' => '',
-			'after' => '',
+			'after'  => '',
 		)
 	);
 
 	$before = $args['before'];
-	$after = $args['after'];
+	$after  = $args['after'];
 
 	if ( ! empty( $args['tag'] ) ) {
+		$args['attrs']['class'] = ! empty( $args['attrs']['class'] ) ? explode( ' ', $args['attrs']['class'] ) : $args['attrs']['class'];
+
+		/**
+		 * Dynamic hook to filter attributes of wrapping element
+		 * Dynamic part is the hook tag supplied
+		 *
+		 * @param array $attrs Attributes
+		 */
 		$attrs = apply_filters( "{$tag}_attrs", $args['attrs'] );
 
 		$before = "<$args[tag] " . ms_stringify_prop_val( $attrs ) . ">$before";
-		$after = "$after</$args[tag]>";
+		$after  = "$after</$args[tag]>";
 	}
 
+	/**
+	 * Dynamic hook to filter html for opening wrapping element(s)
+	 * Dynamic part is the hook tag supplied
+	 *
+	 * @param array $attrs Attributes
+	 */
 	echo apply_filters( "{$tag}_before", $before );
-	do_action_ref_array( $tag, $func_args );
+
+	echo $contents;
+
+	/**
+	 * Dynamic hook to filter html for closing wrapping element(s)
+	 * Dynamic part is the hook tag supplied
+	 *
+	 * @param array $attrs Attributes
+	 */
 	echo apply_filters( "{$tag}_after", $after );
 }
 

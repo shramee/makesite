@@ -29,7 +29,7 @@ spl_autoload_register(
 	function( $class ) {
 		$debug = "<pre>$class : ";
 
-		$class = strtolower( str_replace( array( 'Makesite_', '_', ), array( '', '-', ), $class ) );
+		$class = strtolower( str_replace( [ 'Makesite_', '_' ], [ '', '-' ], $class ) );
 		$path = explode( '-', $class );
 		$inc   = MS_DIR . "/inc/$path[0]/class-$class.php";
 
@@ -52,3 +52,6 @@ require_once dirname( __FILE__ ) . '/structure/init.php';
 
 /** Theme design */
 Makesite_Design::instance();
+
+/** Build posts */
+Makesite_Build::instance();

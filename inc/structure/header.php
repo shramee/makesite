@@ -68,6 +68,72 @@ if ( ! function_exists( 'makesite_hd_description' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'makesite_hd_top_nav' ) ) :
+	/**
+	 * Outputs navigation menu in header
+	 * @action makesite_header
+	 * @since 1.0.0
+	 */
+	function makesite_hd_top_nav() {
+		ms_do_action(
+			'header_top_nav',
+			array(
+				'tag'    => 'nav',
+				'attrs'  => array(
+					'id'    => 'top-navigation',
+					'class' => "top-menu s-hide",
+				),
+				'before' => '<div class="container">',
+				'after'  => '</div><!-- .container -->',
+			)
+		);
+	}
+endif;
+
+if ( ! function_exists( 'makesite_hd_right_nav' ) ) :
+	/**
+	 * Outputs navigation menu in header
+	 * @action makesite_header
+	 * @since 1.0.0
+	 */
+	function makesite_hd_right_nav() {
+		ms_do_action(
+			'header_right_nav',
+			array(
+				'tag'    => 'nav',
+				'attrs'  => array(
+					'id'    => 'right-header-navigation',
+					'class' => "right-header-menu s-hide",
+				),
+				'before' => '<div class="container">',
+				'after'  => '</div><!-- .container -->',
+			)
+		);
+	}
+endif;
+
+if ( ! function_exists( 'makesite_hd_left_nav' ) ) :
+	/**
+	 * Outputs navigation menu in header
+	 * @action makesite_header
+	 * @since 1.0.0
+	 */
+	function makesite_hd_left_nav() {
+		ms_do_action(
+			'header_left_nav',
+			array(
+				'tag'    => 'nav',
+				'attrs'  => array(
+					'id'    => 'left-header-navigation',
+					'class' => "left-header-menu s-hide",
+				),
+				'before' => '<div class="container">',
+				'after'  => '</div><!-- .container -->',
+			)
+		);
+	}
+endif;
+
 if ( ! function_exists( 'makesite_hd_navigation' ) ) :
 	/**
 	 * Outputs navigation menu in header
@@ -119,10 +185,10 @@ if ( ! function_exists( 'makesite_desktop_nav' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_desktop_nav() {
-		if ( apply_filters( 'ms_show_desktop_menu', has_nav_menu( 'primary-desktop' ) ) ) {
+		if ( apply_filters( 'ms_show_desktop_menu', has_nav_menu( 'primary-desktop-menu' ) ) ) {
 			wp_nav_menu(
 				array(
-					'theme_location' => 'primary-desktop',
+					'theme_location' => 'primary-desktop-menu',
 					'menu_id'        => 'desktop-menu',
 					'menu_class'     => 'nav-horizontal menu-primary',
 				)
@@ -141,7 +207,7 @@ if ( ! function_exists( 'makesite_mobile_nav_btn' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_mobile_nav_btn() {
-		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile' ) ) ) {
+		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile-menu' ) ) ) {
 			?>
 			<a class="menu-toggle"><i class="icon-bars"></i> Menu</a>
 			<?php
@@ -159,9 +225,9 @@ if ( ! function_exists( 'makesite_mobile_nav' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_mobile_nav() {
-		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile' ) ) ) {
+		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile-menu' ) ) ) {
 			wp_nav_menu( array(
-				'theme_location' => 'primary-mobile',
+				'theme_location' => 'primary-mobile-menu',
 				'menu_id'        => 'mobile-menu',
 				'menu_class'     => 'menu-mobile',
 			) );

@@ -31,11 +31,47 @@ module.exports = function(grunt) {
 					style : 'compact',
 					sourcemap: 'none'
 				},
-				sourcemap: 'none',
-				files: {
-					'style.css' : 'sass/style.scss'
-				}
+				files: [
+					{
+						expand: true,
+						src: ['sass/*.scss','**/sass/*.scss'],
+						ext: '.css',
+						rename: function( dest, src ) {
+							return src.replace( 'sass/', '' );
+						},
+					},
+				],
 			}
+		},
+
+		/** CoffeeScript decompiling */
+		coffee: {
+			coffee_to_js: {
+				options: {
+					bare: true
+				},
+				expand: true,
+				flatten: false,
+				src: ['**/*.coffee'],
+				ext: ".js",
+			}
+		},
+
+		/** Minify JS */
+		uglify : {
+			minify: {
+				files: [
+					{
+						expand: true,
+						src: ['**/src/*.js'],
+						ext: '.min.js',
+						extDot: 'first',
+						rename: function( dest, src ) {
+							return src.replace( 'src/', '' );
+						},
+					},
+				],
+			},
 		},
 
 		/** Watcher */
@@ -43,12 +79,18 @@ module.exports = function(grunt) {
 			css: {
 				files: '**/*.scss',
 				tasks: [ 'sass', 'autoprefixer' ]
+			},
+			js: {
+				files: '**/*.coffee',
+				tasks: [ 'coffee', 'uglify' ]
 			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-coffee');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.registerTask('default',['watch']);
 };

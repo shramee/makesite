@@ -32,9 +32,11 @@
 	 * Makesite render header
 	 * @hook action makesite_header
 	 * @hooked makesite_hd_skiplinks
+	 * @hooked makesite_hd_top_nav
+	 * @hooked makesite_hd_right_nav
+	 * @hooked makesite_hd_left_nav
 	 * @hooked makesite_hd_branding
 	 * @hooked makesite_hd_navigation
-	 * @hooked makesite_hd_close
 	 */
 	ms_do_action(
 		'header',
@@ -53,6 +55,5 @@
 	/**
 	 * Executes after header
 	 * @hook action makesite_after_header
-	 * @hooked makesite_hd_close
 	 */
 	do_action( 'makesite_after_header' );

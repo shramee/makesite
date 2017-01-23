@@ -16,6 +16,9 @@ ms_hook( 'right_slide_in', 'makesite_rsi_widgets', 25 );
 require_once dirname( __FILE__ ) . '/header.php';
 //Header hooks
 ms_hook( 'header', 'makesite_hd_skiplinks',  20 );
+ms_hook( 'header', 'makesite_hd_top_nav',  20 );
+ms_hook( 'header', 'makesite_hd_right_nav',  20 );
+ms_hook( 'header', 'makesite_hd_left_nav',  20 );
 ms_hook( 'header', 'makesite_hd_branding',   30 );
 ms_hook( 'header', 'makesite_hd_navigation', 40 );
 //Desktop and mobile navs

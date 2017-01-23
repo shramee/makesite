@@ -52,11 +52,11 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 	 * Magic constructor
 	 * @since 1.0.0
 	 */
-	public function __construct() {
+	protected function __construct() {
 		global $wp_customize;
 
 		if ( $wp_customize instanceof WP_Customize_Manager ) {
-			$this->admin = new Makesite_Design_Customizer_Register();
+			$this->admin = Makesite_Design_Customizer_Register::instance();
 		}
 
 		$this->gf_data = ms_get_fonts( 'data' );

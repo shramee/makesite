@@ -3560,12 +3560,25 @@ big {
   display: block;
 }
 
+.absolute-stretch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.absolute-center,
 .overlay {
   position: absolute;
-  top: -999em;
-  right: -999em;
-  bottom: -999em;
-  left: -999em;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  margin: auto;
+}
+
+.overlay {
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -3622,9 +3635,9 @@ big {
 .flashing:before {
   position: absolute;
   top: -3px;
-  left: -3px;
-  bottom: -3px;
   right: -3px;
+  bottom: -3px;
+  left: -3px;
   content: '';
   border-radius: inherit;
   opacity: 0;
@@ -4575,10 +4588,10 @@ Helpers - Structure */
 .nav-horizontal li ul:before {
   content: '';
   position: absolute;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  top: 0;
   background: rgba(0, 0, 0, 0.034);
 }
 .nav-vertical li ul,

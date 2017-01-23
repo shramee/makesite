@@ -1,0 +1,13 @@
+#build { display: none; }
+#build * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+#build .elements, #build .properties, #build h2 { font-size: 14px; font-weight: normal; transition: 0.5s all; padding: 0 7px; margin: 0; }
+#build h2 { text-transform: uppercase; color: rgba(0, 0, 0, 0.5); position: relative; text-align: center; padding: 7px; }
+#build .elements, #build .properties { position: fixed; background: #f5f5f5; top: 32px; bottom: 0; z-index: 9997; overflow: auto; }
+#build .elements { border-right: 1px solid #ccc; left: 0; width: 178px; }
+#build .properties { border-left: 1px solid #ccc; right: 0; width: 16px; }
+#build .properties h2 { bottom: auto; right: 0; transform: rotate(90deg); transform-origin: 0 17px; }
+#build .properties.hover { width: 200px; }
+#build .properties.hover h2 { transform: rotate(0deg); }
+
+@media screen and (min-width: 1420px) { #build .properties { width: 250px; }
+  #build .properties h2 { transform: rotate(0deg); } }

@@ -114,8 +114,13 @@ class Makesite {
 			apply_filters(
 				'makesite_nav_menus',
 				array(
-					'primary-desktop' => esc_html__( 'Primary Desktop', 'makesite' ),
-					'primary-mobile'  => esc_html__( 'Primary Mobile', 'makesite' ),
+					'top-menu' => esc_html__( 'Top Menu', 'makesite' ),
+					'primary-desktop-menu' => esc_html__( 'Primary Desktop', 'makesite' ),
+					'primary-mobile-menu'  => esc_html__( 'Primary Mobile', 'makesite' ),
+					'header-left-menu' => esc_html__( 'Header Left Desktop', 'makesite' ),
+					'header-right-menu' => esc_html__( 'Header Right Desktop', 'makesite' ),
+					'left-slide-in-menu' => esc_html__( 'Left Slide-in Menu', 'makesite' ),
+					'right-slide-in-menu' => esc_html__( 'Right Slide-in Menu', 'makesite' ),
 				)
 			)
 		);

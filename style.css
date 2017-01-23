@@ -1599,7 +1599,11 @@ big { font-size: 125%; }
 
 .container:before { content: ''; display: block; }
 
-.overlay { position: absolute; top: -999em; right: -999em; bottom: -999em; left: -999em; background: rgba(0, 0, 0, 0.5); }
+.absolute-stretch { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+
+.absolute-center, .overlay { position: absolute; top: -9999px; right: -9999px; bottom: -9999px; left: -9999px; margin: auto; }
+
+.overlay { background: rgba(0, 0, 0, 0.5); }
 
 .container:after, .clear:after, .clear-fix:after { content: ""; display: block; clear: both; }
 
@@ -1609,7 +1613,7 @@ big { font-size: 125%; }
 .lovely-scroll-down.x2:after { width: 32px; height: 32px; margin: -25px 0 0 -16px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; }
 
 .flashing { position: relative; }
-.flashing:before { position: absolute; top: -3px; left: -3px; bottom: -3px; right: -3px; content: ''; border-radius: inherit; opacity: 0; -webkit-animation: flashing 3s infinite; animation: flashing 3s infinite; box-sizing: border-box; }
+.flashing:before { position: absolute; top: -3px; right: -3px; bottom: -3px; left: -3px; content: ''; border-radius: inherit; opacity: 0; -webkit-animation: flashing 3s infinite; animation: flashing 3s infinite; box-sizing: border-box; }
 
 @-webkit-keyframes flashing { 0% { opacity: 0; }
   10% { opacity: 1; }
@@ -1853,7 +1857,7 @@ Helpers - Structure */
 .nav-vertical a, .nav-horizontal a { display: block; position: relative; padding: 1em; color: inherit; }
 .nav-vertical a:hover, .nav-horizontal a:hover { opacity: 0.7; }
 .nav-vertical li, .nav-horizontal li { background: inherit; display: block; position: relative; border-color: inherit; }
-.nav-vertical li ul:before, .nav-horizontal li ul:before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; top: 0; background: rgba(0, 0, 0, 0.034); }
+.nav-vertical li ul:before, .nav-horizontal li ul:before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.034); }
 .nav-vertical li ul, .nav-horizontal li ul { border-color: inherit; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; padding: 0; margin: 0; background: inherit; position: absolute; width: 160px; display: none; left: 100%; top: 0; z-index: 99999; }
 .nav-vertical li ul li, .nav-horizontal li ul li { width: 100%; }
 .nav-vertical li:hover > ul, .nav-horizontal li:hover > ul { display: block; }

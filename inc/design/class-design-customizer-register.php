@@ -41,7 +41,7 @@ class Makesite_Design_Customizer_Register {
 	 * Magic constructor
 	 * @since 1.0.0
 	 */
-	public function __construct() {
+	protected function __construct() {
 
 		$custo_args = $this->panel_args;
 
