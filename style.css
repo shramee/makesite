@@ -2293,7 +2293,7 @@ form.search-form input.search-submit { background: none; border: none; position:
 
 .right-slide-in.toggled { right: 0; }
 
-a.slide-in-toggle { color: #000; position: absolute; top: 0; left: 100%; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5), -1px -1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5); z-index: 1; }
+a.slide-in-toggle { cursor: pointer; color: #000; position: absolute; top: 0; left: 100%; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5), -1px -1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5); z-index: 1; }
 
 .right-slide-in .slide-in-toggle { left: auto; right: 100%; }
 
