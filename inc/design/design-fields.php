@@ -11,6 +11,8 @@ if( is_array($response) ) {
 if ( ! empty( $panels ) ) {
 	$panels = json_decode( $panels, 'assoc_array' );
 
+	if ( ! $panels ) return array();
+
 	foreach ( $panels as $panel => &$fields ) {
 		$ids = array_keys( $fields );
 		foreach ( $fields as $id => $f ) {
