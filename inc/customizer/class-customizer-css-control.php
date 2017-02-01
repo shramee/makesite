@@ -259,7 +259,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 				</label>
 				<label>
 					<?php $this->output_input( 'normal', 'radio', checked( 'normal', $vals[3], false ) . $hidden . ' name="_radio-control-' . $this->id . '"' ); ?>
-					<div class="button"><span style="text-transform: uppercase">  All Caps</span></div>
+					<div class="button"><span style="text-transform: uppercase">All Caps</span></div>
 				</label>
 			</div>
 		</div><!-- .ms-subcontrol -->
