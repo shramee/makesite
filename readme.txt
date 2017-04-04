@@ -3,7 +3,7 @@ Contributors: shramee
 Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,editor-style,featured-images,footer-widgets,full-width-template,blog
 Requires at least: 4.5.0
 Tested up to: 4.7-0
-Stable tag: 1.0.3
+Stable tag: 0.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
