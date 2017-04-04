@@ -3,7 +3,7 @@
   "version": "0.7.0",
   "description": "Awesome app framework",
   "author": "Shramee",
-  "license": "BSD-2-Clause",
+  "license": "GPL-2",
   "main": "index.php",
   "keywords": [
     "sass",
@@ -24,7 +24,8 @@
     "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-sass": "~1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-watch": "~1.0.0"
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-rtlcss": "^2.0.1"
   },
   "dependencies": {
     "grunt": "~0.4.5",

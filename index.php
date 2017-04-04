@@ -13,4 +13,3 @@
  */
 $ms_hooks = [];
 makesite();
-print_awesome_r( $ms_hooks );

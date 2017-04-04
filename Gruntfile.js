@@ -44,6 +44,25 @@ module.exports = function(grunt) {
 			}
 		},
 
+		/* RTL css */
+		rtlcss: {
+			myTask:{
+				options: {
+					map: false,
+					opts: {
+						clean:false
+					},
+					saveUnmodified: true,
+				},
+				expand : true,
+				src: ['style.css'],
+				ext: '.css',
+				rename: function( dest, src ) {
+					return src.replace( 'style', 'rtl' );
+				},
+			}
+		},
+
 		/** CoffeeScript decompiling */
 		coffee: {
 			coffee_to_js: {
@@ -78,15 +97,16 @@ module.exports = function(grunt) {
 		watch : {
 			css: {
 				files: '**/*.scss',
-				tasks: [ 'sass', 'autoprefixer' ]
+				tasks: [ 'sass', 'autoprefixer', 'rtlcss' ]
 			},
 			js: {
 				files: '**/*.coffee',
 				tasks: [ 'coffee', 'uglify' ]
 			}
-		}
+		},
 	});
 
+	grunt.loadNpmTasks('grunt-rtlcss');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
