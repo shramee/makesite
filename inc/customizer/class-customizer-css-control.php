@@ -218,7 +218,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	protected function render_font_style_content( $vals, $hidden ) {
 		?>
 		<div class="ms-subcontrol">
-			<span class="ms-subcontrol-title">Font style:</span>
+			<span class="ms-subcontrol-title"><?php _e( 'Font style:', 'makesite' ) ?></span>
 
 			<div class="button-control">
 				<label>
@@ -246,7 +246,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	protected function render_font_display_content( $vals, $hidden ) {
 		?>
 		<div class="ms-subcontrol">
-			<span class="ms-subcontrol-title">Font Display:</span>
+			<span class="ms-subcontrol-title"><?php _e( 'Font Display:', 'makesite' ) ?></span>
 
 			<div class="button-control">
 				<label>

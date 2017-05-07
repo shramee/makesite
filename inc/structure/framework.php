@@ -11,25 +11,26 @@ function makesite( $content = '' ) {
 	define( 'MS_CONTENT', $content );
 	?>
 
-	<?php get_header( MS_CONTENT ); ?>
+	<?php get_header( $content ); ?>
 
 	<div id="content" class="site-content container">
 
-		<?php makesite_content(); ?>
+		<?php makesite_content( $content ); ?>
 
-		<?php get_sidebar( MS_CONTENT ); ?>
+		<?php get_sidebar( $content ); ?>
 
 	</div><!-- #content -->
 
-	<?php get_footer( MS_CONTENT ); ?>
+	<?php get_footer( $content ); ?>
 	<?php
 }
 
 /**
  * Renders a theme template
+ * @param string $type To load special type of content (example: search)
  */
-function makesite_content() {
-	$hook = MS_CONTENT ? 'content_' . MS_CONTENT : 'content';
+function makesite_content( $type = '' ) {
+	$hook = $type ? "content_$type" : 'content';
 	?>
 	<div id="primary" class="content-area">
 			<?php

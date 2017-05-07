@@ -1,4 +1,4 @@
-# Copyright (C) 2016 Automattic
+# Copyright (C) 2016 Makesite
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""

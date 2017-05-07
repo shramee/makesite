@@ -16,9 +16,7 @@ if ( ! function_exists( 'makesite_hd_skiplinks' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_hd_skiplinks() {
-		?>
-		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'makesite' ); ?></a>
-		<?php
+		makesite_skiplinks();
 	}
 endif;
 
@@ -209,11 +207,12 @@ if ( ! function_exists( 'makesite_mobile_nav_btn' ) ) :
 	function makesite_mobile_nav_btn() {
 		if ( apply_filters( 'ms_show_mobile_menu', has_nav_menu( 'primary-mobile-menu' ) ) ) {
 			?>
-			<a class="menu-toggle"><i class="icon-bars"></i> Menu</a>
+			<a class="menu-toggle"><i class="icon-bars"></i> <?php _x( 'Menu', 'menu-toggle-button', 'makesite' ) ?></a>
 			<?php
 		} elseif ( current_user_can( 'edit_theme_options' ) ) {
 			$url = admin_url( 'nav-menus.php' );
-			echo "<a href='$url'>Assign mobile menu.</a>";
+			$assign_menu_label = __( 'Assign mobile menu.', 'makesite' );
+			echo "<a href='$url'>$assign_menu_label</a>";
 		}
 	}
 endif;

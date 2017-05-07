@@ -19,12 +19,9 @@
 		/**
 		 * Makesite render footer
 		 * @hook action makesite_footer
-		 * @hooked makesite_ft_open       - 10
-		 * @hooked makesite_ft_skiplinks  - 20
-		 * @hooked makesite_ft_info       - 30
-		 * @hooked makesite_ft_navigation - 40
-		 * @hooked makesite_ft_close      - 50
-		 * @hooked wp_footer              - 70
+		 * @hooked makesite_ft_navigation - 20
+		 * @hooked makesite_ft_skiplinks  - 30
+		 * @hooked makesite_ft_info       - 40
 		 */
 		ms_do_action(
 			'footer',

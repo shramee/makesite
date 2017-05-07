@@ -41,6 +41,8 @@ ms_hook( 'content', 'makesite_ct', 25 );
 ms_hook( 'content_page', 'makesite_ct_page', 25 );
 ms_hook( 'content_single', 'makesite_ct_single', 25 );
 ms_hook( 'content_archive', 'makesite_ct_archive', 25 );
+ms_hook( 'content_search', 'makesite_ct_search', 25 );
+ms_hook( 'content_404', 'makesite_ct_404', 25 );
 
 //Footer functions
 require_once dirname( __FILE__ ) . '/footer.php';

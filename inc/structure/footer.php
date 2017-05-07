@@ -33,10 +33,7 @@ if ( ! function_exists( 'makesite_ft_skiplinks' ) ) :
 	 * @since 1.0.0
 	 */
 	function makesite_ft_skiplinks() {
-		$skip2contnt = esc_html__( 'Skip to content', 'makesite' )
-		?>
-		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'makesite' ); ?></a>
-		<?php
+		makesite_skiplinks();
 	}
 endif;
 

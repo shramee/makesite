@@ -5,7 +5,7 @@
  * Author: WPDevelopment
  * Author URI: http://shramee.me
  * Description: Great theme framework for building kick-ass web apps
- * Version: 0.2.6
+ * Version: 0.2.7
  * License: GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: makesite
@@ -5533,12 +5533,26 @@ Helpers - Text */
   margin: 0;
   padding: 0;
 }
+.main-navigation ul li.menu-item-has-children > a:after {
+  content: "\f078";
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  margin-left: 0.5em;
+}
 .main-navigation ul.nav-horizontal ul {
   opacity: 0.925;
 }
 .main-navigation ul ul {
   background: #333;
   min-width: 200px;
+}
+.main-navigation ul ul li.menu-item-has-children > a:after {
+  content: "\f054";
+  float: right;
 }
 .main-navigation ul a {
   padding: 16px;
@@ -5553,14 +5567,14 @@ Helpers - Text */
 .mobile-menu ul ul {
   margin: 0 16px;
 }
-.mobile-menu .menu {
+.mobile-menu ul {
   overflow: hidden;
   max-height: 0;
-  -webkit-transition: max-height 0.5s;
-          transition: max-height 0.5s;
+  -webkit-transition: max-height 0.5s linear;
+          transition: max-height 0.5s linear;
   padding: 0;
 }
-.mobile-menu.menu-toggled .menu, .mobile-menu .menu-toggled .menu {
+.mobile-menu.menu-toggled ul, .mobile-menu .menu-toggled ul {
   max-height: 1600px;
 }
 .mobile-menu.menu-toggled .menu-toggle span[class*='icon-']:before, .mobile-menu .menu-toggled .menu-toggle span[class*='icon-']:before {

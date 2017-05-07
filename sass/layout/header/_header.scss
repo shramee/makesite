@@ -29,12 +29,26 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		li.menu-item-has-children > a:after {
+			content: "\f078";
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			display: inline-block;
+			margin-left: 0.5em;
+		}
 		&.nav-horizontal ul {
 			opacity: 0.925;
 		}
 		ul {
 			background: $clr-bg-menu;
 			min-width: 200px;
+			li.menu-item-has-children > a:after {
+				content: "\f054";
+				float: right;
+			}
 		}
 		a {
 			padding: $padding;
@@ -56,15 +70,15 @@
 	ul ul {
 		margin: 0 $padding;
 	}
-	.menu {
+	ul {
 		overflow: hidden;
 		max-height: 0;
-		transition: max-height 0.5s;
+		transition: max-height 0.5s linear;
 		padding: 0;
 	}
 
 	&.menu-toggled, .menu-toggled {
-		.menu {
+		ul {
 			max-height: 1600px;
 		}
 

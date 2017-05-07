@@ -103,3 +103,38 @@ if ( ! function_exists( 'makesite_pagination' ) ) :
 		}
 	}
 endif;
+
+if ( ! function_exists( 'makesite_ct_categories' ) ) {
+	function makesite_ct_categories() {
+		?>
+		<div class="widget widget_categories">
+			<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'makesite' ); ?></h2>
+			<ul>
+				<?php
+				wp_list_categories( array(
+					'orderby'    => 'count',
+					'order'      => 'DESC',
+					'show_count' => 1,
+					'title_li'   => '',
+					'number'     => 10,
+				) );
+				?>
+			</ul>
+		</div><!-- .widget -->
+
+		<?php
+	}
+}
+
+if ( ! function_exists( 'makesite_skiplinks' ) ) :
+	/**
+	 * Outputs skip links in footer
+	 * @action makesite_footer
+	 * @since 1.0.0
+	 */
+	function makesite_skiplinks() {
+		?>
+		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'makesite' ); ?></a>
+		<?php
+	}
+endif;
