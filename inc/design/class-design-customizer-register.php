@@ -20,7 +20,7 @@ class Makesite_Design_Customizer_Register {
 			'text_shadow' => 'Makesite_Customizer_CSS_Control',
 			'spacing'     => 'Makesite_Customizer_CSS_Control',
 		),
-		'token'            => 'ms',
+		'token'            => 'makesite',
 		'priority'         => 7,
 	);
 
@@ -45,9 +45,9 @@ class Makesite_Design_Customizer_Register {
 
 		$custo_args = $this->panel_args;
 
-		$ms_fields = Makesite_Design::fields();
+		$makesite_fields = Makesite_Design::fields();
 
-		foreach ( $ms_fields as $title => $fields ) {
+		foreach ( $makesite_fields as $title => $fields ) {
 
 			$custo_args['title'] = $title;
 			$custo_args['fields'] = $fields;
@@ -87,15 +87,6 @@ class Makesite_Design_Customizer_Register {
 	 * @return array Fields data
 	 */
 	static function fields() {
-		$response = wp_remote_get( MS_SITE . '/wp-json/makesite/v1/design_fields?site=' . site_url() );
-		if( is_array($response) ) {
-			$fields = $response['body']; // use the content
-		}
-
-		if ( ! empty( $fields ) ) {
-			$fields = json_decode( $fields, 'assoc_array' );
-			return apply_filters( 'Makesite_Design_Customizer_Register_fields', $fields );
-		}
-		return array();
+			return Makesite_Design::fields();
 	}
 }

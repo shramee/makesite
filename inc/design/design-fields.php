@@ -1,74 +1,67 @@
 <?php
 /**
- * 
+ *
  */
+$panels = apply_filters( 'makesite_design_fields', array() );
 
-$response = wp_remote_get( MS_SITE . '/wp-json/makesite/v1/design_fields?site=' . site_url() );
-if( is_array($response) ) {
-	$panels = $response['body']; // use the content
+if ( ! $panels ) {
+	return array();
 }
 
-if ( ! empty( $panels ) ) {
-	$panels = json_decode( $panels, 'assoc_array' );
+foreach ( $panels as $panel => &$fields ) {
+	$ids = array_keys( $fields );
+	foreach ( $fields as $id => $f ) {
+		if ( 'all-custo' == $f['type'] ) {
 
-	if ( ! $panels ) return array();
+			$i                = array_search( $id, $ids );
+			$all_custo_fields = array();
 
-	foreach ( $panels as $panel => &$fields ) {
-		$ids = array_keys( $fields );
-		foreach ( $fields as $id => $f ) {
-			if ( 'all-custo' == $f['type'] ) {
+			unset( $panels[ $panel ][ $id ] );
 
-				$i = array_search( $id, $ids );
-				$all_custo_fields = array();
+			$label     = $f['label'];
+			$id_format = $id . '-%s';
 
-				unset( $panels[ $panel ][ $id ] );
+			//Padding
+			$id                                = sprintf( $id_format, 'padding' );
+			$f['type']                         = 'spacing';
+			$f['label']                        = $label . ' Padding';
+			$all_custo_fields[ $id ]           = $f;
+			$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'padding:%s' );
 
-				$label = $f['label'];
-				$id_format = $id . '-%s';
+			//BG Color
+			$id                                = sprintf( $id_format, 'bg-color' );
+			$f['type']                         = 'alpha-color';
+			$f['label']                        = $label . ' Background Color';
+			$all_custo_fields[ $id ]           = $f;
+			$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'background-color:%s' );
 
-				//Padding
-				$id   = sprintf( $id_format, 'padding' );
-				$f['type'] = 'spacing';
-				$f['label'] = $label . ' Padding';
-				$all_custo_fields[ $id ] = $f;
-				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'padding:%s' );
+			//Border
+			$id                      = sprintf( $id_format, 'border' );
+			$f['type']               = 'all-border';
+			$f['label']              = $label . ' Border';
+			$all_custo_fields[ $id ] = $f;
 
-				//BG Color
-				$id   = sprintf( $id_format, 'bg-color' );
-				$f['type'] = 'alpha-color';
-				$f['label'] = $label . ' Background Color';
-				$all_custo_fields[ $id ] = $f;
-				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'background-color:%s' );
+			//Rounded corners
+			$id                                = sprintf( $id_format, 'border-radius' );
+			$f['type']                         = 'slider';
+			$f['label']                        = $label . ' Rounded Corners';
+			$all_custo_fields[ $id ]           = $f;
+			$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'border-radius:%spx' );
 
-				//Border
-				$id   = sprintf( $id_format, 'border' );
-				$f['type'] = 'all-border';
-				$f['label'] = $label . ' Border';
-				$all_custo_fields[ $id ] = $f;
+			//Shadow
+			$id                      = sprintf( $id_format, 'shadow' );
+			$f['type']               = 'shadow';
+			$f['label']              = $label . ' Shadow';
+			$all_custo_fields[ $id ] = $f;
 
-				//Rounded corners
-				$id   = sprintf( $id_format, 'border-radius' );
-				$f['type'] = 'slider';
-				$f['label'] = $label . ' Rounded Corners';
-				$all_custo_fields[ $id ] = $f;
-				$all_custo_fields[ $id ]['output'] = sprintf( $f['output'], 'border-radius:%spx' );
-
-				//Shadow
-				$id   = sprintf( $id_format, 'shadow' );
-				$f['type'] = 'shadow';
-				$f['label'] = $label . ' Shadow';
-				$all_custo_fields[ $id ] = $f;
-
-				$fields = array_merge(
-					array_slice( $fields, 0, $i ),
-					$all_custo_fields,
-					array_slice( $fields, $i, null )
-				);
-			}
+			$fields = array_merge(
+				array_slice( $fields, 0, $i ),
+				$all_custo_fields,
+				array_slice( $fields, $i, null )
+			);
 		}
 	}
-
-
-	return apply_filters( 'makesite_design_fields', $panels );
 }
-return array();
+
+
+return apply_filters( 'makesite_design_fields', $panels );
