@@ -211,7 +211,7 @@ class Makesite {
 		if ( $design->gf_url )
 			wp_enqueue_style( 'makesite-google-fonts', $design->gf_url );
 
-		wp_enqueue_script( 'makesite-public-js', get_template_directory_uri() . '/js/makesite-public.js', array( 'jquery' ), MAKESITE_VER, true );
+		wp_enqueue_script( 'makesite-public-js', get_template_directory_uri() . '/js/public.min.js', array( 'jquery' ), MAKESITE_VER, true );
 		wp_enqueue_script( 'makesite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
