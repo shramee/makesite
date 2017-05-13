@@ -3,7 +3,7 @@ Contributors: shramee
 Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,editor-style,featured-images,threaded-comments,footer-widgets,full-width-template,theme-options,blog
 Requires at least: 4.5.0
 Tested up to: 4.7-0
-Stable tag: 0.2.6
+Stable tag: 0.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,10 +22,13 @@ It will soon be available for live site. Just some more testing and enhancements
 
 = Version 0.3.5 =
 **2017-05-13**
-* New - 
-* New - 
-* New - 
-* Tweak - Fixed JS file 404 in console
+* New - Implemented custom header
+* New - Implemented custom logo
+* New - Implemented custom background
+* New - Added WordPress editor styles
+* New - PHP version <5.4 fails gracefully
+* Fixed - Untranslatable string in slides.php
+* Tweak - Minor tweaks for performance and code quality
 
 = Version 0.3.0 =
 **2017-05-13**
