@@ -74,7 +74,7 @@ class Makesite_Design_Fields_Css {
 				$style = $format[ $setting ];
 			}
 		} else {
-			$method = ms_make_id( $f['type'], '_' ) . '_field_css';
+			$method = makesite_make_id( $f['type'], '_' ) . '_field_css';
 			if ( method_exists( $this, $method ) ) {
 				$style = $this->$method( explode( '|', $setting ) ); // Get style from callback
 				if ( $style ) {
@@ -95,7 +95,7 @@ class Makesite_Design_Fields_Css {
 	 */
 	protected function font_field_css( $vals ) {
 		$value = '';
-		$vals[1] = ms_array_value( $vals, 1, 400 );
+		$vals[1] = makesite_array_value( $vals, 1, 400 );
 
 		$this->gf_load[ $vals[5] ][ $vals[1] ] = 1;
 
@@ -106,9 +106,9 @@ class Makesite_Design_Fields_Css {
 		}
 
 		foreach ( $this->font_format as $k => $f )
-			$value .= ms_sprintf_array_val( $f, $vals, $k );
+			$value .= makesite_sprintf_array_val( $f, $vals, $k );
 
-		$value .= $this->font_field_style_css( ms_array_value( $vals, 3 ) );
+		$value .= $this->font_field_style_css( makesite_array_value( $vals, 3 ) );
 
 		//Return styles data
 		return $value;

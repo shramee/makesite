@@ -8,7 +8,7 @@
  * @param string $content Creates content hook like content_{$content}
  */
 function makesite( $content = '' ) {
-	define( 'MS_CONTENT', $content );
+	define( 'MAKESITE_CONTENT', $content );
 	?>
 
 	<?php get_header( $content ); ?>
@@ -39,7 +39,7 @@ function makesite_content( $type = '' ) {
 			 * @hook action makesite_content
 			 * @uses makesite_ct_init()
 			 */
-			ms_do_action(
+			makesite_do_action(
 				$hook,
 				array(
 					'tag'   => 'main',
@@ -63,7 +63,7 @@ function makesite_content( $type = '' ) {
  * @param array $func_args Arguments for functions hooked
  * @since 1.0.0
  */
-function ms_do_action( $tag, $args, $func_args = array() ) {
+function makesite_do_action( $tag, $args, $func_args = array() ) {
 	$tag = "makesite_$tag";
 
 	ob_start();
@@ -99,7 +99,7 @@ function ms_do_action( $tag, $args, $func_args = array() ) {
 		 */
 		$attrs = apply_filters( "{$tag}_attrs", $args['attrs'] );
 
-		$before = "<$args[tag] " . ms_stringify_prop_val( $attrs ) . ">$before";
+		$before = "<$args[tag] " . makesite_stringify_prop_val( $attrs ) . ">$before";
 		$after  = "$after</$args[tag]>";
 	}
 
@@ -129,7 +129,7 @@ function ms_do_action( $tag, $args, $func_args = array() ) {
  * @param int $accepted_args
  * @since 1.0.0
  */
-function ms_hook( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
+function makesite_hook( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
 	add_filter( 'makesite_' . $tag, $function_to_add, $priority, $accepted_args );
 }
 
@@ -141,8 +141,8 @@ function ms_hook( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
  * @return string User type | User output if specified
  * @since 1.0.0
  */
-function ms_user( $out = array(), $echo = true ) {
-	$user_type = get_option( 'ms_user', 'creative' );
+function makesite_user( $out = array(), $echo = true ) {
+	$user_type = get_option( 'makesite_user', 'creative' );
 
 	if ( isset( $out[ $user_type ] ) ) {
 		if ( $echo ) {

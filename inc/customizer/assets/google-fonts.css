@@ -1,22 +1,22 @@
-.ms-google-fonts-wrap {
+.makesite-google-fonts-wrap {
 	padding-top: 40px;
 	position: relative;
 	background: #f5ffff;
 	border: 1px solid #dfdfdf;
 }
-.ms-google-fonts {
+.makesite-google-fonts {
 	display: none;
 	height: 0;
 	overflow: auto;
 	transition: height .5s .5s;
 }
 
-.ms-google-fonts-wrap:hover .ms-google-fonts {
+.makesite-google-fonts-wrap:hover .makesite-google-fonts {
 	height: 280px;
 	transition: height .5s;
 }
 
-.ms-google-fonts span {
+.makesite-google-fonts span {
 	display: block;
 	height: 30px;
 	padding: 5px 10px;
@@ -28,11 +28,11 @@
 	border-bottom: none;
 }
 
-.ms-google-fonts span:hover {
+.makesite-google-fonts span:hover {
 	background-color: #effbff;
 }
 
-.ms-google-fonts span.active {
+.makesite-google-fonts span.active {
 	background-color: #fff;
 	position: absolute;
 	top: 0;
@@ -41,89 +41,89 @@
 	border-bottom: 1px solid #dfdfdf;
 }
 
-.ms-gf-abel { background-position: 0 -40px; }
-.ms-gf-amatic-sc { background-position: 0 -80px; }
-.ms-gf-arimo { background-position: 0 -120px; }
-.ms-gf-arvo { background-position: 0 -160px; }
-.ms-gf-bevan { background-position: 0 -200px; }
-.ms-gf-bitter { background-position: 0 -240px; }
-.ms-gf-black-ops-one { background-position: 0 -280px; }
-.ms-gf-boogaloo { background-position: 0 -320px; }
-.ms-gf-bree-serif { background-position: 0 -360px; }
-.ms-gf-calligraffitti { background-position: 0 -400px; }
-.ms-gf-cantata-one { background-position: 0 -440px; }
-.ms-gf-cardo { background-position: 0 -480px; }
-.ms-gf-changa-one { background-position: 0 -520px; }
-.ms-gf-cherry-cream-soda { background-position: 0 -560px; }
-.ms-gf-chewy { background-position: 0 -600px; }
-.ms-gf-comfortaa { background-position: 0 -640px; }
-.ms-gf-coming-soon { background-position: 0 -680px; }
-.ms-gf-covered-by-your-grace { background-position: 0 -720px; }
-.ms-gf-crafty-girls { background-position: 0 -760px; }
-.ms-gf-crete-round { background-position: 0 -800px; }
-.ms-gf-crimson-text { background-position: 0 -840px; }
-.ms-gf-cuprum { background-position: 0 -880px; }
-.ms-gf-dancing-script { background-position: 0 -920px; }
-.ms-gf-dosis { background-position: 0 -960px; }
-.ms-gf-droid-sans { background-position: 0 -1000px; }
-.ms-gf-droid-serif { background-position: 0 -1040px; }
-.ms-gf-francois-one { background-position: 0 -1080px; }
-.ms-gf-fredoka-one { background-position: 0 -1120px; }
-.ms-gf-the-girl-next-door { background-position: 0 -1160px; }
-.ms-gf-gloria-hallelujah { background-position: 0 -1200px; }
-.ms-gf-happy-monkey { background-position: 0 -1240px; }
-.ms-gf-indie-flower { background-position: 0 -1280px; }
-.ms-gf-josefin-slab { background-position: 0 -1320px; }
-.ms-gf-judson { background-position: 0 -1360px; }
-.ms-gf-kreon { background-position: 0 -1400px; }
-.ms-gf-lato { background-position: 0 -1440px; }
-.ms-gf-lato-light { background-position: 0 -1480px; }
-.ms-gf-leckerli-one { background-position: 0 -1520px; }
-.ms-gf-lobster { background-position: 0 -1560px; }
-.ms-gf-lobster-two { background-position: 0 -1600px; }
-.ms-gf-lora { background-position: 0 -1640px; }
-.ms-gf-luckiest-guy { background-position: 0 -1680px; }
-.ms-gf-merriweather { background-position: 0 -1720px; }
-.ms-gf-metamorphous { background-position: 0 -1760px; }
-.ms-gf-montserrat { background-position: 0 -1800px; }
-.ms-gf-noticia-text { background-position: 0 -1840px; }
-.ms-gf-nova-square { background-position: 0 -1880px; }
-.ms-gf-nunito { background-position: 0 -1920px; }
-.ms-gf-old-standard-tt { background-position: 0 -1960px; }
-.ms-gf-open-sans { background-position: 0 -2000px; }
-.ms-gf-open-sans-condensed { background-position: 0 -2040px; }
-.ms-gf-open-sans-light { background-position: 0 -2080px; }
-.ms-gf-oswald { background-position: 0 -2120px; }
-.ms-gf-pacifico { background-position: 0 -2160px; }
-.ms-gf-passion-one { background-position: 0 -2200px; }
-.ms-gf-patrick-hand { background-position: 0 -2240px; }
-.ms-gf-permanent-marker { background-position: 0 -2280px; }
-.ms-gf-play { background-position: 0 -2320px; }
-.ms-gf-playfair-display { background-position: 0 -2360px; }
-.ms-gf-poirms-one { background-position: 0 -2400px; }
-.ms-gf-pt-sans { background-position: 0 -2440px; }
-.ms-gf-pt-sans-narrow { background-position: 0 -2480px; }
-.ms-gf-pt-serif { background-position: 0 -2520px; }
-.ms-gf-raleway { background-position: 0 -2560px; }
-.ms-gf-raleway-light { background-position: 0 -2600px; }
-.ms-gf-reenie-beanie { background-position: 0 -2640px; }
-.ms-gf-righteous { background-position: 0 -2680px; }
-.ms-gf-roboto { background-position: 0 -2720px; }
-.ms-gf-roboto-condensed { background-position: 0 -2760px; }
-.ms-gf-roboto-light { background-position: 0 -2800px; }
-.ms-gf-rock-salt { background-position: 0 -2840px; }
-.ms-gf-rokkitt { background-position: 0 -2880px; }
-.ms-gf-sanchez { background-position: 0 -2920px; }
-.ms-gf-satisfy { background-position: 0 -2960px; }
-.ms-gf-schoolbell { background-position: 0 -3000px; }
-.ms-gf-shadows-into-light { background-position: 0 -3040px; }
-.ms-gf-source-sans-pro { background-position: 0 -3080px; }
-.ms-gf-source-sans-pro-light { background-position: 0 -3120px; }
-.ms-gf-special-elite { background-position: 0 -3160px; }
-.ms-gf-squada-one { background-position: 0 -3200px; }
-.ms-gf-tangerine { background-position: 0 -3240px; }
-.ms-gf-ubuntu { background-position: 0 -3280px; }
-.ms-gf-unkempt { background-position: 0 -3320px; }
-.ms-gf-vollkorn { background-position: 0 -3360px; }
-.ms-gf-walter-turncoat { background-position: 0 -3400px; }
-.ms-gf-yanone-kaffeesatz { background-position: 0 -3440px; }
+.makesite-gf-abel { background-position: 0 -40px; }
+.makesite-gf-amatic-sc { background-position: 0 -80px; }
+.makesite-gf-arimo { background-position: 0 -120px; }
+.makesite-gf-arvo { background-position: 0 -160px; }
+.makesite-gf-bevan { background-position: 0 -200px; }
+.makesite-gf-bitter { background-position: 0 -240px; }
+.makesite-gf-black-ops-one { background-position: 0 -280px; }
+.makesite-gf-boogaloo { background-position: 0 -320px; }
+.makesite-gf-bree-serif { background-position: 0 -360px; }
+.makesite-gf-calligraffitti { background-position: 0 -400px; }
+.makesite-gf-cantata-one { background-position: 0 -440px; }
+.makesite-gf-cardo { background-position: 0 -480px; }
+.makesite-gf-changa-one { background-position: 0 -520px; }
+.makesite-gf-cherry-cream-soda { background-position: 0 -560px; }
+.makesite-gf-chewy { background-position: 0 -600px; }
+.makesite-gf-comfortaa { background-position: 0 -640px; }
+.makesite-gf-coming-soon { background-position: 0 -680px; }
+.makesite-gf-covered-by-your-grace { background-position: 0 -720px; }
+.makesite-gf-crafty-girls { background-position: 0 -760px; }
+.makesite-gf-crete-round { background-position: 0 -800px; }
+.makesite-gf-crimson-text { background-position: 0 -840px; }
+.makesite-gf-cuprum { background-position: 0 -880px; }
+.makesite-gf-dancing-script { background-position: 0 -920px; }
+.makesite-gf-dosis { background-position: 0 -960px; }
+.makesite-gf-droid-sans { background-position: 0 -1000px; }
+.makesite-gf-droid-serif { background-position: 0 -1040px; }
+.makesite-gf-francois-one { background-position: 0 -1080px; }
+.makesite-gf-fredoka-one { background-position: 0 -1120px; }
+.makesite-gf-the-girl-next-door { background-position: 0 -1160px; }
+.makesite-gf-gloria-hallelujah { background-position: 0 -1200px; }
+.makesite-gf-happy-monkey { background-position: 0 -1240px; }
+.makesite-gf-indie-flower { background-position: 0 -1280px; }
+.makesite-gf-josefin-slab { background-position: 0 -1320px; }
+.makesite-gf-judson { background-position: 0 -1360px; }
+.makesite-gf-kreon { background-position: 0 -1400px; }
+.makesite-gf-lato { background-position: 0 -1440px; }
+.makesite-gf-lato-light { background-position: 0 -1480px; }
+.makesite-gf-leckerli-one { background-position: 0 -1520px; }
+.makesite-gf-lobster { background-position: 0 -1560px; }
+.makesite-gf-lobster-two { background-position: 0 -1600px; }
+.makesite-gf-lora { background-position: 0 -1640px; }
+.makesite-gf-luckiest-guy { background-position: 0 -1680px; }
+.makesite-gf-merriweather { background-position: 0 -1720px; }
+.makesite-gf-metamorphous { background-position: 0 -1760px; }
+.makesite-gf-montserrat { background-position: 0 -1800px; }
+.makesite-gf-noticia-text { background-position: 0 -1840px; }
+.makesite-gf-nova-square { background-position: 0 -1880px; }
+.makesite-gf-nunito { background-position: 0 -1920px; }
+.makesite-gf-old-standard-tt { background-position: 0 -1960px; }
+.makesite-gf-open-sans { background-position: 0 -2000px; }
+.makesite-gf-open-sans-condensed { background-position: 0 -2040px; }
+.makesite-gf-open-sans-light { background-position: 0 -2080px; }
+.makesite-gf-oswald { background-position: 0 -2120px; }
+.makesite-gf-pacifico { background-position: 0 -2160px; }
+.makesite-gf-passion-one { background-position: 0 -2200px; }
+.makesite-gf-patrick-hand { background-position: 0 -2240px; }
+.makesite-gf-permanent-marker { background-position: 0 -2280px; }
+.makesite-gf-play { background-position: 0 -2320px; }
+.makesite-gf-playfair-display { background-position: 0 -2360px; }
+.makesite-gf-poirms-one { background-position: 0 -2400px; }
+.makesite-gf-pt-sans { background-position: 0 -2440px; }
+.makesite-gf-pt-sans-narrow { background-position: 0 -2480px; }
+.makesite-gf-pt-serif { background-position: 0 -2520px; }
+.makesite-gf-raleway { background-position: 0 -2560px; }
+.makesite-gf-raleway-light { background-position: 0 -2600px; }
+.makesite-gf-reenie-beanie { background-position: 0 -2640px; }
+.makesite-gf-righteous { background-position: 0 -2680px; }
+.makesite-gf-roboto { background-position: 0 -2720px; }
+.makesite-gf-roboto-condensed { background-position: 0 -2760px; }
+.makesite-gf-roboto-light { background-position: 0 -2800px; }
+.makesite-gf-rock-salt { background-position: 0 -2840px; }
+.makesite-gf-rokkitt { background-position: 0 -2880px; }
+.makesite-gf-sanchez { background-position: 0 -2920px; }
+.makesite-gf-satisfy { background-position: 0 -2960px; }
+.makesite-gf-schoolbell { background-position: 0 -3000px; }
+.makesite-gf-shadows-into-light { background-position: 0 -3040px; }
+.makesite-gf-source-sans-pro { background-position: 0 -3080px; }
+.makesite-gf-source-sans-pro-light { background-position: 0 -3120px; }
+.makesite-gf-special-elite { background-position: 0 -3160px; }
+.makesite-gf-squada-one { background-position: 0 -3200px; }
+.makesite-gf-tangerine { background-position: 0 -3240px; }
+.makesite-gf-ubuntu { background-position: 0 -3280px; }
+.makesite-gf-unkempt { background-position: 0 -3320px; }
+.makesite-gf-vollkorn { background-position: 0 -3360px; }
+.makesite-gf-walter-turncoat { background-position: 0 -3400px; }
+.makesite-gf-yanone-kaffeesatz { background-position: 0 -3440px; }

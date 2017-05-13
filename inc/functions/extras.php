@@ -13,7 +13,7 @@
  * @return string Minified HTML
  * @since 1.0.0
  */
-function ms_minify( $html ) {
+function makesite_minify( $html ) {
 	$html = str_replace( array( "\n", "\t", ), '', $html );
 	return $html;
 }
@@ -24,12 +24,12 @@ function ms_minify( $html ) {
  * @package makesite
  * @since 1.0.0
  */
-function ms_get_fonts( $data = null ) {
+function makesite_get_fonts( $data = null ) {
 
 	$google_fonts = include 'fonts.php';
 
 	if ( $data ) {
-		return apply_filters( 'ms_fonts', $google_fonts );
+		return apply_filters( 'makesite_fonts', $google_fonts );
 	}
 
 	$fonts = array_keys( $google_fonts );
@@ -37,7 +37,7 @@ function ms_get_fonts( $data = null ) {
 }
 
 /** Admin notices */
-if ( ! function_exists( 'ms_admin_notices' ) ) {
+if ( ! function_exists( 'makesite_admin_notices' ) ) {
 	/**
 	 * Adds notice to output in next admin_notices actions call
 	 *
@@ -45,16 +45,16 @@ if ( ! function_exists( 'ms_admin_notices' ) ) {
 	 * @param string $message
 	 * @param string $type Standard WP admin notice types supported defaults 'updated'
 	 */
-	function ms_add_admin_notice( $id, $message, $type = 'updated' ) {
+	function makesite_add_admin_notice( $id, $message, $type = 'updated' ) {
 
-		$notices = get_option( 'ms_admin_notices', array() );
+		$notices = get_option( 'makesite_admin_notices', array() );
 
 		$notices[ $id ] = array(
 			'type'    => $type,
 			'message' => $message,
 		);
 
-		update_option( 'ms_admin_notices', $notices );
+		update_option( 'makesite_admin_notices', $notices );
 	}
 
 	/**
@@ -62,11 +62,11 @@ if ( ! function_exists( 'ms_admin_notices' ) ) {
 	 * @action admin_notices
 	 * @since 0.1.0
 	 */
-	function ms_admin_notices() {
+	function makesite_admin_notices() {
 
-		$notices = get_option( 'ms_admin_notices', array() );
+		$notices = get_option( 'makesite_admin_notices', array() );
 
-		delete_option( 'ms_admin_notices' );
+		delete_option( 'makesite_admin_notices' );
 
 		if ( 0 < count( $notices ) ) {
 			$html = '';
@@ -77,11 +77,11 @@ if ( ! function_exists( 'ms_admin_notices' ) ) {
 		}
 	}
 
-	add_action( 'admin_notices', 'ms_admin_notices' );
+	add_action( 'admin_notices', 'makesite_admin_notices' );
 }
 
 /** Prioritizing an array */
-if ( ! function_exists( 'ms_prioritize_array' ) ) {
+if ( ! function_exists( 'makesite_prioritize_array' ) ) {
 	/**
 	 * Compares priority
 	 *
@@ -90,7 +90,7 @@ if ( ! function_exists( 'ms_prioritize_array' ) ) {
 	 *
 	 * @return bool
 	 */
-	function ms_priority_cmp( $a, $b ) {
+	function makesite_priority_cmp( $a, $b ) {
 		return $a['priority'] > $b['priority'];
 	}
 
@@ -99,10 +99,10 @@ if ( ! function_exists( 'ms_prioritize_array' ) ) {
 	 *
 	 * @param array $arr
 	 *
-	 * @uses ms_priority_cmp
+	 * @uses makesite_priority_cmp
 	 * @return bool
 	 */
-	function ms_prioritize_array( &$arr ) {
+	function makesite_prioritize_array( &$arr ) {
 		$i = 0;
 		foreach ( $arr as $k => $v ) {
 			if ( empty( $arr[ $k ]['priority'] ) ) {
@@ -110,12 +110,12 @@ if ( ! function_exists( 'ms_prioritize_array' ) ) {
 			}
 			$arr[ $k ]['id'] = $k;
 		}
-		uasort( $arr, 'ms_priority_cmp' );
+		uasort( $arr, 'makesite_priority_cmp' );
 	}
 }
 
 
-if ( ! function_exists( 'ms_stringify_prop_val' ) ) {
+if ( ! function_exists( 'makesite_stringify_prop_val' ) ) {
 	/**
 	 * Converts attributes array into html attributes string
 	 *
@@ -133,7 +133,7 @@ if ( ! function_exists( 'ms_stringify_prop_val' ) ) {
 	 * }
 	 * @return string HTML attributes
 	 */
-	function ms_stringify_prop_val( $data, $args = array() ) {
+	function makesite_stringify_prop_val( $data, $args = array() ) {
 
 		if ( empty( $data ) ) {
 			return '';
@@ -150,7 +150,7 @@ if ( ! function_exists( 'ms_stringify_prop_val' ) ) {
 
 		return
 			$args['before'] .
-			implode( $args['prop_glue'], ms_prop_val_array_format( $data, $args ) ) .
+			implode( $args['prop_glue'], makesite_prop_val_array_format( $data, $args ) ) .
 			$args['after'];
 	}
 	/**
@@ -167,7 +167,7 @@ if ( ! function_exists( 'ms_stringify_prop_val' ) ) {
 	 * }
 	 * @return string HTML attributes
 	 */
-	function ms_prop_val_array_format( $data, $args = array() ) {
+	function makesite_prop_val_array_format( $data, $args = array() ) {
 		$args = wp_parse_args(
 			$args,
 			array(
@@ -188,7 +188,7 @@ if ( ! function_exists( 'ms_stringify_prop_val' ) ) {
 	}
 }
 
-if ( ! function_exists( 'ms_make_id' ) ) {
+if ( ! function_exists( 'makesite_make_id' ) ) {
 	/**
 	 * Gets id form title replacing non alpha numeric chars into $sep
 	 *
@@ -197,14 +197,14 @@ if ( ! function_exists( 'ms_make_id' ) ) {
 	 *
 	 * @return string
 	 */
-	function ms_make_id( $title, $sep = '-' ) {
+	function makesite_make_id( $title, $sep = '-' ) {
 		$title = strtolower( $title );
 
 		return (string) preg_replace( '/[^A-z0-9]/', $sep, $title );
 	}
 }
 
-if ( ! function_exists( 'ms_minify' ) ) {
+if ( ! function_exists( 'makesite_minify' ) ) {
 
 	/**
 	 * Minify HTML
@@ -212,13 +212,13 @@ if ( ! function_exists( 'ms_minify' ) ) {
 	 * @return string Minified HTML
 	 * @since 1.0.0
 	 */
-	function ms_minify( $html ) {
+	function makesite_minify( $html ) {
 		$html = str_replace( array( "\n", "\t", ), '', $html );
 		return $html;
 	}
 }
 
-if ( ! function_exists( 'ms_array_val' ) ) {
+if ( ! function_exists( 'makesite_array_val' ) ) {
 	/**
 	 * Returns value from from array if key exists
 	 *
@@ -229,7 +229,7 @@ if ( ! function_exists( 'ms_array_val' ) ) {
 	 *
 	 * @return mixed Value or Formatted value if string
 	 */
-	function ms_array_value( $array, $key, $default = null ) {
+	function makesite_array_value( $array, $key, $default = null ) {
 
 		if ( ! empty( $array[ $key ] ) ) {
 			return $array[ $key ];
@@ -239,7 +239,7 @@ if ( ! function_exists( 'ms_array_val' ) ) {
 	}
 }
 
-if ( ! function_exists( 'ms_sprintf_array_val' ) ) {
+if ( ! function_exists( 'makesite_sprintf_array_val' ) ) {
 	/**
 	 * Returns value from from array if key exists
 	 *
@@ -250,7 +250,7 @@ if ( ! function_exists( 'ms_sprintf_array_val' ) ) {
 	 *
 	 * @return mixed Value or Formatted value if string
 	 */
-	function ms_sprintf_array_val( $format = '%s', $array, $key, $default = null ) {
+	function makesite_sprintf_array_val( $format = '%s', $array, $key, $default = null ) {
 
 		$value = ! empty( $array[ $key ] ) ? $array[ $key ] : $default;
 
@@ -262,7 +262,7 @@ if ( ! function_exists( 'ms_sprintf_array_val' ) ) {
 	}
 }
 
-if ( ! function_exists( 'ms_get_option' ) ) {
+if ( ! function_exists( 'makesite_get_option' ) ) {
 	/**
 	 * @param string $option_group Menu slug to get options from
 	 * @param string $option The key of the field
@@ -270,7 +270,7 @@ if ( ! function_exists( 'ms_get_option' ) ) {
 	 *
 	 * @return mixed Setting or $default
 	 */
-	function ms_get_option( $option_group, $option, $default = null ) {
+	function makesite_get_option( $option_group, $option, $default = null ) {
 		$options = get_option( $option_group, array() );
 
 		if ( ! isset( $options[ $option ] ) ) {
@@ -278,17 +278,17 @@ if ( ! function_exists( 'ms_get_option' ) ) {
 		}
 
 		/** This filter is documented in wp-includes/theme.php */
-		return apply_filters( "ms_get_option{$option_group}", $options[ $option ], $option );
+		return apply_filters( "makesite_get_option{$option_group}", $options[ $option ], $option );
 	}
 }
 
-if ( ! function_exists( 'ms_is_assoc' ) ) {
+if ( ! function_exists( 'makesite_is_assoc' ) ) {
 	/**
 	 * Checks if an array is associative array
 	 * @param array $arr Array to check
 	 * @return bool
 	 */
-	function ms_is_assoc( $arr ) {
+	function makesite_is_assoc( $arr ) {
 		return array_keys( $arr ) !== range( 0, count( $arr ) - 1 );
 	}
 }

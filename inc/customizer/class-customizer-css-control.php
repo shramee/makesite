@@ -57,7 +57,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		$method = 'render_' . ms_make_id( $this->type, '_' ) . '_content';
+		$method = 'render_' . makesite_make_id( $this->type, '_' ) . '_content';
 
 		if ( ! method_exists( $this, $method ) ) {
 			return;
@@ -87,10 +87,10 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 			'max' => 160,
 		) );
 
-		$this->output_main_control( 'range', ms_stringify_prop_val( $this->input_attrs ) . ' class="ms-width-75 ms-slider"' );
-		$number_attr = "class='ms-width-25 alignright ms-slider-val'";
+		$this->output_main_control( 'range', makesite_stringify_prop_val( $this->input_attrs ) . ' class="makesite-width-75 makesite-slider"' );
+		$number_attr = "class='makesite-width-25 alignright makesite-slider-val'";
 
-		if ( 'designer' != ms_user() ) {
+		if ( 'designer' != makesite_user() ) {
 			$number_attr .= " disabled='disabled'";
 		}
 
@@ -105,12 +105,12 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 		$this->multi_values = 6 == count( $this->multi_values ) ? $this->multi_values : array( 0, 0, 0, 0, 0, '', );
 		$key_index = 0;
 		?>
-		<div class="ms-subcontrol">
+		<div class="makesite-subcontrol">
 			<?php
-			$this->output_input( 'inset', 'checkbox', "value='ms-val' " .
+			$this->output_input( 'inset', 'checkbox', "value='makesite-val' " .
 			                                          checked( 'inset', $this->multi_values[ $key_index ++ ], false ) ); ?>
 			Inset
-		</div><!-- .ms-subcontrol -->
+		</div><!-- .makesite-subcontrol -->
 		<?php
 
 		$this->output_shadow_controls( 'box-shadow', $key_index );
@@ -142,7 +142,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 			'-right::-left::-bottom' => 'Right/Left/Bottom',
 			'-right::-left::-top'    => 'Right/Left/Top',
 		);
-		$this->render_select_subcontrol( 'Border Sides:', $sides, $values[0], "class='ms-val ms-val-outset'" );
+		$this->render_select_subcontrol( 'Border Sides:', $sides, $values[0], "class='makesite-val makesite-val-outset'" );
 
 		$this->render_border_control( $values, 1 );
 		$this->output_main_control();
@@ -177,11 +177,11 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 		);
 
 		//Thickness
-		$this->render_input_subcontrol( 'Thickness:', $values[ $key_offset + 0 ], 'range', "min='0' max='25' step='1' class='ms-val ms-val-down'" );
+		$this->render_input_subcontrol( 'Thickness:', $values[ $key_offset + 0 ], 'range', "min='0' max='25' step='1' class='makesite-val makesite-val-down'" );
 		//Border style
-		$this->render_select_subcontrol( 'Border style:', $styles, $values[ $key_offset + 1 ], "class='ms-val ms-val-outset'" );
+		$this->render_select_subcontrol( 'Border style:', $styles, $values[ $key_offset + 1 ], "class='makesite-val makesite-val-outset'" );
 		//Border Color
-		$this->render_input_subcontrol( 'Border Color:', $values[ $key_offset + 2 ], 'text', "class='ms-val ms-val-color ms-color'" );
+		$this->render_input_subcontrol( 'Border Color:', $values[ $key_offset + 2 ], 'text', "class='makesite-val makesite-val-color makesite-color'" );
 	}
 
 	/**
@@ -191,7 +191,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	protected function render_font_content() {
 		$vals = 8 == count( $this->multi_values ) ? $this->multi_values : array( '', '', '', '', '', '', '', 0, );
 		$fonts  = array( '' => 'Default', );
-		$fonts  = array_merge( $fonts, ms_get_fonts() );
+		$fonts  = array_merge( $fonts, makesite_get_fonts() );
 		$hidden = "style='display:none;'";
 
 		//Font style
@@ -199,13 +199,13 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 		//Font display
 		$this->render_font_display_content( $vals, $hidden );
 		//Font size
-		$this->render_input_subcontrol( 'Font size:', $vals[4], 'number', "min='5' max='160' step='1' class='ms-val ms-val-right'" );
+		$this->render_input_subcontrol( 'Font size:', $vals[4], 'number', "min='5' max='160' step='1' class='makesite-val makesite-val-right'" );
 		//Font family
-		$this->render_select_subcontrol( 'Font family:', $fonts, $vals[5], "class='ms-val ms-google-fonts ms-font-family'" );
+		$this->render_select_subcontrol( 'Font family:', $fonts, $vals[5], "class='makesite-val makesite-google-fonts makesite-font-family'" );
 		//Color
-		$this->render_input_subcontrol( 'Color:', $vals[6], 'text', "class='ms-val ms-val-color ms-color'" );
+		$this->render_input_subcontrol( 'Color:', $vals[6], 'text', "class='makesite-val makesite-val-color makesite-color'" );
 		//Letter spacing
-		$this->render_input_subcontrol( 'Letter spacing (em):', $vals[7], 'range', "min='0' max='1.6' step='0.05' class='ms-val ms-val-lspacing'" );
+		$this->render_input_subcontrol( 'Letter spacing (em):', $vals[7], 'range', "min='0' max='1.6' step='0.05' class='makesite-val makesite-val-lspacing'" );
 
 		$this->output_main_control();
 	}
@@ -217,8 +217,8 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 */
 	protected function render_font_style_content( $vals, $hidden ) {
 		?>
-		<div class="ms-subcontrol">
-			<span class="ms-subcontrol-title"><?php _e( 'Font style:', 'makesite' ) ?></span>
+		<div class="makesite-subcontrol">
+			<span class="makesite-subcontrol-title"><?php _e( 'Font style:', 'makesite' ) ?></span>
 
 			<div class="button-control">
 				<label>
@@ -234,7 +234,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 					<div class="button"><span style="text-decoration: underline">Underline</span></div>
 				</label>
 			</div>
-		</div><!-- .ms-subcontrol -->
+		</div><!-- .makesite-subcontrol -->
 		<?php
 	}
 
@@ -245,8 +245,8 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 */
 	protected function render_font_display_content( $vals, $hidden ) {
 		?>
-		<div class="ms-subcontrol">
-			<span class="ms-subcontrol-title"><?php _e( 'Font Display:', 'makesite' ) ?></span>
+		<div class="makesite-subcontrol">
+			<span class="makesite-subcontrol-title"><?php _e( 'Font Display:', 'makesite' ) ?></span>
 
 			<div class="button-control">
 				<label>
@@ -262,7 +262,7 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 					<div class="button"><span style="text-transform: uppercase">All Caps</span></div>
 				</label>
 			</div>
-		</div><!-- .ms-subcontrol -->
+		</div><!-- .makesite-subcontrol -->
 		<?php
 	}
 
@@ -272,12 +272,12 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 */
 	protected function render_spacing_content() {
 		$this->multi_values = 2 == count( $this->multi_values ) ? $this->multi_values : array( 0, 0, );
-		$attrs = "min='0' max='160' step='1' class='ms-val";
+		$attrs = "min='0' max='160' step='1' class='makesite-val";
 
 		//Top/Bottom
-		$this->render_input_subcontrol( 'Top/Bottom:', $this->multi_values[0], 'range', "$attrs ms-val-up'" );
+		$this->render_input_subcontrol( 'Top/Bottom:', $this->multi_values[0], 'range', "$attrs makesite-val-up'" );
 		//Right/left
-		$this->render_input_subcontrol( 'Right/left:', $this->multi_values[1], 'range', "$attrs ms-val-right'" );
+		$this->render_input_subcontrol( 'Right/left:', $this->multi_values[1], 'range', "$attrs makesite-val-right'" );
 
 		$this->output_main_control();
 	}
@@ -291,18 +291,18 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	protected function output_shadow_controls( $box_shadow = '', $key_index = 0 ) {
 
 		//Left/Right offset
-		$this->render_input_subcontrol( 'Left/Right:', $this->multi_values[ $key_index ++ ], 'range', "min='-25' max='25' class='ms-val ms-val-down'" );
+		$this->render_input_subcontrol( 'Left/Right:', $this->multi_values[ $key_index ++ ], 'range', "min='-25' max='25' class='makesite-val makesite-val-down'" );
 		//Up/Down offset
-		$this->render_input_subcontrol( 'Up/Down:', $this->multi_values[ $key_index ++ ], 'range', "min='-25' max='25' class='ms-val ms-val-right'" );
+		$this->render_input_subcontrol( 'Up/Down:', $this->multi_values[ $key_index ++ ], 'range', "min='-25' max='25' class='makesite-val makesite-val-right'" );
 		//Blur
-		$this->render_input_subcontrol( 'Blur:', $this->multi_values[ $key_index ++ ], 'range', "max='25' class='ms-val ms-val-blur'" );
+		$this->render_input_subcontrol( 'Blur:', $this->multi_values[ $key_index ++ ], 'range', "max='25' class='makesite-val makesite-val-blur'" );
 
 		if ( 'box-shadow' == $box_shadow ) {
 			//Output box shadow spread
-			$this->render_input_subcontrol( 'Spread:', $this->multi_values[ $key_index ++ ], 'range', "max='25' class='ms-val ms-val-spread'" );
+			$this->render_input_subcontrol( 'Spread:', $this->multi_values[ $key_index ++ ], 'range', "max='25' class='makesite-val makesite-val-spread'" );
 		}
 		//Color
-		$this->render_input_subcontrol( 'Color:', $this->multi_values[ $key_index ++ ], 'text', "class='ms-val ms-val-color ms-color'" );
+		$this->render_input_subcontrol( 'Color:', $this->multi_values[ $key_index ++ ], 'text', "class='makesite-val makesite-val-color makesite-color'" );
 
 		$this->output_main_control();
 	}
@@ -335,10 +335,10 @@ class Makesite_Customizer_CSS_Control extends WP_Customize_Control {
 	 */
 	protected function render_subcontrol( $title, $field_html ) {
 		?>
-		<div class="ms-subcontrol">
-			<span class="ms-subcontrol-title"><?php echo $title ?></span>
+		<div class="makesite-subcontrol">
+			<span class="makesite-subcontrol-title"><?php echo $title ?></span>
 			<?php echo $field_html ?>
-		</div><!-- .ms-subcontrol -->
+		</div><!-- .makesite-subcontrol -->
 		<?php
 	}
 

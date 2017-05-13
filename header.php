@@ -38,7 +38,7 @@
 	 * @hooked makesite_hd_branding
 	 * @hooked makesite_hd_navigation
 	 */
-	ms_do_action(
+	makesite_do_action(
 		'header',
 		array(
 			'tag'    => 'header',

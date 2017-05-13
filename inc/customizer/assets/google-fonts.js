@@ -2,11 +2,11 @@
  * Created by shramee on 16/11/15.
  */
 ( function ( $ ) {
-	$.fn.msGoogleFonts = function () {
+	$.fn.makesiteGoogleFonts = function () {
 		var $t = $( this ),
-			$div = $( '<div />' ).addClass( 'ms-google-fonts' );
+			$div = $( '<div />' ).addClass( 'makesite-google-fonts' );
 
-		if ( $t.siblings( '.ms-google-fonts' ).length ) {
+		if ( $t.siblings( '.makesite-google-fonts' ).length ) {
 			return;
 		}
 
@@ -14,15 +14,15 @@
 			var $$ = $( this ),
 				Font = $$.attr( 'value' ) || 'Default',
 				font = Font.replace( / /g, '-' ).toLowerCase(),
-				classes = 'ms-gf-' + font;
+				classes = 'makesite-gf-' + font;
 			if ( $$.prop( 'selected' ) ) {
 				classes += ' active'
 			}
 			$div.append( $( '<span/>' ).data( 'font', Font ).addClass( classes ).text( Font ) );
 		} );
-		$t.after( $( '<div />' ).addClass( 'ms-google-fonts-wrap' ).append( $div ) );
+		$t.after( $( '<div />' ).addClass( 'makesite-google-fonts-wrap' ).append( $div ) );
 		$t.hide();
-		$div = $t.siblings( '.ms-google-fonts-wrap' ).children( '.ms-google-fonts' );
+		$div = $t.siblings( '.makesite-google-fonts-wrap' ).children( '.makesite-google-fonts' );
 		$div.show();
 		$div.find( 'span' ).click( function () {
 			var $$ = $( this );
@@ -31,11 +31,11 @@
 			$t.val( $$.data( 'font' ) ).change();
 		} );
 
-		var $active_field = $t.siblings( 'div.ms-google-fonts' ).find( '.active' );
+		var $active_field = $t.siblings( 'div.makesite-google-fonts' ).find( '.active' );
 
 		if ( 1 == $active_field.count ) {
-			$t.siblings( 'div.ms-google-fonts' ).scrollTop( $active_field.offsetTop )
+			$t.siblings( 'div.makesite-google-fonts' ).scrollTop( $active_field.offsetTop )
 		}
 	};
-	$( '.ms-google-fonts' ).msGoogleFonts();
+	$( '.makesite-google-fonts' ).makesiteGoogleFonts();
 } )( jQuery );

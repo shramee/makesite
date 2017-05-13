@@ -35,7 +35,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		protected $man;
 
 		/** @var string Sections and fields prefix */
-		protected $token = 'ms';
+		protected $token = 'makesite';
 
 		/** @var string Settings class for all settings to register in this control */
 		protected $settings_class = 'WP_Customize_Setting';
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		protected $include = '';
 
 		/** @var string Section name(s) prefix */
-		protected $section_prefix = 'ms-';
+		protected $section_prefix = 'makesite-';
 
 		/**
 		 * Gets the value of protected properties
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		 */
 		public function init( $manager ) {
 			if ( empty( $this->id ) ) {
-				$this->id = ms_make_id( $this->title );
+				$this->id = makesite_make_id( $this->title );
 			}
 			if ( ! is_callable( $this->add_control_callback ) ) {
 				$this->add_control_callback = array( $this, 'add_control', );
@@ -149,10 +149,10 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				 * Filters panel arguments.
 				 * The dynamic part refers to the id of the ID of options group
 				 * While registering the multiple sections,
-				 * this hooks is available in addition to ms_customizer_$this->id_section_args
+				 * this hooks is available in addition to makesite_customizer_$this->id_section_args
 				 * @param array $panel_args
 				 */
-				$panel_args = apply_filters( 'ms_customizer_' . $this->id . '_panel_args', array(
+				$panel_args = apply_filters( 'makesite_customizer_' . $this->id . '_panel_args', array(
 					'title'    => $this->title,
 					'priority' => $this->priority,
 				) );
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 					 * @param array $section_args
 					 * @param string $section_id
 					 */
-					$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
+					$section_args = apply_filters( 'makesite_customizer_' . $this->id . '_section_args', array(
 						'title' => $section_title,
 						'panel' => "$this->token-$this->id",
 						'priority' => $section_priority++,
@@ -182,7 +182,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				 * While registering the only main section $args can be filtered directly
 				 * @param array $section_args
 				 */
-				$section_args = apply_filters( 'ms_customizer_' . $this->id . '_section_args', array(
+				$section_args = apply_filters( 'makesite_customizer_' . $this->id . '_section_args', array(
 					'title' => $this->title,
 					'priority' => $this->priority,
 				) );
@@ -196,15 +196,15 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 		 */
 		public function controls_scripts() {
 			// Alpha color picker
-			wp_enqueue_script( 'ms-color-picker', MS_URL . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
+			wp_enqueue_script( 'makesite-color-picker', MAKESITE_URL . '/inc/customizer/assets/alpha-color-picker.js', array( 'jquery', 'wp-color-picker' ) );
 
 			//Google fonts
-			wp_enqueue_style( 'makesite-google-fonts-css', MS_URL . 'inc/customizer/assets/google-fonts.css', array(), MS_VER );
-			wp_enqueue_script( 'makesite-google-fonts-js', MS_URL . 'inc/customizer/assets/google-fonts.js', array( 'jquery' ), MS_VER, 'in_footer' );
+			wp_enqueue_style( 'makesite-google-fonts-css', MAKESITE_URL . 'inc/customizer/assets/google-fonts.css', array(), MAKESITE_VER );
+			wp_enqueue_script( 'makesite-google-fonts-js', MAKESITE_URL . 'inc/customizer/assets/google-fonts.js', array( 'jquery' ), MAKESITE_VER, 'in_footer' );
 
 			// Controls JS
-			wp_enqueue_style( 'makesite-customizer-controls-css', MS_URL . 'inc/customizer/assets/customizer-controls.css', array(), MS_VER );
-			wp_enqueue_script( 'makesite-customizer-controls-js', MS_URL . 'inc/customizer/assets/customizer-controls.js', array( 'ms-color-picker', 'makesite-google-fonts-js' ), MS_VER, 'in_footer' );
+			wp_enqueue_style( 'makesite-customizer-controls-css', MAKESITE_URL . 'inc/customizer/assets/customizer-controls.css', array(), MAKESITE_VER );
+			wp_enqueue_script( 'makesite-customizer-controls-js', MAKESITE_URL . 'inc/customizer/assets/customizer-controls.js', array( 'makesite-color-picker', 'makesite-google-fonts-js' ), MAKESITE_VER, 'in_footer' );
 
 		}
 
@@ -246,7 +246,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				if ( 0 === strpos( $sec, 'existing_' ) ) {
 					$sec = str_replace( 'existing_', '', $sec );
 				} else {
-					$sec = $this->section_prefix . ms_make_id( $sec );
+					$sec = $this->section_prefix . makesite_make_id( $sec );
 					$sections[ $sec ] = $option['section'];
 				}
 			}
@@ -267,7 +267,7 @@ if ( ! class_exists( 'Makesite_Customizer_Manager' ) ) {
 				 * @param array $setting_args Arguments
 				 * @param array $option Option data
 				 */
-				$setting_args = apply_filters( 'ms_customizer_' . $this->id . '_setting_args', array(
+				$setting_args = apply_filters( 'makesite_customizer_' . $this->id . '_setting_args', array(
 					'default' => $option['default'],
 					'type'    => $this->settings_type,
 				), $option );

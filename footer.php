@@ -23,7 +23,7 @@
 		 * @hooked makesite_ft_skiplinks  - 30
 		 * @hooked makesite_ft_info       - 40
 		 */
-		ms_do_action(
+		makesite_do_action(
 			'footer',
 			array(
 				'tag'    => 'footer',

@@ -19,7 +19,7 @@ if ( $makesite->show_sb1 ) {
 	 * @param bool $sidebar_active_1 Is sidebar-1 active
 	 * @hooked makesite_sb_widgets - 25
 	 */
-	ms_do_action(
+	makesite_do_action(
 		'sidebar',
 		array(
 			'tag'   => 'aside',
@@ -42,7 +42,7 @@ if ( $makesite->show_sb2 ) {
 	 * @param bool $sidebar_active_2 Is sidebar-2 active
 	 * @hooked makesite_sb_widgets - 25
 	 */
-	ms_do_action(
+	makesite_do_action(
 		'sidebar2',
 		array(
 			'tag'   => 'aside',

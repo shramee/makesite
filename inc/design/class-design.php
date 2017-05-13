@@ -59,7 +59,7 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 			$this->admin = Makesite_Design_Customizer_Register::instance();
 		}
 
-		$this->gf_data = ms_get_fonts( 'data' );
+		$this->gf_data = makesite_get_fonts( 'data' );
 		$this->set_properties();
 
 		add_action( 'customize_save_after', array( $this, 'save_settings' ) );
@@ -119,8 +119,8 @@ class Makesite_Design extends Makesite_Design_Fields_Css {
 	protected function process_settings() {
 		$styles = '';
 
-		$ms_fields = Makesite_Design::fields();
-		foreach ( $ms_fields as $settings_group => $options ) {
+		$makesite_fields = Makesite_Design::fields();
+		foreach ( $makesite_fields as $settings_group => $options ) {
 			foreach( $options as $id => $f ) {
 				$styles .= $this->process_setting( $id, $f );
 			}

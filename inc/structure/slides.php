@@ -28,7 +28,7 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 			 * @param bool $left_slide_in Is slide-left active
 			 * @hooked makesite_lsi_widgets - 25
 			 */
-			ms_do_action(
+			makesite_do_action(
 				'left_slide_in',
 				array(
 					'tag'    => 'aside',
@@ -62,7 +62,7 @@ if ( ! function_exists( 'makesite_slide_ins' ) ) :
 			 * @param bool $right_slide_in Is slide-right active
 			 * @hooked makesite_rsi_widgets - 25
 			 */
-			ms_do_action(
+			makesite_do_action(
 				'right_slide_in',
 				array(
 					'tag'    => 'aside',

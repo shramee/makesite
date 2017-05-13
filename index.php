@@ -11,5 +11,5 @@
  *
  * @package makesite
  */
-$ms_hooks = [];
+$makesite_hooks = [];
 makesite();
