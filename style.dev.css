@@ -5,7 +5,7 @@
  * Author: WPDevelopment
  * Author URI: http://shramee.me
  * Description: Great theme framework for building kick-ass web apps
- * Version: 0.2.7
+ * Version: 0.3.0
  * License: GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: makesite
@@ -2912,6 +2912,7 @@ TABLE OF CONTENTS:
  * Makesite v0.7.0 (http://shramee.me/makesite)
  * Copyright 2016 But2Create
  * Licensed under MIT (https://github.com/but2create/makesite/blob/master/LICENSE)
+ * normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css
  */
 /**
  * INDEX
@@ -2925,7 +2926,6 @@ TABLE OF CONTENTS:
  * 8. Helpers - Box
  * 9. Helpers - Text
  */
-/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
@@ -3331,8 +3331,7 @@ textarea {
   /* 2 */
 }
 
-/*!
-Base */
+/* Base */
 /* Text meant only for screen readers. */
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
@@ -3763,8 +3762,7 @@ h6, .h6 {
   font-size: 0.7rem;
 }
 
-/*!
-Grid */
+/* Grid */
 .s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12,
 .m1, .m2, .m3, .m4, .m5, .m6, .m7, .m8, .m9, .m10, .m11, .m12,
 .l1, .l2, .l3, .l4, .l5, .l6, .l7, .l8, .l9, .l10, .l11, .l12,
@@ -4406,8 +4404,7 @@ Grid */
     display: none;
   }
 }
-/*!
-Forms */
+/* Forms */
 input,
 textarea,
 .button,
@@ -4513,8 +4510,7 @@ fieldset.horizontal > :first-child {
   border-top-right-radius: 0;
 }
 
-/*!
-Buttons */
+/* Buttons */
 .button,
 button,
 input[type="button"],
@@ -4561,8 +4557,7 @@ input[type="submit"],
   text-decoration: none;
 }
 
-/*!
-Helpers - Structure */
+/* Helpers - Structure */
 .nav-vertical,
 .nav-horizontal {
   padding: 0;
@@ -4737,8 +4732,7 @@ Helpers - Structure */
   border-color: rgba(0, 0, 0, 0.25);
 }
 
-/*!
-Helpers - Colors */
+/* Helpers - Colors */
 /*
  * Color classes.
  * Colors from https://flatuicolors.com/
@@ -5053,8 +5047,7 @@ Helpers - Colors */
   border-color: #7f8c8d !important;
 }
 
-/*!
-Helpers - Box */
+/* Helpers - Box */
 /* Helpers - Box - Alignment */
 .alignleft, .left {
   float: left;
@@ -5383,8 +5376,7 @@ Helpers - Box */
   border-radius: 50%;
 }
 
-/*!
-Helpers - Text */
+/* Helpers - Text */
 /* Helpers - Text - Alignment */
 .text-left {
   text-align: left;

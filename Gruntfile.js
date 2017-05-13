@@ -2,19 +2,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		/** Autoprefixing */
-		autoprefixer: {
-			options : {
-				browsers : ['last 5 versions'],
-			},
-			multiple_files : {
-				expand : true,
-				flatten : true,
-				src : '*.css',
-				dest : ''
-			}
-		},
-
 		/** Sass decompiling */
 		sass: {
 			dev: {
@@ -28,7 +15,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				options: {
-					style : 'compact',
+					style : 'compressed',
 					sourcemap: 'none'
 				},
 				files: [
@@ -44,9 +31,22 @@ module.exports = function(grunt) {
 			}
 		},
 
-		/* RTL css */
+		/** Autoprefixing */
+		autoprefixer: {
+			options : {
+				browsers : ['last 5 versions'],
+			},
+			multiple_files : {
+				expand : true,
+				flatten : true,
+				src : '*.css',
+				dest : ''
+			}
+		},
+
+		/** RTL css */
 		rtlcss: {
-			myTask:{
+			styleToRtl:{
 				options: {
 					map: false,
 					opts: {
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 		},
 
 		/** Minify JS */
-		uglify : {
+		uglify: {
 			minify: {
 				files: [
 					{
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 		},
 
 		/** Watcher */
-		watch : {
+		watch: {
 			css: {
 				files: '**/*.scss',
 				tasks: [ 'sass', 'autoprefixer', 'rtlcss' ]
@@ -106,11 +106,11 @@ module.exports = function(grunt) {
 		},
 	});
 
-	grunt.loadNpmTasks('grunt-rtlcss');
-	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-rtlcss');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.registerTask('default',['watch']);
+	grunt.registerTask( 'default', ['sass', 'autoprefixer', 'rtlcss', 'coffee', 'uglify', 'watch',] );
 };
