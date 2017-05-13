@@ -94,7 +94,7 @@ if ( ! function_exists( 'makesite_lsi_widgets' ) ) :
 				'left_slide_in_toggle',
 				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in">' .
 				'<i class="icon-chevron-right"></i>' .
-				'<span class="screen-reader-text">Open left slide</span></a>'
+				'<span class="screen-reader-text">' . __( 'Open left slide', 'makesite') . '</span></a>'
 			);
 			?>
 			<div class="overlay" data-toggle-class data-toggle-target=".slide-in"></div>
@@ -118,7 +118,7 @@ if ( ! function_exists( 'makesite_rsi_widgets' ) ) :
 				'right_slide_in_toggle',
 				'<a class="slide-in-toggle" data-toggle-class data-toggle-target=".slide-in">' .
 				'<i class="icon-chevron-left"></i>' .
-				'<span class="screen-reader-text">Open right slide</span></a>'
+				'<span class="screen-reader-text">' . __( 'Open right slide', 'makesite') . '</span></a>'
 			);
 			?>
 			<div class="overlay" data-toggle-class data-toggle-target=".slide-in"></div>

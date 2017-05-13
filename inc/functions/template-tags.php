@@ -97,10 +97,7 @@ endif;
 
 if ( ! function_exists( 'makesite_pagination' ) ) :
 	function makesite_pagination() {
-		$pagination = paginate_links( array( 'type' => 'list' ) );
-		if ( ! empty( $pagination ) ) {
-			echo "<div class='pagination'>$pagination</div>";
-		}
+		the_posts_pagination( array( 'type' => 'list' ) );
 	}
 endif;
 

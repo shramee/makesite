@@ -1,6 +1,6 @@
 === Theme Name ===
 Contributors: shramee
-Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,editor-style,featured-images,footer-widgets,full-width-template,blog
+Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,editor-style,featured-images,threaded-comments,footer-widgets,full-width-template,theme-options,blog
 Requires at least: 4.5.0
 Tested up to: 4.7-0
 Stable tag: 0.2.6
@@ -19,6 +19,13 @@ Very flexible theme, loaded with hooks yet to be documented abd lots more awesom
 It will soon be available for live site. Just some more testing and enhancements.
 
 == Changelog ==
+
+= Version 0.3.5 =
+**2017-05-13**
+* New - 
+* New - 
+* New - 
+* Tweak - Fixed JS file 404 in console
 
 = Version 0.3.0 =
 **2017-05-13**
