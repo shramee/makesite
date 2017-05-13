@@ -20,25 +20,32 @@ It will soon be available for live site. Just some more testing and enhancements
 
 == Changelog ==
 
+= Version 0.3.0 =
+**2017-05-13**
+* Tweak - Removing `wp_remote_get`
+* Tweak - Minified styles
+* Tweak - Uniform prefix `makesite`
+* Tweak - Fixed JS file 404 in console
+
 = Version 0.2.7 =
 **2017-05-07**
-* Making theme more robust. Thanks Mahesh https://profiles.wordpress.org/mahesh901122
+* Tweak - Making theme more robust. Thanks Mahesh https://profiles.wordpress.org/mahesh901122
 
 = Version 0.2.6 =
 **2017-02-01**
-* Making theme more WP friendly. Thanks Nilambar - https://profiles.wordpress.org/rabmalin
+* Tweak - Making theme more WP friendly. Thanks Nilambar - https://profiles.wordpress.org/rabmalin
 
 = Version 0.2.5.1 =
 **2017-0@-01**
-* More WP review fixes
+* Tweak - More WP review fixes
 
 = Version 0.2.5 =
 **2017-01-23**
-* WP review fixes
+* Tweak - WP review fixes
 
 = 0.7 =
 **2016-08-22**
-* Initial beta
+* New - Initial beta
 
 == Upgrade Notice ==
 
