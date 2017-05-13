@@ -100,6 +100,9 @@ class Makesite {
 		// Load text domain, translations in /languages/ directory.
 		load_theme_textdomain( 'makesite', get_template_directory() . '/languages' );
 
+		// Editor styles
+		add_editor_style( get_template_directory_uri() . '/style.css' );
+
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
@@ -142,6 +145,20 @@ class Makesite {
 			'quote',
 			'link',
 		) );
+
+		add_theme_support( 'custom-header', array(
+			'height'      => 300,
+			'flex-width'  => true,
+			'flex-height' => true,
+		) );
+
+		add_theme_support( 'custom-logo', array(
+			'height'      => 110,
+			'width'       => 470,
+			'flex-width'  => true,
+		) );
+
+		add_theme_support( "custom-background" );
 	}
 
 	/**

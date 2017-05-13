@@ -29,8 +29,14 @@ if ( ! function_exists( 'makesite_hd_branding' ) ) :
 	function makesite_hd_branding() {
 		?>
 		<div class="site-branding">
-			<?php makesite_hd_title(); ?>
-			<?php makesite_hd_description(); ?>
+			<?php
+			if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
+				the_custom_logo();
+			} else {
+				makesite_hd_title();
+				makesite_hd_description();
+			}
+			?>
 		</div><!-- .site-branding -->
 		<?php
 	}

@@ -46,6 +46,7 @@
 				'id'    => "masthead",
 				'class' => "site-header",
 				'role'  => "banner",
+				'style' => ( get_header_image() ? "background-image:url('" . get_header_image() . "');" : '' ) . ( get_theme_mod( 'header_textcolor' ) ? 'color:#' . get_theme_mod( 'header_textcolor' ) . ';' : '' ),
 			),
 			'before' => '<div class="container">',
 			'after'  => '</div><!--.container-->',

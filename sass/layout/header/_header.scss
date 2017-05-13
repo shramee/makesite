@@ -1,6 +1,10 @@
 .site-header {
 	position: relative;
 	padding: $padding 0 0;
+	background: #fff center/cover;
+	* {
+		color: inherit;
+	}
 }
 
 .site-branding {
