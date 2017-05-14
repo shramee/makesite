@@ -14,7 +14,7 @@ define( 'MAKESITE_VER', $theme->get( 'Version' ) );
 
 // TODO Remove @ sign
 /** @var Makesite theme URL */
-@define( 'MAKESITE_SITE', $theme->get( 'ThemeURI' ) );
+define( 'MAKESITE_SITE', $theme->get( 'ThemeURI' ) );
 
 /** @var Makesite theme URL */
 define( 'MAKESITE_URL', get_template_directory_uri() . '/' );

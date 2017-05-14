@@ -137,17 +137,6 @@ class Makesite {
 			'caption',
 		) );
 
-		/* @TODO GET THIS WORKING IN NEXT VERSION
-		// Enable support for Post Formats.
-		add_theme_support( 'post-formats', array(
-			'aside',
-			'image',
-			'video',
-			'quote',
-			'link',
-		) );
-		*/
-
 		add_theme_support( 'custom-header', array(
 			'height'      => 300,
 			'flex-width'  => true,

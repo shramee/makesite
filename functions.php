@@ -14,7 +14,7 @@ function makesite_php_incompatible() {
 	printf( '<div class="notice notice-error"><h3>%1$s</h3><p>%2$s</p></div>', esc_html( $heading ), esc_html( $message ) );
 }
 
-if (version_compare(PHP_VERSION, '75.4', '<')) {
+if (version_compare(PHP_VERSION, '5.4', '<')) {
 
 	function makesite() {
 		$heading = __( 'Server compatibility issue!', 'makesite' );

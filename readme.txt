@@ -3,7 +3,7 @@ Contributors: shramee
 Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,editor-style,featured-images,threaded-comments,footer-widgets,full-width-template,theme-options,blog
 Requires at least: 4.5.0
 Tested up to: 4.7-0
-Stable tag: 0.3.5
+Stable tag: 0.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,12 @@ Very flexible theme, loaded with hooks yet to be documented abd lots more awesom
 It will soon be available for live site. Just some more testing and enhancements.
 
 == Changelog ==
+
+= Version 0.3.5 =
+**2017-05-14**
+* Fixed - Suppressed errors
+* Fixed - PHP version compatiblity always says incompatible.
+* 
 
 = Version 0.3.5 =
 **2017-05-13**
